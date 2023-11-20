@@ -26,6 +26,9 @@
       "favicon": "./src/assets/images/app/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-router", "expo-localization"]
+    "plugins": ["expo-router", "expo-localization"],
+    "experiments": {
+      "tsconfigPaths": true
+    }
   }
 }
