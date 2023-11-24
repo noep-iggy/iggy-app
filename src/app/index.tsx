@@ -12,12 +12,26 @@ export default function Home() {
   const splashImage = require('@/assets/images/app/splash.png');
   const logo = require('@/assets/images/app/logo.png');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { currentUser, setToken } = useAuthContext();
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
+
+  async function onSubmit(data: AuthLoginApi) {
+    try {
+      setIsLoading(true);
+      const token = await ApiService.auth.login(data);
+      setToken(token);
+      setIsLoading(false);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      console.log('[D] index', e);
+      setIsLoading(false);
+    }
+  }
 
   return (
     <ImageBackground source={splashImage} style={{ flex: 1 }}>
