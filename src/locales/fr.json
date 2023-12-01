@@ -1,5 +1,10 @@
 {
   "Welcome": "Bonjour",
+  "Router": {
+    "home_join": "Rejoindre une maison",
+    "home_login": "Se connecter",
+    "home_register": "Créer une maison"
+  },
   "LoginPage" : {
     "Login":"Se connecter à un compte existant",
     "Register":"Créer une maison",

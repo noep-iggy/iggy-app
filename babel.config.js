@@ -6,6 +6,7 @@ module.exports = function (api) {
       'expo-router/babel',
       'react-native-paper/babel',
       'transform-inline-environment-variables',
+      'react-native-reanimated/plugin',
     ],
   };
 };

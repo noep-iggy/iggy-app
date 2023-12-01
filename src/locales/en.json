@@ -1,5 +1,10 @@
 {
   "Welcome": "Welcome",
+  "Router": {
+    "home.join": "Join house",
+    "home.login": "Log in",
+    "home.register": "Create house"
+  },
   "LoginPage": {
     "Login":"Log in to an existing account",
     "Register":"Create a house",
