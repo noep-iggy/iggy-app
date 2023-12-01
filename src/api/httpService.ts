@@ -8,9 +8,9 @@ class HTTPService {
 
   constructor() {
     this.httpUrl = null;
-    this.baseURL = `${process.env['API_URL']}`;
-    this.timeout = process.env['API_TIMEOUT']
-      ? +process.env['API_TIMEOUT']
+    this.baseURL = `${process.env['EXPO_PUBLIC_API_URL']}`;
+    this.timeout = process.env['EXPO_PUBLIC_API_TIMEOUT']
+      ? +process.env['EXPO_PUBLIC_API_TIMEOUT']
       : 3000;
     this.token = '';
   }
@@ -76,7 +76,7 @@ class HTTPService {
       };
     }
 
-    headers = { ...headers, 'x-api-key': process.env['API_KEY'] };
+    headers = { ...headers, 'x-api-key': process.env['EXPO_PUBLIC_API_KEY'] };
     return axios.create({
       headers,
       baseURL: this.baseURL,

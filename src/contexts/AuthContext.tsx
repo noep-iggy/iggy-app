@@ -1,6 +1,7 @@
 import { ApiService, HttpService } from '@/api';
 import { UserDto } from '@/types';
 import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 interface State {
   currentUser: UserDto | null;
@@ -103,7 +104,11 @@ export const AuthProvider = ({ children }: Props): JSX.Element => {
 
   return (
     <AuthContext.Provider value={context}>
-      {context.isLoaded ? children : <p>{'Loading'}</p>}
+      {context.isLoaded ? (
+        children
+      ) : (
+        <ActivityIndicator animating={true} color={MD2Colors.red800} />
+      )}
     </AuthContext.Provider>
   );
 };
