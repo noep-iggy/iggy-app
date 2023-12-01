@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/contexts';
 import { Slot } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import {
@@ -19,9 +20,11 @@ export default function Layout() {
   };
   return (
     <PaperProvider theme={theme}>
-      <SafeAreaProvider>
-        <Slot />
-      </SafeAreaProvider>
+      <AuthProvider>
+        <SafeAreaProvider>
+          <Slot />
+        </SafeAreaProvider>
+      </AuthProvider>
     </PaperProvider>
   );
 }
