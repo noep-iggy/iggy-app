@@ -1,3 +1,8 @@
 {
-  "Welcome": "Bonjour"
+  "Welcome": "Bonjour",
+  "LoginPage" : {
+    "Login":"Se connecter à un compte existant",
+    "Register":"Créer une maison",
+    "Join":"Rejoindre une maison"
+  }
 }

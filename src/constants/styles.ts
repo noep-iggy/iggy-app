@@ -6,4 +6,10 @@ export const genericStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  flexEvenly: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
 });

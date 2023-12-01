@@ -1,4 +1,9 @@
 {
-  "Welcome": "Welcome"
+  "Welcome": "Welcome",
+  "LoginPage": {
+    "Login":"Log in to an existing account",
+    "Register":"Create a house",
+    "Join":"Join a house"
+  }
 }
 

@@ -15,14 +15,14 @@ interface props {
 
 export default function UniversalSafeArea(props: props) {
   return (
-    <SafeAreaView style={[props.style, style.androidSafeArea]}>
+    <SafeAreaView style={[props.style, style.safeArea]}>
       {props.children}
     </SafeAreaView>
   );
 }
 
 const style = StyleSheet.create({
-  androidSafeArea: {
+  safeArea: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },

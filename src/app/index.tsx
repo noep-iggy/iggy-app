@@ -1,8 +1,12 @@
+import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import SecondaryButton from '@/components/Buttons/SecondaryButton';
+import TertiaryButton from '@/components/Buttons/TertiaryButton';
 import UniversalSafeArea from '@/components/UniversalSafeArea';
 import { genericStyles } from '@/constants';
+import i18n from 'locales/localization';
 import { useEffect, useState } from 'react';
-import { Image, ImageBackground } from 'react-native';
-import { ActivityIndicator, Button, Surface } from 'react-native-paper';
+import { Image, ImageBackground, View } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 
 export default function Home() {
   const splashImage = require('@/assets/images/app/splash.png');
@@ -17,39 +21,47 @@ export default function Home() {
 
   return (
     <ImageBackground source={splashImage} style={{ flex: 1 }}>
-      <UniversalSafeArea style={[genericStyles.flexCenter]}>
-        <Image
-          source={logo}
-          style={{ width: isLoading ? 250 : 175 }}
-          resizeMode="contain"
-        />
-        <ActivityIndicator animating={isLoading} color="white" />
-        {!isLoading && (
-          <Surface elevation={0} style={{ gap: 8 }}>
-            <Button
-              mode="contained"
-              buttonColor="white"
-              onPress={() => console.log('a')}
-            >
-              Créer une maison
-            </Button>
-            <Button
-              mode="outlined"
-              textColor="white"
-              theme={{ colors: { outline: 'white' } }}
-              onPress={() => console.log('a')}
-            >
-              Rejoindre une maison
-            </Button>
-            <Button
-              mode="text"
-              textColor="white"
-              onPress={() => console.log('a')}
-            >
-              Se connecter à un compte existant
-            </Button>
-          </Surface>
-        )}
+      <UniversalSafeArea
+        style={[genericStyles.flexEvenly, { paddingHorizontal: 16 }]}
+      >
+        <View style={{ marginTop: '70%', gap: 16 }}>
+          <Image source={logo} resizeMode="contain" />
+          <ActivityIndicator animating={isLoading} color="white" />
+        </View>
+        <View
+          style={[
+            {
+              gap: 8,
+              marginTop: 'auto',
+              opacity: isLoading ? 0 : 1,
+              width: '100%',
+            },
+          ]}
+        >
+          <TertiaryButton
+            title={i18n.t('LoginPage.Login')}
+            textColor="white"
+            icon="arrow-right"
+            contentStyle={{
+              flexDirection: 'row-reverse',
+            }}
+            onPress={() => {}}
+          />
+          <PrimaryButton
+            title={i18n.t('LoginPage.Register')}
+            buttonColor="white"
+            textColor="black"
+            big
+            onPress={() => {}}
+          />
+          <SecondaryButton
+            title={i18n.t('LoginPage.Join')}
+            theme={{ colors: { outline: 'white' } }}
+            textColor="white"
+            big
+            onPress={() => {}}
+          />
+        </View>
       </UniversalSafeArea>
     </ImageBackground>
   );
