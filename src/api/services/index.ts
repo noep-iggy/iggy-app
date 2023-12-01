@@ -1,8 +1,8 @@
-import { HouseApiService } from './HousesService';
 import { AffiliateApiService } from './affiliatesService';
 import { AnimalApiService } from './animalsService';
 import { AuthApiService } from './authService';
 import { BillingPlanApiService } from './billingPlansService';
+import { HouseApiService } from './housesService';
 import { JoinCodeApiService } from './joinCodeService';
 import { MediaApiService } from './mediaService';
 import { RecurrenceApiService } from './recurrencesService';
