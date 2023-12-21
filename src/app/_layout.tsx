@@ -1,5 +1,5 @@
 import { AuthProvider } from '@/contexts';
-import { Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import {
   MD3DarkTheme as DarkTheme,
@@ -8,8 +8,9 @@ import {
 } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IggyDarkTheme, IggyLightTheme } from '../constants';
+import CustomAppBar from '@/components/Commons/CustomAppBar';
 
-export default function Layout() {
+const Layout = () => {
   const colorScheme = useColorScheme();
   const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
 
@@ -22,9 +23,15 @@ export default function Layout() {
     <PaperProvider theme={theme}>
       <AuthProvider>
         <SafeAreaProvider>
-          <Slot />
+          <Stack
+            screenOptions={{
+              header: (props) => <CustomAppBar {...props} />,
+            }}
+          />
         </SafeAreaProvider>
       </AuthProvider>
     </PaperProvider>
   );
-}
+};
+
+export default Layout;
