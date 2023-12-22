@@ -12,6 +12,10 @@
     "Submit": "Connexion",
     "Subtitle": "Rentrez ici vos informations de connexion"
   },
+  "registerPage": {
+    "subTitle": "Indiquez ici qui sera le propirétaire et administrateur du compte",
+    "submit": "Créer mon compte"
+  },
   "fields": {
     "generics": {
       "addData": "Ajouter une valeur"
@@ -182,6 +186,13 @@
         "noUppercase": "Le mot de passe doit contenir au moins une majuscule"
       }
     },
+    "confirmPassword": {
+      "label": "Confirmez le mot de passe",
+      "placeholder": "Confirmez le mot de passe",
+      "errors": {
+        "notSame": "Les mots de passe ne sont pas identiques"
+      }
+    },
     "profilePicture": {
       "label": "Photo de profil",
       "placeholder": "Choisissez une photo"
@@ -190,7 +201,8 @@
   "success": {
     "api": {
       "login": "Vous êtes connecté",
-      "logout": "Vous êtes déconnecté"
+      "logout": "Vous êtes déconnecté",
+      "register": "Votre compte a bien été créé"
     }
   },
   "errors": {

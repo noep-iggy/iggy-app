@@ -3,8 +3,8 @@ import {
   UpdateUserApi,
   AuthLoginApi,
   UserRoleEnum,
-  RegisterApi,
   JoinApi,
+  AuthRegisterUi,
 } from '@/types';
 import { genericsValidation } from './generics';
 import * as yup from 'yup';
@@ -38,12 +38,16 @@ const update: yup.ObjectSchema<UpdateUserApi> = yup.object({
   house: houseValidation.update.optional().default(undefined),
 });
 
-const create: yup.ObjectSchema<RegisterApi> = yup.object({
+const create: yup.ObjectSchema<AuthRegisterUi> = yup.object({
   email: genericsValidation.email.required(
     errorMessage.fields('email').REQUIRED
   ),
   password: genericsValidation.password.required(
     errorMessage.fields('password').REQUIRED
+  ),
+  confirmPassword: genericsValidation.password.oneOf(
+    [yup.ref('password')],
+    errorMessage.fields('confirmPassword').NOT_SAME
   ),
   lastName: yup
     .string()

@@ -40,7 +40,7 @@ const Login = () => {
       const user = await ApiService.users.me();
       Toast.show({
         type: 'success',
-        text1: `${i18n.t('welcome')} ${user?.firstName ?? ''}!`,
+        text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.login'),
       });
 
