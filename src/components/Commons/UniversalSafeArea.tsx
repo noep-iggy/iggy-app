@@ -6,17 +6,24 @@ import {
   StyleSheet,
   ViewStyle,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  SafeAreaViewProps,
+} from 'react-native-safe-area-context';
 
-interface props {
+interface props extends SafeAreaViewProps {
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
-export default function UniversalSafeArea(props: props) {
+export default function UniversalSafeArea({
+  children,
+  edges = ['bottom', 'left', 'right'],
+  ...props
+}: props) {
   return (
-    <SafeAreaView style={[props.style, style.safeArea]}>
-      {props.children}
+    <SafeAreaView style={[props.style, style.safeArea]} edges={edges}>
+      {children}
     </SafeAreaView>
   );
 }

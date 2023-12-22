@@ -69,15 +69,15 @@ const Login = () => {
     <UniversalSafeArea
       style={[
         {
-          justifyContent: 'space-around',
+          justifyContent: 'flex-end',
           padding: 16,
         },
       ]}
     >
-      <View style={[genericStyles.flexCenter, { width: '100%', gap: 10 }]}>
+      <View style={[genericStyles.flexCenter, { width: '100%', flexGrow: 1 }]}>
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <Text variant="bodyMedium">{i18n.t('LoginPage.Subtitle')}</Text>
-        <View style={[genericStyles.flexColumn, { width: '100%', gap: 5 }]}>
+        <View style={[genericStyles.flexColumn, { width: '100%', gap: 6 }]}>
           <FormProvider {...formApi}>
             <FormField
               label={i18n.t('fields.email.label')}
@@ -95,14 +95,16 @@ const Login = () => {
         </View>
       </View>
 
-      <PrimaryButton
-        disabled={!isValid || isSubmitting}
-        loading={isSubmitting}
-        onPress={handleSubmit(onSubmit)}
-        title={i18n.t('LoginPage.Submit')}
-        textColor="white"
-        big
-      />
+      <View>
+        <PrimaryButton
+          disabled={!isValid || isSubmitting}
+          loading={isSubmitting}
+          onPress={handleSubmit(onSubmit)}
+          title={i18n.t('LoginPage.Submit')}
+          textColor="white"
+          big
+        />
+      </View>
     </UniversalSafeArea>
   );
 };

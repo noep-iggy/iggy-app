@@ -20,4 +20,9 @@ export const genericStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  flexEndAndCenter: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
 });

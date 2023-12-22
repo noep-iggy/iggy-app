@@ -34,9 +34,10 @@ const Home = () => {
         }}
       />
       <UniversalSafeArea
-        style={[genericStyles.flexCenter, { paddingHorizontal: 16 }]}
+        style={[genericStyles.flexEndAndCenter, { paddingHorizontal: 16 }]}
+        edges={['top', 'bottom', 'left', 'right']}
       >
-        <View style={{ gap: 16 }}>
+        <View style={[{ gap: 16, flexGrow: 1 }, genericStyles.flexCenter]}>
           <Image source={logo} resizeMode="contain" />
           <ActivityIndicator animating={isLoading} color="white" />
         </View>
