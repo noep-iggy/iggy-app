@@ -6,10 +6,18 @@ export const genericStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  flexColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   flexEvenly: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+  },
+  flexRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
