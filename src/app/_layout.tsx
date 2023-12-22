@@ -9,6 +9,7 @@ import {
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IggyDarkTheme, IggyLightTheme } from '../constants';
 import CustomAppBar from '@/components/Commons/CustomAppBar';
+import Toast from 'react-native-toast-message';
 
 const Layout = () => {
   const colorScheme = useColorScheme();
@@ -28,6 +29,7 @@ const Layout = () => {
               header: (props) => <CustomAppBar {...props} />,
             }}
           />
+          <Toast />
         </SafeAreaProvider>
       </AuthProvider>
     </PaperProvider>

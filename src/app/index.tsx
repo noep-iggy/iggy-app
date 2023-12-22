@@ -4,6 +4,7 @@ import TertiaryButton from '@/components/Buttons/TertiaryButton';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
+import { ROUTES } from '@/router/routes';
 import { Stack, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
@@ -56,25 +57,21 @@ const Home = () => {
             contentStyle={{
               flexDirection: 'row-reverse',
             }}
-            onPress={() =>
-              router.push({
-                pathname: '/home/login',
-              })
-            }
+            onPress={() => router.push(ROUTES.login)}
           />
           <PrimaryButton
             title={i18n.t('LoginPage.Register')}
             buttonColor="white"
             textColor="black"
             big
-            onPress={() => {}}
+            onPress={() => router.push(ROUTES.register)}
           />
           <SecondaryButton
             title={i18n.t('LoginPage.Join')}
             theme={{ colors: { outline: 'white' } }}
             textColor="white"
             big
-            onPress={() => {}}
+            onPress={() => router.push(ROUTES.join)}
           />
         </View>
       </UniversalSafeArea>

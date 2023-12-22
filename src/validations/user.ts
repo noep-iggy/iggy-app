@@ -40,10 +40,11 @@ const update: yup.ObjectSchema<UpdateUserApi> = yup.object({
 
 const create: yup.ObjectSchema<RegisterApi> = yup.object({
   email: genericsValidation.email.required(
-    errorMessage.fields('email').REQUIRED,
+    errorMessage.fields('email').REQUIRED
   ),
   password: genericsValidation.password.required(
-    errorMessage.fields('password').REQUIRED),
+    errorMessage.fields('password').REQUIRED
+  ),
   lastName: yup
     .string()
     .required(errorMessage.fields('lastName').REQUIRED)
@@ -71,20 +72,21 @@ const joinParent = yup.object<JoinApi>().shape({
     .required(errorMessage.fields('lastName').REQUIRED)
     .typeError(errorMessage.fields('lastName').NOT_STRING),
   password: genericsValidation.password.required(
-    errorMessage.fields('password').REQUIRED,
+    errorMessage.fields('password').REQUIRED
   ),
   email: genericsValidation.email.required(
-    errorMessage.fields('email').REQUIRED,
+    errorMessage.fields('email').REQUIRED
   ),
 });
 
 const login = yup.object<AuthLoginApi>().shape({
   email: yup
     .string()
+    .email(errorMessage.fields('email').NOT_VALID)
     .required(errorMessage.fields('email').REQUIRED)
     .typeError(errorMessage.fields('email').NOT_STRING),
   password: genericsValidation.password.required(
-    errorMessage.fields('password').REQUIRED,
+    errorMessage.fields('password').REQUIRED
   ),
 });
 
