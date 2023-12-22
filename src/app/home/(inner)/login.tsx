@@ -83,6 +83,7 @@ const Login = () => {
               label={i18n.t('fields.email.label')}
               name="email"
               type="text"
+              autoCapitalize="none"
               keyboardType="email-address"
             />
             <FormField
