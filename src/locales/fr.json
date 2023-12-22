@@ -16,6 +16,12 @@
     "subTitle": "Indiquez ici qui sera le propirétaire et administrateur du compte",
     "submit": "Créer mon compte"
   },
+  "housePage": {
+    "create": {
+      "subtitle": "Donnez un nom à votre maison avant d’ajouter votre animal",
+      "submit": "Créer ma maison"
+    }
+  },
   "fields": {
     "generics": {
       "addData": "Ajouter une valeur"
@@ -202,7 +208,12 @@
     "api": {
       "login": "Vous êtes connecté",
       "logout": "Vous êtes déconnecté",
-      "register": "Votre compte a bien été créé"
+      "register": "Votre compte a bien été créé",
+      "house": {
+        "create": "La maison a bien été créée",
+        "update": "La maison a bien été mise à jour",
+        "delete": "La maison a bien été supprimée"
+      }
     }
   },
   "errors": {

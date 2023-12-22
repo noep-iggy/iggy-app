@@ -24,14 +24,14 @@ export const API_ROUTES = {
   media: {
     upload: '/file-upload',
   },
-  houses: {
-    create: '/houses',
-    get: '/houses',
-    update: '/houses',
-    getUsers: '/houses/users',
-    getJoinCode: '/houses/join-code',
-    getAnimals: '/houses/animals',
-    getAffiliates: '/houses/affiliates',
+  house: {
+    create: '/house',
+    get: '/house',
+    update: '/house',
+    getUsers: '/house/users',
+    getJoinCode: '/house/join-code',
+    getAnimals: '/house/animals',
+    getAffiliates: '/house/affiliates',
   },
   joinCode: {
     create: {
