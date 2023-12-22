@@ -1,13 +1,223 @@
 {
-  "Welcome": "Bonjour",
+  "welcome": "Bonjour",
   "Router": {
     "home_join": "Rejoindre une maison",
     "home_login": "Se connecter",
     "home_register": "Créer une maison"
   },
-  "LoginPage" : {
-    "Login":"Se connecter à un compte existant",
-    "Register":"Créer une maison",
-    "Join":"Rejoindre une maison"
+  "LoginPage": {
+    "Login": "Se connecter à un compte existant",
+    "Register": "Créer une maison",
+    "Join": "Rejoindre une maison",
+    "Submit": "Connexion",
+    "Subtitle": "Rentrez ici vos informations de connexion"
+  },
+  "fields": {
+    "generics": {
+      "addData": "Ajouter une valeur"
+    },
+    "firstName": {
+      "label": "Prénom",
+      "placeholder": "Entrez votre prénom",
+      "errors": {
+        "required": "Le prénom est requis",
+        "notString": "Le prénom doit être une chaîne de caractères"
+      }
+    },
+    "lastName": {
+      "label": "Nom",
+      "placeholder": "Entrez votre nom",
+      "errors": {
+        "required": "Le nom est requis",
+        "notString": "Le nom doit être une chaîne de caractères"
+      }
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Entrez votre email",
+      "errors": {
+        "required": "L'email est requis",
+        "notString": "L'email doit être une chaîne de caractères",
+        "notValid": "L'email n'est pas valide"
+      }
+    },
+    "role": {
+      "label": "Rôle",
+      "placeholder": "Choisissez un rôle",
+      "errors": {
+        "required": "Le rôle est requis",
+        "notString": "Le rôle doit être une chaîne de caractères"
+      }
+    },
+    "name": {
+      "label": "Nom",
+      "placeholder": "Entrez un nom",
+      "errors": {
+        "required": "Le nom est requis",
+        "notString": "Le nom doit être une chaîne de caractères"
+      }
+    },
+    "animals": {
+      "label": "Animaux",
+      "placeholder": "Choisissez un animal ou plusieurs animaux",
+      "errors": {
+        "required": "L'animal est requis",
+        "notString": "L'animal doit être une chaîne de caractères"
+      }
+    },
+    "basePrice": {
+      "label": "Prix de base",
+      "placeholder": "Entrez un prix de base",
+      "errors": {
+        "required": "Le prix de base est requis",
+        "notString": "Le prix de base doit être une chaîne de caractères",
+        "notNumber": "Le prix de base doit être un nombre"
+      }
+    },
+    "discountPrice": {
+      "label": "Prix de vente",
+      "placeholder": "Entrez un prix de vente",
+      "errors": {
+        "required": "Le prix de vente est requis",
+        "notString": "Le prix de vente doit être une chaîne de caractères",
+        "notNumber": "Le prix de vente doit être un nombre"
+      }
+    },
+    "url": {
+      "label": "URL",
+      "placeholder": "Entrez une URL",
+      "errors": {
+        "required": "L'URL est requise",
+        "notString": "L'URL doit être une chaîne de caractères",
+        "notValid": "L'URL n'est pas valide"
+      }
+    },
+    "title": {
+      "label": "Titre",
+      "placeholder": "Entrez un titre",
+      "errors": {
+        "required": "Le titre est requis",
+        "notString": "Le titre doit être une chaîne de caractères"
+      }
+    },
+    "image": {
+      "label": "Image",
+      "placeholder": "Choisissez une image",
+      "errors": {
+        "required": "L'image est requise",
+        "notString": "L'image doit être une chaîne de caractères"
+      }
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Entrez une description",
+      "errors": {
+        "required": "La description est requise",
+        "notString": "La description doit être une chaîne de caractères"
+      }
+    },
+    "brand": {
+      "label": "Marque",
+      "placeholder": "Entrez une marque",
+      "errors": {
+        "required": "La marque est requise",
+        "notString": "La marque doit être une chaîne de caractères"
+      }
+    },
+    "recurrence": {
+      "label": "Récurrence",
+      "placeholder": "Choisissez une récurrence",
+      "errors": {
+        "required": "La récurrence est requise",
+        "notString": "La récurrence doit être une chaîne de caractères"
+      }
+    },
+    "billingPlan": {
+      "label": "Abonnement",
+      "placeholder": "Choisissez un abonnement",
+      "errors": {
+        "required": "L'abonnement est requis",
+        "notString": "L'abonnement doit être une chaîne de caractères"
+      }
+    },
+    "gender": {
+      "label": "Genre",
+      "placeholder": "Choisissez un genre",
+      "errors": {
+        "required": "Le genre est requis",
+        "notString": "Le genre doit être une chaîne de caractères"
+      }
+    },
+    "type": {
+      "label": "Type",
+      "placeholder": "Choisissez un type",
+      "errors": {
+        "required": "Le type est requis",
+        "notString": "Le type doit être une chaîne de caractères"
+      }
+    },
+    "status": {
+      "label": "Statut",
+      "placeholder": "Choisissez un statut",
+      "errors": {
+        "required": "Le statut est requis",
+        "notString": "Le statut doit être une chaîne de caractères"
+      }
+    },
+    "confirmDelete": {
+      "label": "Pour confirmer la suppression, veuillez saisir '<b>{{name}}</b>' dans le champ ci-dessous",
+      "placeholder": "Entrez '{{name}}' pour confirmer la suppression"
+    },
+    "password": {
+      "label": "Mot de passe",
+      "placeholder": "Entrez votre mot de passe",
+      "errors": {
+        "required": "Le mot de passe est requis",
+        "notString": "Le mot de passe doit être une chaîne de caractères",
+        "tooShort": "Le mot de passe doit contenir au moins 8 caractères",
+        "noLetter": "Le mot de passe doit contenir au moins une lettre",
+        "noDigit": "Le mot de passe doit contenir au moins un chiffre",
+        "noSpecialCharacter": "Le mot de passe doit contenir au moins un caractère spécial",
+        "hasSpaces": "Le mot de passe ne doit pas contenir d'espaces",
+        "noUppercase": "Le mot de passe doit contenir au moins une majuscule"
+      }
+    },
+    "profilePicture": {
+      "label": "Photo de profil",
+      "placeholder": "Choisissez une photo"
+    }
+  },
+  "success": {
+    "api": {
+      "login": "Vous êtes connecté",
+      "logout": "Vous êtes déconnecté"
+    }
+  },
+  "errors": {
+    "generics": {
+      "internalServerError": "Erreur interne du serveur"
+    },
+    "api": {
+      "title": "Erreur API",
+      "validation": {
+        "single": "Erreur sur le champ : {{field}}",
+        "multiple": "Erreurs sur les champs suivants : {{fields}}"
+      },
+      "user": {
+        "notFound": "Utilisateur non trouvé",
+        "exist": "L'utilisateur existe déjà",
+        "notFoundOrWrongPassword": "Utilisateur non trouvé ou mot de passe incorrect",
+        "notUpdated": "L'utilisateur n'a pas été mis à jour"
+      },
+      "admin": {
+        "notAdmin": "Vous n'êtes pas administrateur",
+        "cannotChangeOwnStatus": "Vous ne pouvez pas changer votre propre statut",
+        "userNotAdmin": "L'utilisateur n'est pas administrateur"
+      },
+      "file": {
+        "undefined": "Le fichier n'est pas trouvé",
+        "invalidFormat": "Le fichier n'est pas au bon format"
+      }
+    }
   }
 }
