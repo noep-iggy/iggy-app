@@ -74,7 +74,12 @@ const Login = () => {
         },
       ]}
     >
-      <View style={[genericStyles.flexCenter, { width: '100%', flexGrow: 1 }]}>
+      <View
+        style={[
+          genericStyles.flexCenter,
+          { width: '100%', flexGrow: 1, gap: 16 },
+        ]}
+      >
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <Text variant="bodyMedium">{i18n.t('LoginPage.Subtitle')}</Text>
         <View style={[genericStyles.flexColumn, { width: '100%', gap: 6 }]}>

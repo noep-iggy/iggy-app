@@ -28,7 +28,14 @@ const Layout = () => {
             screenOptions={{
               header: (props) => <CustomAppBar {...props} />,
             }}
-          />
+          >
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="index"
+            />
+          </Stack>
           <Toast />
         </SafeAreaProvider>
       </AuthProvider>

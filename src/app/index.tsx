@@ -28,13 +28,11 @@ const Home = () => {
       source={splashImage}
       style={{ height: '100%', width: '100%' }}
     >
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
       <UniversalSafeArea
-        style={[genericStyles.flexEndAndCenter, { paddingHorizontal: 16 }]}
+        style={[
+          genericStyles.flexEndAndCenter,
+          { paddingHorizontal: 16, backgroundColor: 'transparent' },
+        ]}
         edges={['top', 'bottom', 'left', 'right']}
       >
         <View style={[{ gap: 16, flexGrow: 1 }, genericStyles.flexCenter]}>

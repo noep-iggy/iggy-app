@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ViewStyle,
 } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import {
   SafeAreaView,
   SafeAreaViewProps,
@@ -16,17 +17,27 @@ interface props extends SafeAreaViewProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export default function UniversalSafeArea({
+const UniversalSafeArea = ({
   children,
   edges = ['bottom', 'left', 'right'],
   ...props
-}: props) {
+}: props) => {
+  const theme = useTheme();
   return (
-    <SafeAreaView style={[props.style, style.safeArea]} edges={edges}>
+    <SafeAreaView
+      style={[
+        { backgroundColor: theme.colors?.background },
+        props.style,
+        style.safeArea,
+      ]}
+      edges={edges}
+    >
       {children}
     </SafeAreaView>
   );
-}
+};
+
+export default UniversalSafeArea;
 
 const style = StyleSheet.create({
   safeArea: {
