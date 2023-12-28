@@ -60,7 +60,16 @@ export function RegisterUser(props: RegisterUserProps): JSX.Element {
 
   return (
     <>
-      <View style={[genericStyles.flexCenter, { width: '100%', gap: 10 }]}>
+      <View
+        style={[
+          {
+            width: '100%',
+            gap: 10,
+            flexGrow: 1,
+            alignItems: 'center',
+          },
+        ]}
+      >
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <Text variant="bodyMedium" style={{ textAlign: 'center' }}>
           {i18n.t('registerPage.subTitle')}

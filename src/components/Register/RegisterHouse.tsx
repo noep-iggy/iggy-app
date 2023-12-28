@@ -61,7 +61,12 @@ export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
 
   return (
     <>
-      <View style={[genericStyles.flexCenter, { width: '100%', gap: 10 }]}>
+      <View
+        style={[
+          genericStyles.flexCenter,
+          { width: '100%', gap: 10, flexGrow: 1 },
+        ]}
+      >
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <Text variant="bodyMedium" style={{ textAlign: 'center' }}>
           {i18n.t('housePage.create.subtitle')}

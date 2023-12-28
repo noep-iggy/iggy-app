@@ -19,8 +19,8 @@ export default function Register() {
     <UniversalSafeArea
       style={[
         {
+          justifyContent: 'flex-end',
           padding: 16,
-          justifyContent: 'space-around',
         },
       ]}
     >

@@ -19,6 +19,7 @@ export const Stepper = (props: StepperProps): JSX.Element => {
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
+          marginVertical: 24,
         },
       ]}
     >
