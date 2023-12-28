@@ -13,6 +13,7 @@ import {
 } from 'react-native-safe-area-context';
 
 interface props extends SafeAreaViewProps {
+  theme: ThemeProp;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
