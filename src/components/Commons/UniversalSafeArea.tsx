@@ -6,27 +6,41 @@ import {
   StyleSheet,
   ViewStyle,
 } from 'react-native';
+import { withTheme } from 'react-native-paper';
+import { ThemeProp } from 'react-native-paper/lib/typescript/types';
 import {
   SafeAreaView,
   SafeAreaViewProps,
 } from 'react-native-safe-area-context';
 
 interface props extends SafeAreaViewProps {
+  theme: ThemeProp;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
-export default function UniversalSafeArea({
+const UniversalSafeArea = ({
+  theme,
   children,
   edges = ['bottom', 'left', 'right'],
   ...props
-}: props) {
+}: props) => {
+  const { colors } = theme;
   return (
-    <SafeAreaView style={[props.style, style.safeArea]} edges={edges}>
+    <SafeAreaView
+      style={[
+        { backgroundColor: colors?.background },
+        props.style,
+        style.safeArea,
+      ]}
+      edges={edges}
+    >
       {children}
     </SafeAreaView>
   );
-}
+};
+
+export default withTheme(UniversalSafeArea);
 
 const style = StyleSheet.create({
   safeArea: {
