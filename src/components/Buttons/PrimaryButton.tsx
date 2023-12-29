@@ -1,3 +1,4 @@
+import { useTheme } from 'react-native-paper';
 import BaseButton from './BaseButton';
 
 export type PrimaryButtonProps = {
@@ -5,7 +6,15 @@ export type PrimaryButtonProps = {
 } & React.ComponentProps<typeof BaseButton>;
 
 const PrimaryButton = (props: PrimaryButtonProps) => {
-  return <BaseButton mode="contained" {...props} />;
+  const theme = useTheme();
+  return (
+    <BaseButton
+      mode="contained"
+      buttonColor={props.buttonColor ?? theme.colors.primary}
+      textColor={props.textColor ?? theme.colors.onPrimary}
+      {...props}
+    />
+  );
 };
 
 export default PrimaryButton;

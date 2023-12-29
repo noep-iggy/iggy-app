@@ -23,6 +23,7 @@ const Home = () => {
     }, 3000);
   });
 
+  // FIXME : remove links to go on the dashboard when the app is ready
   return (
     <ImageBackground
       source={splashImage}
@@ -48,6 +49,24 @@ const Home = () => {
             },
           ]}
         >
+          <TertiaryButton
+            title="dashboard parent"
+            textColor="white"
+            icon="arrow-right"
+            contentStyle={{
+              flexDirection: 'row-reverse',
+            }}
+            onPress={() => router.push(ROUTES.dashboard.parent)}
+          />
+          <TertiaryButton
+            title="dashboard enfant"
+            textColor="white"
+            icon="arrow-right"
+            contentStyle={{
+              flexDirection: 'row-reverse',
+            }}
+            onPress={() => router.push(ROUTES.dashboard.child)}
+          />
           <TertiaryButton
             title={i18n.t('LoginPage.Login')}
             textColor="white"

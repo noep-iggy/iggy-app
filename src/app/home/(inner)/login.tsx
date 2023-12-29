@@ -2,7 +2,7 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
-import { AuthLoginApi } from '@/types';
+import { AuthLoginApi, UserRoleEnum } from '@/types';
 import { userValidation } from '@/validations';
 import { useEffect } from 'react';
 import { Image, View } from 'react-native';
@@ -15,6 +15,7 @@ import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
+import { ROUTES } from '@/router/routes';
 
 const Login = () => {
   const logo = require('@/assets/images/app/logo-color.png');
@@ -56,12 +57,11 @@ const Login = () => {
     }
   }
 
-  // TODO: Faire la redirection vers le dashboard quand les pages seront prêtes
   useEffect(() => {
     if (!currentUser) return;
-    // currentUser?.role === UserRoleEnum.PARENT
-    //   ? router.push(ROUTES.dashboard.parent)
-    //   : router.push(ROUTES.dashboard.child);
+    currentUser?.role === UserRoleEnum.PARENT
+      ? router.replace(ROUTES.dashboard.parent)
+      : router.replace(ROUTES.dashboard.child);
     console.log('[D] login', currentUser);
   }, [currentUser]);
 

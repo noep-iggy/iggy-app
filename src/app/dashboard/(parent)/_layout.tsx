@@ -1,5 +1,3 @@
-import { View, Text, ImageBackground } from 'react-native';
-import React, { useMemo } from 'react';
 import { Stack, Tabs } from 'expo-router';
 import { Icon, useTheme } from 'react-native-paper';
 
