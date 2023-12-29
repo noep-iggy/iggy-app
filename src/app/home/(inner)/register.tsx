@@ -23,6 +23,7 @@ export default function Register() {
           padding: 16,
         },
       ]}
+      edges={['right', 'left', 'bottom']}
     >
       <Stepper currentStep={currentStep} totalSteps={3} />
       {renderStep()}

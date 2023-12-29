@@ -73,6 +73,7 @@ const Login = () => {
           padding: 16,
         },
       ]}
+      edges={['right', 'left', 'bottom']}
     >
       <View
         style={[

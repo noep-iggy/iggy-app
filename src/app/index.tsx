@@ -33,7 +33,6 @@ const Home = () => {
           genericStyles.flexEndAndCenter,
           { paddingHorizontal: 16, backgroundColor: 'transparent' },
         ]}
-        edges={['top', 'bottom', 'left', 'right']}
       >
         <View style={[{ gap: 16, flexGrow: 1 }, genericStyles.flexCenter]}>
           <Image source={logo} resizeMode="contain" />

@@ -13,13 +13,14 @@ import {
 } from 'react-native-safe-area-context';
 
 interface props extends SafeAreaViewProps {
+  asView?: boolean;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
 const UniversalSafeArea = ({
   children,
-  edges = ['bottom', 'left', 'right'],
+  edges = ['top', 'bottom', 'left', 'right'],
   ...props
 }: props) => {
   const theme = useTheme();
@@ -30,7 +31,7 @@ const UniversalSafeArea = ({
         props.style,
         style.safeArea,
       ]}
-      edges={edges}
+      edges={props.asView ? ['right', 'left'] : edges}
     >
       {children}
     </SafeAreaView>
