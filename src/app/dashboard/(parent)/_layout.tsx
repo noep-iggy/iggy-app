@@ -40,12 +40,16 @@ const ParentLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="pets"
+        name="[id]"
         options={{
           title: 'Animaux',
           tabBarIcon: ({ color, size }) => (
             <Icon source="paw" size={size} color={color} />
           ),
+          href: {
+            pathname: 'dashboard/(parent)/[id]',
+            params: { id: '0' },
+          },
         }}
       />
       <Tabs.Screen

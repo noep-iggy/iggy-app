@@ -8,6 +8,7 @@ interface CustomNavigationBarProps {
   route: any;
   options: any;
   back?: any;
+  removeStatusBar?: boolean;
 }
 
 const CustomNavigationBar = ({
@@ -15,11 +16,12 @@ const CustomNavigationBar = ({
   route,
   options,
   back,
+  removeStatusBar,
 }: CustomNavigationBarProps) => {
   const title = i18n.t('Router.' + transformPathToKey(usePathname()));
 
   return (
-    <Appbar.Header>
+    <Appbar.Header statusBarHeight={removeStatusBar ? 0 : undefined}>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={title} />
     </Appbar.Header>

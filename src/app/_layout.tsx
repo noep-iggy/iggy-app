@@ -40,6 +40,7 @@ const Layout = () => {
               name={ROUTES.animal.create}
               options={{
                 presentation: 'modal',
+                header: (props) => <CustomAppBar removeStatusBar {...props} />,
               }}
             />
           </Stack>

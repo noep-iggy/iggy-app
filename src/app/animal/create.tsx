@@ -2,7 +2,7 @@ import { Stack, useRouter } from 'expo-router';
 import { Image, View } from 'react-native';
 import CustomModalBar from '@/components/Commons/CustomModalBar';
 import { genericStyles } from '@/constants';
-import { Icon, MD3Colors, useTheme } from 'react-native-paper';
+import { Icon, MD3Colors, useTheme, Text } from 'react-native-paper';
 import FormField from '@/components/Forms/FormField';
 import i18n from '@/locales/localization';
 import { AnimalGenderEnum, AnimalTypeEnum, CreateAnimalApi } from '@/types';
@@ -94,7 +94,7 @@ const AnimalCreate = () => {
           padding: 16,
         },
       ]}
-      edges={['right', 'left', 'bottom']}
+      asView
     >
       <Stack.Screen
         options={{

@@ -22,7 +22,6 @@ const ParentDashboard = () => {
           contentContainerStyle={{ gap: 8, paddingHorizontal: 16 }}
         >
           <PetCard />
-          <PetCard />
           <AddPetCard />
         </ScrollView>
       </ScrollView>

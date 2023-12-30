@@ -18,13 +18,15 @@ export enum AnimalStatusEnum {
   SAD = 'SAD',
 }
 
-export interface AnimalDto extends BaseDto {
-  id: string;
-  name: string;
+export interface AnimalDto extends BasicAnimalDto {
   bornDate: Date;
   gender: AnimalGenderEnum;
-  type: AnimalTypeEnum;
   status: AnimalStatusEnum;
   house: HouseDto;
   tasks?: string[];
+}
+
+export interface BasicAnimalDto extends BaseDto {
+  name: string;
+  type: AnimalTypeEnum;
 }
