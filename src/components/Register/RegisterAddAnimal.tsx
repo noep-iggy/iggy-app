@@ -61,7 +61,6 @@ export function RegisterAddAnimal(): JSX.Element {
         onPress={onSubmit}
         title={i18n.t('registerPage.createHouse')}
         big
-        style={{ marginTop: 20 }}
       />
     </>
   );

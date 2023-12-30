@@ -3,6 +3,7 @@ import React from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
 import PetCard from '@/components/ParentDashboard/PetCard';
+import AddPetCard from '@/components/ParentDashboard/AddPetCard';
 
 // TODO: call api to get the list of pets
 const ParentDashboard = () => {
@@ -10,18 +11,19 @@ const ParentDashboard = () => {
     <UniversalSafeArea asView>
       <ScrollView>
         <Text
-          variant="titleLarge"
-          style={{ marginHorizontal: 8, marginVertical: 16 }}
+          variant="headlineLarge"
+          style={{ marginHorizontal: 16, marginVertical: 16 }}
         >
           Animaux
         </Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ gap: 8, paddingHorizontal: 8 }}
+          contentContainerStyle={{ gap: 8, paddingHorizontal: 16 }}
         >
           <PetCard />
           <PetCard />
+          <AddPetCard />
         </ScrollView>
       </ScrollView>
     </UniversalSafeArea>
