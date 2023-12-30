@@ -3,10 +3,8 @@ import SecondaryButton from '@/components/Buttons/SecondaryButton';
 import TertiaryButton from '@/components/Buttons/TertiaryButton';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { genericStyles } from '@/constants';
-import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
-import { UserRoleEnum } from '@/types';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
@@ -16,7 +14,6 @@ const Home = () => {
   const splashImage = require('@/assets/images/app/splash.png');
   const logo = require('@/assets/images/app/logo.png');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { currentUser, setToken } = useAuthContext();
 
   const router = useRouter();
 
@@ -25,15 +22,6 @@ const Home = () => {
       setIsLoading(false);
     }, 3000);
   });
-
-  useEffect(() => {
-    if (currentUser) {
-      if (currentUser.role === UserRoleEnum.PARENT)
-        router.push(ROUTES.dashboard.parent);
-      if (currentUser.role === UserRoleEnum.CHILD)
-        router.push(ROUTES.dashboard.child);
-    }
-  }, [currentUser]);
 
   return (
     <ImageBackground

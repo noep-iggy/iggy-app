@@ -24,10 +24,6 @@ export function RegisterUser(props: RegisterUserProps): JSX.Element {
 
   const formApi = useForm<AuthRegisterUi>({
     resolver: yupResolver(userValidation.create),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
     mode: 'onTouched',
   });
 

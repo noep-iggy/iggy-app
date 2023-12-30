@@ -8,7 +8,7 @@ import {
 } from '@/components/Register';
 
 export default function Register() {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(0);
 
   function renderStep() {
     switch (currentStep) {
@@ -25,7 +25,7 @@ export default function Register() {
     <UniversalSafeArea
       style={[
         {
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           padding: 16,
         },
       ]}

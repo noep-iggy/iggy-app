@@ -10,6 +10,12 @@ export const genericStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
   },
+  colCenter: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   flexEvenly: {
     display: 'flex',
     alignItems: 'center',

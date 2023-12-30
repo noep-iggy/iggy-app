@@ -36,7 +36,7 @@ export const Stepper = (props: StepperProps): JSX.Element => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor:
-                  index <= currentStep - 1
+                  index <= currentStep
                     ? theme.colors.primary
                     : theme.colors.surfaceVariant,
                 marginHorizontal: 10,
@@ -46,7 +46,7 @@ export const Stepper = (props: StepperProps): JSX.Element => {
                 variant="titleMedium"
                 style={{
                   color:
-                    index <= currentStep - 1
+                    index <= currentStep
                       ? theme.colors.onPrimary
                       : theme.colors.onSurfaceVariant,
                 }}
