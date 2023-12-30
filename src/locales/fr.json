@@ -1,9 +1,11 @@
 {
   "welcome": "Bonjour",
   "Router": {
-    "home_join": "Rejoindre une maison",
-    "home_login": "Se connecter",
-    "home_register": "Créer une maison"
+    "auth_join": "Rejoindre une maison",
+    "auth_login": "Se connecter",
+    "auth_register": "Créer une maison",
+    "animal_create": "Ajouter un animal",
+    "dashboard": "Tableau de bord"
   },
   "LoginPage": {
     "Login": "Se connecter à un compte existant",
@@ -14,7 +16,13 @@
   },
   "registerPage": {
     "subTitle": "Indiquez ici qui sera le propirétaire et administrateur du compte",
-    "submit": "Créer mon compte"
+    "submit": "Créer mon compte",
+    "animal": {
+      "title": "Quel animal possédez-vous ?",
+      "subtitle": "Vous pourrez en ajouter d'autres plus tard",
+      "submit": "Ajouter un animal"
+    },
+    "createHouse": "Créer mon foyer"
   },
   "housePage": {
     "create": {
@@ -214,6 +222,10 @@
         "update": "La maison a bien été mise à jour",
         "delete": "La maison a bien été supprimée"
       }
+    },
+    "register": {
+      "title": "Bienvenue",
+      "subTitle": "Votre foyer a bien été créé"
     }
   },
   "errors": {

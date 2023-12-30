@@ -22,7 +22,12 @@ export function ErrorMessage(props: ErrorMessageProps): JSX.Element {
       render={({ message }) => {
         return (
           (
-            <View style={[genericStyles.flexRow, { marginTop: 2, gap: 2 }]}>
+            <View
+              style={[
+                genericStyles.flexRow,
+                { marginTop: 2, gap: 2, paddingLeft: 5 },
+              ]}
+            >
               {icon && (
                 <Icon
                   source="alert-circle-outline"

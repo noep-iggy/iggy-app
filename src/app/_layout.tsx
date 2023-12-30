@@ -10,6 +10,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IggyDarkTheme, IggyLightTheme } from '../constants';
 import CustomAppBar from '@/components/Commons/CustomAppBar';
 import Toast from 'react-native-toast-message';
+import { ROUTES } from '@/router/routes';
 
 const Layout = () => {
   const colorScheme = useColorScheme();
@@ -34,6 +35,12 @@ const Layout = () => {
                 headerShown: false,
               }}
               name="index"
+            />
+            <Stack.Screen
+              name={ROUTES.animal.create}
+              options={{
+                presentation: 'modal',
+              }}
             />
           </Stack>
           <Toast />

@@ -1,10 +1,14 @@
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { Stepper } from '@/components/Stepper';
 import { useState } from 'react';
-import { RegisterHouse, RegisterUser } from '@/components/Register';
+import {
+  RegisterAddAnimal,
+  RegisterHouse,
+  RegisterUser,
+} from '@/components/Register';
 
 export default function Register() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(2);
 
   function renderStep() {
     switch (currentStep) {
@@ -12,6 +16,8 @@ export default function Register() {
         return <RegisterUser setCurrentStep={setCurrentStep} />;
       case 1:
         return <RegisterHouse setCurrentStep={setCurrentStep} />;
+      case 2:
+        return <RegisterAddAnimal />;
     }
   }
 

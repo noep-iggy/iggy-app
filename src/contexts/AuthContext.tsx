@@ -2,6 +2,7 @@ import { ApiService, HttpService } from '@/api';
 import { UserDto } from '@/types';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface State {
   currentUser: UserDto | null;
@@ -58,9 +59,9 @@ function useAuthProvider() {
     }
   }
 
-  function setToken(newToken: string) {
+  async function setToken(newToken: string) {
     setStateToken(newToken);
-    window.localStorage?.setItem('token', newToken);
+    await AsyncStorage.setItem('token', newToken);
     HttpService.setToken(newToken);
   }
 
@@ -69,13 +70,17 @@ function useAuthProvider() {
   }
 
   async function removeToken() {
-    localStorage.clear();
+    await AsyncStorage.clear();
     setToken('');
   }
 
-  useEffect(() => {
-    const storedToken = window.localStorage?.getItem('token') ?? '';
+  async function getToken() {
+    const storedToken = (await AsyncStorage.getItem('token')) ?? '';
     setToken(storedToken);
+  }
+
+  useEffect(() => {
+    getToken();
     setIsLoaded(true);
   }, []);
 

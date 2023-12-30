@@ -1,9 +1,15 @@
 export const ROUTES = {
-  login: '/home/login' as never,
-  register: '/home/register' as never,
-  join: '/home/join' as never,
+  auth: {
+    index: '/' as never,
+    login: 'auth/login' as never,
+    register: 'auth/register' as never,
+    join: 'auth/join' as never,
+  },
   dashboard: {
-    parent: '/dashboard/parent' as never,
-    child: '/dashboard/child' as never,
+    parent: 'dashboard/parent' as never,
+    child: 'dashboard/child' as never,
+  },
+  animal: {
+    create: 'animal/create' as never,
   },
 };

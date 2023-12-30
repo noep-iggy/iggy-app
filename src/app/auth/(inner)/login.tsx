@@ -2,9 +2,8 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
-import { AuthLoginApi, UserRoleEnum } from '@/types';
+import { AuthLoginApi } from '@/types';
 import { userValidation } from '@/validations';
-import { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -19,14 +18,14 @@ import { ROUTES } from '@/router/routes';
 
 const Login = () => {
   const logo = require('@/assets/images/app/logo-color.png');
-  const { setToken, currentUser } = useAuthContext();
+  const { setToken } = useAuthContext();
   const router = useRouter();
 
   const formApi = useForm<AuthLoginApi>({
     resolver: yupResolver(userValidation.login),
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'dorian@gmail.com',
+      password: 'Azerty12!',
     },
     mode: 'onTouched',
   });
@@ -44,6 +43,7 @@ const Login = () => {
         text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.login'),
       });
+      router.push(ROUTES.dashboard.parent);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
@@ -57,14 +57,6 @@ const Login = () => {
     }
   }
 
-  useEffect(() => {
-    if (!currentUser) return;
-    currentUser?.role === UserRoleEnum.PARENT
-      ? router.replace(ROUTES.dashboard.parent)
-      : router.replace(ROUTES.dashboard.child);
-    console.log('[D] login', currentUser);
-  }, [currentUser]);
-
   return (
     <UniversalSafeArea
       style={[
@@ -73,7 +65,6 @@ const Login = () => {
           padding: 16,
         },
       ]}
-      edges={['right', 'left', 'bottom']}
     >
       <View
         style={[

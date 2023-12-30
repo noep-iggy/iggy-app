@@ -3,9 +3,11 @@ import SecondaryButton from '@/components/Buttons/SecondaryButton';
 import TertiaryButton from '@/components/Buttons/TertiaryButton';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { genericStyles } from '@/constants';
+import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
-import { Stack, useRouter } from 'expo-router';
+import { UserRoleEnum } from '@/types';
+import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
@@ -14,6 +16,7 @@ const Home = () => {
   const splashImage = require('@/assets/images/app/splash.png');
   const logo = require('@/assets/images/app/logo.png');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { currentUser, setToken } = useAuthContext();
 
   const router = useRouter();
 
@@ -23,7 +26,15 @@ const Home = () => {
     }, 3000);
   });
 
-  // FIXME : remove links to go on the dashboard when the app is ready
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.role === UserRoleEnum.PARENT)
+        router.push(ROUTES.dashboard.parent);
+      if (currentUser.role === UserRoleEnum.CHILD)
+        router.push(ROUTES.dashboard.child);
+    }
+  }, [currentUser]);
+
   return (
     <ImageBackground
       source={splashImage}
@@ -50,45 +61,27 @@ const Home = () => {
           ]}
         >
           <TertiaryButton
-            title="dashboard parent"
-            textColor="white"
-            icon="arrow-right"
-            contentStyle={{
-              flexDirection: 'row-reverse',
-            }}
-            onPress={() => router.push(ROUTES.dashboard.parent)}
-          />
-          <TertiaryButton
-            title="dashboard enfant"
-            textColor="white"
-            icon="arrow-right"
-            contentStyle={{
-              flexDirection: 'row-reverse',
-            }}
-            onPress={() => router.push(ROUTES.dashboard.child)}
-          />
-          <TertiaryButton
             title={i18n.t('LoginPage.Login')}
             textColor="white"
             icon="arrow-right"
             contentStyle={{
               flexDirection: 'row-reverse',
             }}
-            onPress={() => router.push(ROUTES.login)}
+            onPress={() => router.push(ROUTES.auth.login)}
           />
           <PrimaryButton
             title={i18n.t('LoginPage.Register')}
             buttonColor="white"
             textColor="black"
             big
-            onPress={() => router.push(ROUTES.register)}
+            onPress={() => router.push(ROUTES.auth.register)}
           />
           <SecondaryButton
             title={i18n.t('LoginPage.Join')}
             theme={{ colors: { outline: 'white' } }}
             textColor="white"
             big
-            onPress={() => router.push(ROUTES.join)}
+            onPress={() => router.push(ROUTES.auth.join)}
           />
         </View>
       </UniversalSafeArea>

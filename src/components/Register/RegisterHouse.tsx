@@ -11,8 +11,6 @@ import { ApiService } from '@/api';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
-import { useAuthContext } from '@/contexts';
-import { useEffect } from 'react';
 
 interface RegisterHouseProps {
   setCurrentStep: (step: number) => void;
@@ -21,7 +19,6 @@ interface RegisterHouseProps {
 export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
   const { setCurrentStep } = props;
   const logo = require('@/assets/images/app/logo-color.png');
-  const { currentUser } = useAuthContext();
 
   const formApi = useForm<CreateHouseApi>({
     resolver: yupResolver(houseValidation.create),
@@ -30,10 +27,6 @@ export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
     },
     mode: 'onTouched',
   });
-
-  useEffect(() => {
-    console.log('[D] RegisterHouse', currentUser);
-  }, [currentUser]);
 
   const { handleSubmit, formState, setError } = formApi;
   const { isSubmitting, isValid } = formState;
