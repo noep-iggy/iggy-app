@@ -80,7 +80,6 @@ export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
         loading={isSubmitting}
         onPress={handleSubmit(onSubmit)}
         title={i18n.t('housePage.create.submit')}
-        textColor="white"
         big
         style={{ marginTop: 20 }}
       />

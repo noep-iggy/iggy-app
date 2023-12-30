@@ -26,7 +26,12 @@ export function RegisterAddAnimal(): JSX.Element {
 
   return (
     <>
-      <View style={[genericStyles.flexCenter, { width: '100%', gap: 5 }]}>
+      <View
+        style={[
+          genericStyles.flexCenter,
+          { width: '100%', gap: 5, flexGrow: 1 },
+        ]}
+      >
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <View>
           <Text variant="bodyMedium" style={{ textAlign: 'center' }}>
@@ -55,7 +60,6 @@ export function RegisterAddAnimal(): JSX.Element {
       <PrimaryButton
         onPress={onSubmit}
         title={i18n.t('registerPage.createHouse')}
-        textColor="white"
         big
         style={{ marginTop: 20 }}
       />

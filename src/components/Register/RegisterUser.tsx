@@ -112,7 +112,6 @@ export function RegisterUser(props: RegisterUserProps): JSX.Element {
         loading={isSubmitting}
         onPress={handleSubmit(onSubmit)}
         title={i18n.t('registerPage.submit')}
-        textColor="white"
         big
         style={{ marginTop: 20 }}
       />

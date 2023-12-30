@@ -65,6 +65,7 @@ const Login = () => {
           padding: 16,
         },
       ]}
+      edges={['right', 'left', 'bottom']}
     >
       <View
         style={[
@@ -98,7 +99,6 @@ const Login = () => {
           loading={isSubmitting}
           onPress={handleSubmit(onSubmit)}
           title={i18n.t('LoginPage.Submit')}
-          textColor="white"
           big
         />
       </View>
