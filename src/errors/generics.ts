@@ -13,6 +13,7 @@ const fields = (item: string) => {
     NOT_NUMBER: `fields.${item}.errors.notNumber`,
     NOT_URL: `fields.${item}.errors.notUrl`,
     NOT_SAME: `fields.${item}.errors.notSame`,
+    TOO_LONG: `fields.${item}.errors.tooLong`,
   };
 };
 

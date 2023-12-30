@@ -3,8 +3,9 @@ import {
   UpdateUserApi,
   AuthLoginApi,
   UserRoleEnum,
-  JoinApi,
   AuthRegisterUi,
+  JoinChildApi,
+  JoinParentApi,
 } from '@/types';
 import { genericsValidation } from './generics';
 import * as yup from 'yup';
@@ -59,14 +60,14 @@ const create: yup.ObjectSchema<AuthRegisterUi> = yup.object({
     .typeError(errorMessage.fields('firstName').NOT_STRING),
 });
 
-const joinChild = yup.object<JoinApi>().shape({
+const joinChild = yup.object<JoinChildApi>().shape({
   firstName: yup
     .string()
     .required(errorMessage.fields('firstName').REQUIRED)
     .typeError(errorMessage.fields('firstName').NOT_STRING),
 });
 
-const joinParent = yup.object<JoinApi>().shape({
+const joinParent = yup.object<JoinParentApi>().shape({
   firstName: yup
     .string()
     .required(errorMessage.fields('userName').REQUIRED)
@@ -77,6 +78,10 @@ const joinParent = yup.object<JoinApi>().shape({
     .typeError(errorMessage.fields('lastName').NOT_STRING),
   password: genericsValidation.password.required(
     errorMessage.fields('password').REQUIRED
+  ),
+  confirmPassword: genericsValidation.password.oneOf(
+    [yup.ref('password')],
+    errorMessage.fields('confirmPassword').NOT_SAME
   ),
   email: genericsValidation.email.required(
     errorMessage.fields('email').REQUIRED

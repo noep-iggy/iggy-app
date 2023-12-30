@@ -5,11 +5,15 @@ export interface RegisterApi {
   lastName: string;
 }
 
-export interface JoinApi {
+export interface JoinParentApi {
   firstName: string;
-  password?: string;
-  email?: string;
-  lastName?: string;
+  password: string;
+  email: string;
+  lastName: string;
+}
+
+export interface JoinChildApi {
+  firstName: string;
 }
 
 export interface AuthLoginApi {

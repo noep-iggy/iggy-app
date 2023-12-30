@@ -1,4 +1,9 @@
-import { AuthLoginApi, RegisterApi } from '@/types';
+import {
+  AuthLoginApi,
+  JoinChildApi,
+  JoinParentApi,
+  RegisterApi,
+} from '@/types';
 import { API_ROUTES } from '../apiRoutes';
 import { HttpService } from '../httpService';
 
@@ -12,8 +17,12 @@ const register = async (payload: RegisterApi): Promise<string> => {
     .access_token;
 };
 
-const join = async (code: string): Promise<string> => {
-  return (await HttpService.post(API_ROUTES.auth.join(code))).data.access_token;
+const join = async (
+  code: string,
+  payload: JoinChildApi | JoinParentApi
+): Promise<string> => {
+  return (await HttpService.post(API_ROUTES.auth.join(code), payload)).data
+    .access_token;
 };
 
 export const AuthApiService = {

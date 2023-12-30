@@ -49,6 +49,7 @@ export function SelectDate(props: SelectDateProps): JSX.Element {
               cancelTextIOS="Annuler"
               isVisible={isDatePickerVisible}
               mode="date"
+              locale="fr_FR"
               date={value}
               onConfirm={(value) => {
                 onChange(new Date(value));

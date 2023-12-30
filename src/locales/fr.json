@@ -65,6 +65,20 @@
     },
     "createHouse": "Créer mon foyer"
   },
+  "joinPage": {
+    "add": {
+      "title": "Entrez le code de la maison à rejoindre",
+      "code": "Code de la maison",
+      "submit": "Rejoindre la maison"
+    },
+    "create": {
+      "title": "Rejoindre la maison : ",
+      "parent": "Indiquez ici qui sera le propirétaire et administrateur du compte",
+      "child": "Entre ton prénom",
+      "submit": "Créer mon compte",
+      "expiration": "Le code expire à "
+    }
+  },
   "housePage": {
     "create": {
       "subtitle": "Donnez un nom à votre maison avant d’ajouter votre animal",
@@ -251,6 +265,17 @@
     "profilePicture": {
       "label": "Photo de profil",
       "placeholder": "Choisissez une photo"
+    },
+    "code": {
+      "label": "Code",
+      "placeholder": "Entrez un code",
+      "errors": {
+        "required": "Le code est requis",
+        "tooLong": "Le code doit faire 6 caractères",
+        "tooShort": "Le code doit faire 6 caractères",
+        "notNumber": "Le code doit être un nombre",
+        "notValid": "Le code n'est pas valide"
+      }
     }
   },
   "success": {
@@ -261,7 +286,9 @@
       "house": {
         "create": "La maison a bien été créée",
         "update": "La maison a bien été mise à jour",
-        "delete": "La maison a bien été supprimée"
+        "delete": "La maison a bien été supprimée",
+        "find": "La maison a bien été trouvée",
+        "join": "Bienvenue dans votre nouvelle maison"
       },
       "animal": {
         "create": "L'animal a bien été créé"
@@ -296,6 +323,12 @@
       "file": {
         "undefined": "Le fichier n'est pas trouvé",
         "invalidFormat": "Le fichier n'est pas au bon format"
+      },
+      "house": {
+        "notFound": "La maison n'a pas été trouvée",
+        "notUpdated": "La maison n'a pas été mise à jour",
+        "notDeleted": "La maison n'a pas été supprimée",
+        "notCreated": "La maison n'a pas été créée"
       }
     }
   }

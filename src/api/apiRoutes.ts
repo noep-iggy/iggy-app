@@ -38,6 +38,7 @@ export const API_ROUTES = {
       parent: 'join-code/create/parent',
       child: 'join-code/create/child',
     },
+    getByCode: (code: string) => `/join-code/${code}`,
   },
   recurrences: {
     deleteById: (id: string) => `/recurrences/${id}`,

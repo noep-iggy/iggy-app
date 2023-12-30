@@ -10,9 +10,14 @@ const createChild = async (): Promise<JoinCodeDto> => {
   return (await HttpService.get(API_ROUTES.joinCode.create.child)).data;
 };
 
+const getByCode = async (code: string): Promise<JoinCodeDto> => {
+  return (await HttpService.get(API_ROUTES.joinCode.getByCode(code))).data;
+};
+
 export const JoinCodeApiService = {
   create: {
     parent: createParent,
     child: createChild,
   },
+  getByCode,
 };

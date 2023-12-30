@@ -9,10 +9,10 @@ class HTTPService {
 
   constructor() {
     this.httpUrl = null;
-    this.baseURL = 'http://noephilippe.freeboxos.fr:8000';
-    this.apiKey = 'TODO:replace';
-    this.timeout = process.env['EXPO_PUBLIC_API_TIMEOUT']
-      ? +process.env['EXPO_PUBLIC_API_TIMEOUT']
+    this.baseURL = process.env.EXPO_PUBLIC_API_URL ?? '';
+    this.apiKey = process.env.EXPO_PUBLIC_API_KEY ?? '';
+    this.timeout = process.env.EXPO_PUBLIC_API_TIMEOUT
+      ? +process.env.EXPO_PUBLIC_API_TIMEOUT
       : 3000;
     this.token = '';
   }

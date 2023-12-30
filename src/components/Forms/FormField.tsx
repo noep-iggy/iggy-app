@@ -38,6 +38,7 @@ function FormField({ type = 'text', name, ...props }: FormFieldProps) {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            error={!!errors[name]}
           />
         )}
         name={name}
