@@ -43,7 +43,7 @@ const Home = () => {
       <UniversalSafeArea
         style={[
           genericStyles.flexEndAndCenter,
-          { paddingHorizontal: 16, backgroundColor: 'transparent' },
+          { padding: 16, backgroundColor: 'transparent' },
         ]}
       >
         <View style={[{ gap: 16, flexGrow: 1 }, genericStyles.flexCenter]}>
