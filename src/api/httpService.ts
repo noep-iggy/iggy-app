@@ -5,10 +5,12 @@ class HTTPService {
   private baseURL: string;
   private timeout: number;
   private token: string;
+  private apiKey: string;
 
   constructor() {
     this.httpUrl = null;
-    this.baseURL = `${process.env['EXPO_PUBLIC_API_URL']}`;
+    this.baseURL = 'http://noephilippe.freeboxos.fr:8000';
+    this.apiKey = 'TODO:replace';
     this.timeout = process.env['EXPO_PUBLIC_API_TIMEOUT']
       ? +process.env['EXPO_PUBLIC_API_TIMEOUT']
       : 3000;
@@ -76,7 +78,7 @@ class HTTPService {
       };
     }
 
-    headers = { ...headers, 'x-api-key': process.env['EXPO_PUBLIC_API_KEY'] };
+    headers = { ...headers, 'x-api-key': this.apiKey };
     return axios.create({
       headers,
       baseURL: this.baseURL,
