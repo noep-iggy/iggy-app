@@ -35,9 +35,12 @@ export function JoinParentHouse(props: JoinParentHouseProps): JSX.Element {
     try {
       const token = await ApiService.auth.join(joinCode.code, data);
       setToken(token);
+      const user = await ApiService.users.me();
+
       Toast.show({
         type: 'success',
-        text1: i18n.t('success.api.house.join'),
+        text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
+        text2: i18n.t('success.api.house.join'),
       });
       router.push(ROUTES.dashboard.parent);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
