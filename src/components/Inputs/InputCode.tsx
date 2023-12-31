@@ -29,16 +29,16 @@ export function InputCode(props: InputCodeProps): JSX.Element {
   const inputStyled: TextStyle = {
     width: 50,
     height: 70,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.background,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: error ? theme.colors.error : '#000',
+    borderColor: error ? theme.colors.error : theme.colors.outline,
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: 50,
     fontWeight: 'bold',
-    color: error ? theme.colors.error : '#000',
+    color: error ? theme.colors.error : theme.colors.onSurface,
   };
 
   const handleKeyPress = (

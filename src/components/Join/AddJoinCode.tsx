@@ -73,7 +73,6 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
     if (!isValid || isSubmitting) {
       const code = watch('code');
       if (code.length === 6) {
-        console.log('[D] AddJoinCode', 'handleSubmit');
         handleSubmit(onSubmit)();
       }
     }
