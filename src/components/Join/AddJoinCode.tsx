@@ -1,7 +1,6 @@
-import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import i18n from '@/locales/localization';
-import { Image, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { ActivityIndicator, Image, View } from 'react-native';
+import { Text, useTheme } from 'react-native-paper';
 import { ApiService } from '@/api';
 import Toast from 'react-native-toast-message';
 import { formatValidationErrorMessage } from '@/utils/error';
@@ -12,6 +11,7 @@ import { errorMessage } from '@/errors';
 import { genericStyles } from '@/constants';
 import FormField from '../Forms/FormField';
 import { JoinCodeDto } from '@/types';
+import { useEffect } from 'react';
 
 interface AddJoinCodeProps {
   setCurrentStep: (step: number) => void;
@@ -32,11 +32,12 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
           .max(6, errorMessage.fields('code').TOO_LONG),
       })
     ),
-    mode: 'onTouched',
+    mode: 'onSubmit',
   });
 
-  const { handleSubmit, formState, setError } = formApi;
+  const { handleSubmit, formState, setError, watch } = formApi;
   const { isSubmitting, isValid } = formState;
+  const theme = useTheme();
 
   async function onSubmit(data: { code: string }) {
     try {
@@ -68,42 +69,44 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
     }
   }
 
-  return (
-    <>
-      <View
-        style={[
-          {
-            width: '100%',
-            gap: 10,
-            flexGrow: 1,
-            alignItems: 'center',
-          },
-        ]}
-      >
-        <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
-        <Text variant="bodyMedium" style={{ textAlign: 'center' }}>
-          {i18n.t('joinPage.add.title')}
-        </Text>
-        <View style={[genericStyles.flexColumn, { width: '100%', gap: 5 }]}>
-          <FormProvider {...formApi}>
-            <FormField
-              label={i18n.t('joinPage.add.code')}
-              name="code"
-              type="text"
-              keyboardType="numeric"
-            />
-          </FormProvider>
-        </View>
-      </View>
+  useEffect(() => {
+    if (!isValid || isSubmitting) {
+      const code = watch('code');
+      if (code.length === 6) {
+        console.log('[D] AddJoinCode', 'handleSubmit');
+        handleSubmit(onSubmit)();
+      }
+    }
+  }, [watch('code')]);
 
-      <PrimaryButton
-        disabled={!isValid || isSubmitting}
-        loading={isSubmitting}
-        onPress={handleSubmit(onSubmit)}
-        title={i18n.t('joinPage.add.submit')}
-        big
-        style={{ marginTop: 20 }}
+  return (
+    <View
+      style={[
+        {
+          width: '100%',
+          gap: 10,
+          flexGrow: 1,
+          alignItems: 'center',
+        },
+      ]}
+    >
+      <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
+      <ActivityIndicator
+        animating={isSubmitting}
+        color={theme.colors.primary}
       />
-    </>
+      <Text variant="bodyMedium" style={{ textAlign: 'center' }}>
+        {i18n.t('joinPage.add.title')}
+      </Text>
+      <View style={[genericStyles.flexColumn, { width: '100%', gap: 5 }]}>
+        <FormProvider {...formApi}>
+          <FormField
+            label={i18n.t('joinPage.add.code')}
+            name="code"
+            type="code"
+          />
+        </FormProvider>
+      </View>
+    </View>
   );
 }

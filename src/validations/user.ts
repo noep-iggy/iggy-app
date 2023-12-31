@@ -70,8 +70,8 @@ const joinChild = yup.object<JoinChildApi>().shape({
 const joinParent = yup.object<JoinParentApi>().shape({
   firstName: yup
     .string()
-    .required(errorMessage.fields('userName').REQUIRED)
-    .typeError(errorMessage.fields('userName').NOT_STRING),
+    .required(errorMessage.fields('firstName').REQUIRED)
+    .typeError(errorMessage.fields('firstName').NOT_STRING),
   lastName: yup
     .string()
     .required(errorMessage.fields('lastName').REQUIRED)

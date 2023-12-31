@@ -1,11 +1,11 @@
 import React from 'react';
 import { Controller, useFormContext, useFormState } from 'react-hook-form';
-import { Input, InputPassword } from '../Inputs';
+import { Input, InputCode, InputPassword } from '../Inputs';
 import { TextInputProps } from 'react-native-paper';
 import { View } from 'react-native';
 import { ErrorMessage } from './ErrorMessage';
 
-type FormFieldType = 'password' | 'text';
+type FormFieldType = 'password' | 'text' | 'code';
 
 interface FormFieldProps extends TextInputProps {
   name: string;
@@ -21,6 +21,9 @@ function FormField({ type = 'text', name, ...props }: FormFieldProps) {
   switch (type) {
     case 'password':
       InputComponent = InputPassword;
+      break;
+    case 'code':
+      InputComponent = InputCode;
       break;
     default:
     case 'text':
