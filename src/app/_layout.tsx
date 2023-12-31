@@ -6,7 +6,10 @@ import {
   MD3LightTheme as LightTheme,
   PaperProvider,
 } from 'react-native-paper';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import { IggyDarkTheme, IggyLightTheme } from '../constants';
 import CustomAppBar from '@/components/Commons/CustomAppBar';
 import Toast from 'react-native-toast-message';
@@ -15,6 +18,7 @@ import { ROUTES } from '@/router/routes';
 const Layout = () => {
   const colorScheme = useColorScheme();
   const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
+  const insets = useSafeAreaInsets();
 
   const theme = {
     ...defaultTheme,
@@ -44,7 +48,7 @@ const Layout = () => {
               }}
             />
           </Stack>
-          <Toast />
+          <Toast topOffset={insets.top} />
         </SafeAreaProvider>
       </AuthProvider>
     </PaperProvider>

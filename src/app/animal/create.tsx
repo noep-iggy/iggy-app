@@ -223,7 +223,6 @@ const AnimalCreate = () => {
             loading={isSubmitting}
             onPress={handleSubmit(onSubmit)}
             title={i18n.t('registerPage.animal.submit')}
-            textColor="white"
             big
           />
         </View>
