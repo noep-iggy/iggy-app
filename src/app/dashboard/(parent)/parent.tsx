@@ -1,5 +1,5 @@
-import { Text } from 'react-native-paper';
-import React from 'react';
+import { Avatar, Card, Text, useTheme } from 'react-native-paper';
+import { useEffect, useState } from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
 import PetCard from '@/components/ParentDashboard/PetCard';

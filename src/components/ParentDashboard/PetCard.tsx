@@ -3,6 +3,7 @@ import { BasicAnimalDto } from '@/types';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { animalResolver } from '@/utils/animal';
 
 export interface PetCardProps {
   animal?: BasicAnimalDto;
@@ -25,7 +26,7 @@ const PetCard = ({ animal }: PetCardProps) => {
           titleStyle={{ textAlign: 'center' }}
         />
         <Card.Cover
-          source={require('@/assets/images/dog.png')}
+          source={animalResolver(animal?.type)}
           style={{
             width: 175,
             height: 120,

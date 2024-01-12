@@ -20,7 +20,7 @@ const CustomModalBar = ({
 
   return (
     <Appbar.Header statusBarHeight={0}>
-      <Appbar.Content title={title} />
+      <Appbar.Content title={options.headerTitle ?? title} />
       <Appbar.Action icon="close" onPress={navigation.goBack} />
     </Appbar.Header>
   );
