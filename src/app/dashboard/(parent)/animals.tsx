@@ -1,4 +1,10 @@
-import { View, ActivityIndicator, Image, ScrollView } from 'react-native';
+import {
+  View,
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import { useState, useEffect } from 'react';
 import { AnimalDto } from '@/types';
 import { ApiService } from '@/api';
@@ -35,8 +41,12 @@ const Pets = () => {
       <ScrollView>
         <View style={{ marginHorizontal: 16, marginTop: 32 }}>
           {animals.map((animal) => (
-            <View
+            <TouchableOpacity
               key={animal.id}
+              onPress={() => {
+                router.push(ROUTES.animal.detail);
+                router.setParams({ id: animal?.id ?? '0' });
+              }}
               style={[
                 genericStyles.flexRow,
                 {
@@ -82,7 +92,7 @@ const Pets = () => {
                   Tâche(s) en attente : {animal?.tasks?.length ?? 0}
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
           <PrimaryButton
             title="Ajouter"
