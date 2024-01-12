@@ -1,23 +1,30 @@
 import { ROUTES } from '@/router/routes';
 import { router } from 'expo-router';
-import { View } from 'react-native';
+import { TouchableOpacityProps, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Card, Icon, useTheme } from 'react-native-paper';
+import { Icon, useTheme } from 'react-native-paper';
 
-const AddPetCard = () => {
+interface AddPetCardProps {
+  style?: TouchableOpacityProps['style'];
+}
+const AddPetCard = (props: AddPetCardProps) => {
+  const { style } = props;
   const theme = useTheme();
 
   return (
     <TouchableOpacity
-      style={{
-        height: '100%',
-        borderColor: theme.colors.secondary,
-        borderWidth: 1,
-        borderRadius: 8,
-        padding: 16,
-        borderStyle: 'dashed',
-        justifyContent: 'center',
-      }}
+      style={[
+        {
+          height: '100%',
+          borderColor: theme.colors.secondary,
+          borderWidth: 1,
+          borderRadius: 8,
+          padding: 16,
+          borderStyle: 'dashed',
+          justifyContent: 'center',
+        },
+        style,
+      ]}
       onPress={() => {
         router.push(ROUTES.animal.create);
       }}

@@ -67,6 +67,9 @@
     },
     "createHouse": "Créer mon foyer"
   },
+  "tasks": {
+    "noTasks": "Aucune tâche de prévue"
+  },
   "joinPage": {
     "add": {
       "title": "Entrez le code de la maison à rejoindre",

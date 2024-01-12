@@ -9,7 +9,8 @@ import { animalAnimationResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Text, useTheme } from 'react-native-paper';
+import { Text } from 'react-native-paper';
+import i18n from '@/locales/localization';
 
 const AnimalDetail = () => {
   const params = useLocalSearchParams();
@@ -17,7 +18,6 @@ const AnimalDetail = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isTasksLoading, setIsTasksLoading] = useState(true);
-  const theme = useTheme();
 
   async function fetchAnimal() {
     if (!params) return;
@@ -89,8 +89,15 @@ const AnimalDetail = () => {
           <ScrollView style={{ width: '100%' }}>
             {isTasksLoading ? (
               <ActivityIndicator animating={isTasksLoading} />
-            ) : (
+            ) : tasks.length > 0 ? (
               tasks.map((task) => <TaskAnimalCard key={task.id} task={task} />)
+            ) : (
+              <Text
+                variant="bodyMedium"
+                style={{ textAlign: 'left', width: '100%', marginBottom: 15 }}
+              >
+                {i18n.t('tasks.noTasks')}
+              </Text>
             )}
           </ScrollView>
         </View>

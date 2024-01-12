@@ -12,6 +12,7 @@ import { ApiService } from '@/api';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ROUTES } from '@/router/routes';
 import { router } from 'expo-router';
+import i18n from '@/locales/localization';
 
 // TODO: call api to get the list of pets
 const ParentDashboard = () => {
@@ -101,10 +102,17 @@ const ParentDashboard = () => {
           </View>
           {isLoadingTasks ? (
             <ActivityIndicator animating={isLoadingTasks} />
-          ) : (
+          ) : tasks.length > 0 ? (
             tasks.map((task) => (
               <TaskAnimalCard isAnimalVisible key={task.id} task={task} />
             ))
+          ) : (
+            <Text
+              variant="bodyMedium"
+              style={{ textAlign: 'left', width: '100%', marginBottom: 15 }}
+            >
+              {i18n.t('tasks.noTasks')}
+            </Text>
           )}
         </View>
       </ScrollView>
