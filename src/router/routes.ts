@@ -11,6 +11,7 @@ export const ROUTES = {
   },
   animal: {
     create: 'animal/create' as never,
-    details: 'dashboard/(parent)/[id]' as never,
+    list: 'dashboard/(parent)/animals' as never,
+    detail: 'animal/detail' as never,
   },
 };

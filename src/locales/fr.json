@@ -6,6 +6,7 @@
     "auth_login": "Se connecter",
     "auth_register": "Créer une maison",
     "animal_create": "Ajouter un animal",
+    "animal_detail": "Détail de l'animal",
     "dashboard": "Tableau de bord"
   },
   "generics": {

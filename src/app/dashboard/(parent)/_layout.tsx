@@ -1,8 +1,10 @@
+import { ROUTES } from '@/router/routes';
 import { Tabs } from 'expo-router';
 import { Icon, useTheme } from 'react-native-paper';
 
 const ParentLayout = () => {
   const theme = useTheme();
+
   return (
     <Tabs
       screenOptions={{
@@ -40,15 +42,14 @@ const ParentLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="[id]"
+        name="animals"
         options={{
           title: 'Animaux',
           tabBarIcon: ({ color, size }) => (
             <Icon source="paw" size={size} color={color} />
           ),
           href: {
-            pathname: 'dashboard/(parent)/[id]',
-            params: { id: '0' },
+            pathname: ROUTES.animal.list,
           },
         }}
       />

@@ -1,11 +1,10 @@
 import { View } from 'react-native';
 import { useAuthContext } from '@/contexts';
-import { Button } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { JoinCodeDto } from '@/types';
 import { useState } from 'react';
 import { ApiService } from '@/api';
 import { genericStyles } from '@/constants';
-import { Text } from 'react-native-paper';
 
 const Settings = () => {
   const { currentUser, removeToken } = useAuthContext();

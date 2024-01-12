@@ -14,6 +14,7 @@ import { IggyDarkTheme, IggyLightTheme } from '../constants';
 import CustomAppBar from '@/components/Commons/CustomAppBar';
 import Toast from 'react-native-toast-message';
 import { ROUTES } from '@/router/routes';
+import CustomModalBar from '@/components/Commons/CustomModalBar';
 
 const Layout = () => {
   const colorScheme = useColorScheme();
@@ -44,7 +45,14 @@ const Layout = () => {
               name={ROUTES.animal.create}
               options={{
                 presentation: 'modal',
-                header: (props) => <CustomAppBar removeStatusBar {...props} />,
+                header: (props) => <CustomModalBar {...props} />,
+              }}
+            />
+            <Stack.Screen
+              name={ROUTES.animal.detail}
+              options={{
+                presentation: 'modal',
+                header: (props) => <CustomModalBar {...props} />,
               }}
             />
           </Stack>

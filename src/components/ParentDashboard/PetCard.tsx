@@ -1,5 +1,4 @@
 import { Card } from 'react-native-paper';
-import SecondaryButton from '../Buttons/SecondaryButton';
 import { BasicAnimalDto } from '@/types';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
@@ -13,7 +12,7 @@ const PetCard = ({ animal }: PetCardProps) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        router.replace(ROUTES.animal.details);
+        router.push(ROUTES.animal.detail);
         router.setParams({ id: animal?.id ?? '0' });
       }}
     >

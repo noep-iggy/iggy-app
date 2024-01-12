@@ -1,4 +1,4 @@
-import { Avatar, Card, Surface, Text, useTheme } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import React from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -6,10 +6,25 @@ import PetCard from '@/components/ParentDashboard/PetCard';
 import AddPetCard from '@/components/ParentDashboard/AddPetCard';
 import { View } from 'react-native';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import { useAuthContext } from '@/contexts';
+import { AnimalDto } from '@/types';
+import { ApiService } from '@/api';
 
 // TODO: call api to get the list of pets
 const ParentDashboard = () => {
   const theme = useTheme();
+  const { currentUser } = useAuthContext();
+  const [animals, setAnimals] = useState<AnimalDto[]>([]);
+
+  async function fetchAnimals() {
+    const animalFetched = await ApiService.house.getAnimals();
+    setAnimals(animalFetched);
+  }
+
+  useEffect(() => {
+    fetchAnimals();
+  }, []);
+
   return (
     <UniversalSafeArea asView>
       <ScrollView>
@@ -24,7 +39,9 @@ const ParentDashboard = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: 8, paddingHorizontal: 16 }}
         >
-          <PetCard />
+          {animals.map((animal) => (
+            <PetCard key={animal.id} animal={animal} />
+          ))}
           <AddPetCard />
         </ScrollView>
         <View style={{ marginHorizontal: 16, marginTop: 32 }}>
