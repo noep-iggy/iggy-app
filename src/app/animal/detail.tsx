@@ -86,7 +86,7 @@ const AnimalDetail = () => {
           >
             {'Tâches assigées :'}
           </Text>
-          <ScrollView style={{ width: '100%' }} contentContainerStyle={{}}>
+          <ScrollView style={{ width: '100%' }}>
             {isTasksLoading ? (
               <ActivityIndicator animating={isTasksLoading} />
             ) : (

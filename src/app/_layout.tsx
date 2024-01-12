@@ -55,6 +55,13 @@ const Layout = () => {
                 header: (props) => <CustomModalBar {...props} />,
               }}
             />
+            <Stack.Screen
+              name={ROUTES.task.create}
+              options={{
+                presentation: 'modal',
+                header: (props) => <CustomModalBar {...props} />,
+              }}
+            />
           </Stack>
           <Toast topOffset={insets.top} />
         </SafeAreaProvider>

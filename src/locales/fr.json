@@ -7,7 +7,8 @@
     "auth_register": "Créer une maison",
     "animal_create": "Ajouter un animal",
     "animal_detail": "Détail de l'animal",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "tasks_create": "Créer une tâche"
   },
   "generics": {
     "back": "Retour",
