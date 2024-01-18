@@ -49,6 +49,7 @@ export const API_ROUTES = {
     create: '/tasks',
     getAll: '/tasks',
     getByStatus: (status: TaskStatusEnum) => `/tasks/status/${status}`,
+    getArchive: '/tasks/archive',
     getById: (id: string) => `/tasks/${id}`,
     updateById: (id: string) => `/tasks/${id}`,
     check: (id: string) => `/tasks/${id}/check`,

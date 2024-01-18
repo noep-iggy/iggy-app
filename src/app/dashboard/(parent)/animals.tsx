@@ -1,10 +1,4 @@
-import {
-  View,
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import { useState, useEffect } from 'react';
 import { AnimalDto } from '@/types';
 import { ApiService } from '@/api';
@@ -15,6 +9,7 @@ import { useTheme, Text } from 'react-native-paper';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
+import { RefreshScroll } from '@/components/Scroll';
 
 const Pets = () => {
   const theme = useTheme();
@@ -32,13 +27,9 @@ const Pets = () => {
     fetchAnimals();
   }, []);
 
-  return isLoading ? (
-    <View style={[genericStyles.flexCenter, { height: '100%' }]}>
-      <ActivityIndicator animating={isLoading} />
-    </View>
-  ) : (
+  return (
     <UniversalSafeArea asView>
-      <ScrollView>
+      <RefreshScroll isLoading={isLoading} fetchDatas={() => fetchAnimals()}>
         <View style={{ marginHorizontal: 16, marginTop: 32 }}>
           {animals.map((animal) => (
             <TouchableOpacity
@@ -108,7 +99,7 @@ const Pets = () => {
             }}
           />
         </View>
-      </ScrollView>
+      </RefreshScroll>
     </UniversalSafeArea>
   );
 };

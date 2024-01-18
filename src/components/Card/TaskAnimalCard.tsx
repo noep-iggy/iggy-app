@@ -3,33 +3,39 @@ import { ROUTES } from '@/router/routes';
 import { TaskDto } from '@/types';
 import { animalResolver } from '@/utils/animal';
 import { router } from 'expo-router';
-import { View } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar, Icon, Text, useTheme } from 'react-native-paper';
+import { TaskStatus } from '../Status/TaskStatus';
 
 interface TaskAnimalCardProps {
   task: TaskDto;
   isAnimalVisible?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
 const TaskAnimalCard = (props: TaskAnimalCardProps) => {
-  const { task, isAnimalVisible } = props;
+  const { task, isAnimalVisible, style } = props;
   const theme = useTheme();
 
   return (
     <TouchableOpacity
-      style={{
-        width: '100%',
-        borderRadius: 8,
-        padding: 16,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 4,
-        backgroundColor: theme.colors.surfaceVariant,
-      }}
+      style={[
+        {
+          width: '100%',
+          borderRadius: 8,
+          padding: 16,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: 4,
+          backgroundColor: theme.colors.surfaceVariant,
+        },
+        style,
+      ]}
       onPress={() => {
-        router.push(ROUTES.animal.create);
+        router.push(ROUTES.task.detail);
+        router.setParams({ id: task?.id ?? '0' });
       }}
     >
       <View style={[genericStyles.flexColumn]}>
@@ -39,14 +45,19 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
         >
           {task.title}
         </Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 5,
+          }}
+        >
           <Icon source="account" size={16} />
-          {task.users.map((user) => (
-            <Text key={user.id} variant="bodySmall" style={{ marginLeft: 4 }}>
-              {user.firstName}
-            </Text>
-          ))}
+          <Text variant="bodySmall" style={{ marginLeft: 4 }}>
+            {task.users.map((user) => user.firstName).join(', ')}
+          </Text>
         </View>
+        <TaskStatus taskStatus={task.status} />
       </View>
       <View style={[genericStyles.flexRow, { position: 'relative' }]}>
         {isAnimalVisible &&

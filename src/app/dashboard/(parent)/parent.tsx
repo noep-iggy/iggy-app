@@ -13,6 +13,7 @@ import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ROUTES } from '@/router/routes';
 import { router } from 'expo-router';
 import i18n from '@/locales/localization';
+import { RefreshScroll } from '@/components/Scroll';
 
 // TODO: call api to get the list of pets
 const ParentDashboard = () => {
@@ -44,7 +45,7 @@ const ParentDashboard = () => {
 
   return (
     <UniversalSafeArea asView>
-      <ScrollView>
+      <RefreshScroll isLoading={false} fetchDatas={() => fetchTasks()}>
         <View style={{ marginHorizontal: 16, marginTop: 32 }}>
           <View
             style={{
@@ -115,7 +116,7 @@ const ParentDashboard = () => {
             </Text>
           )}
         </View>
-      </ScrollView>
+      </RefreshScroll>
     </UniversalSafeArea>
   );
 };

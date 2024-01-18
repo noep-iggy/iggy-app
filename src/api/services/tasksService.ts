@@ -22,6 +22,10 @@ const getByStatus = async (status: TaskStatusEnum): Promise<TaskDto[]> => {
   return (await HttpService.get(API_ROUTES.tasks.getByStatus(status))).data;
 };
 
+const getArchive = async (): Promise<TaskDto[]> => {
+  return (await HttpService.get(API_ROUTES.tasks.getArchive)).data;
+};
+
 const updateById = async (
   id: string,
   task: UpdateTaskApi
@@ -56,4 +60,5 @@ export const TaskApiService = {
   validate,
   refuse,
   deleteById,
+  getArchive,
 };
