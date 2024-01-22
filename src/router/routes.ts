@@ -18,5 +18,6 @@ export const ROUTES = {
     create: 'tasks/create' as never,
     list: 'dashboard/(parent)/tasks' as never,
     detail: 'tasks/detail' as never,
+    childDetail: 'tasks/child-detail' as never,
   },
 };
