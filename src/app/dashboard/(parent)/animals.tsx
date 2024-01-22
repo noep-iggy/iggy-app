@@ -13,7 +13,7 @@ import { RefreshScroll } from '@/components/Scroll';
 
 const Pets = () => {
   const theme = useTheme();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
 
   async function fetchAnimals() {
@@ -29,7 +29,11 @@ const Pets = () => {
 
   return (
     <UniversalSafeArea asView>
-      <RefreshScroll isLoading={isLoading} fetchDatas={() => fetchAnimals()}>
+      <RefreshScroll
+        isEmpty={animals.length === 0}
+        isLoading={isLoading}
+        onRefresh={() => fetchAnimals()}
+      >
         <View style={{ marginHorizontal: 16, marginTop: 32 }}>
           {animals.map((animal) => (
             <TouchableOpacity

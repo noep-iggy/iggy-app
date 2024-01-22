@@ -1,6 +1,6 @@
 import { View, ActivityIndicator } from 'react-native';
-import { useState, useEffect } from 'react';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { useState, useEffect, useCallback } from 'react';
+import { Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { AnimalDto, TaskDto } from '@/types';
 import { ApiService } from '@/api';
 import { genericStyles } from '@/constants';
@@ -8,9 +8,9 @@ import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { animalAnimationResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
-import { ScrollView } from 'react-native-gesture-handler';
 import { Text } from 'react-native-paper';
 import i18n from '@/locales/localization';
+import { RefreshScroll } from '@/components/Scroll';
 
 const AnimalDetail = () => {
   const params = useLocalSearchParams();
@@ -18,6 +18,7 @@ const AnimalDetail = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isTasksLoading, setIsTasksLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState<number>(0);
 
   async function fetchAnimal() {
     if (!params) return;
@@ -28,22 +29,35 @@ const AnimalDetail = () => {
   }
 
   async function fetchTasks() {
-    if (!params || !animal?.tasks) return;
+    if (!params) return;
     setIsTasksLoading(true);
-    const tasksFetched = await Promise.all(
-      animal?.tasks.map((taskId: string) => ApiService.tasks.getById(taskId))
+    const tasksFetched = await ApiService.tasks.getAnimalTasks(
+      params.id as string,
+      {
+        page: pageNumber,
+        pageSize: 5,
+      }
     );
-    setTasks(tasksFetched);
+    setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsTasksLoading(false);
+  }
+
+  function refreshTasks() {
+    setTasks([]);
+    setPageNumber(0);
+    fetchTasks();
   }
 
   useEffect(() => {
     fetchAnimal();
+    fetchTasks();
   }, [params]);
 
-  useEffect(() => {
-    fetchTasks();
-  }, [animal]);
+  useFocusEffect(
+    useCallback(() => {
+      refreshTasks();
+    }, [])
+  );
 
   return (
     <UniversalSafeArea
@@ -86,20 +100,23 @@ const AnimalDetail = () => {
           >
             {'Tâches assigées :'}
           </Text>
-          <ScrollView style={{ width: '100%' }}>
-            {isTasksLoading ? (
-              <ActivityIndicator animating={isTasksLoading} />
-            ) : tasks.length > 0 ? (
-              tasks.map((task) => <TaskAnimalCard key={task.id} task={task} />)
-            ) : (
-              <Text
-                variant="bodyMedium"
-                style={{ textAlign: 'left', width: '100%', marginBottom: 15 }}
-              >
-                {i18n.t('tasks.noTasks')}
-              </Text>
-            )}
-          </ScrollView>
+          <RefreshScroll
+            style={{ width: '100%' }}
+            isEmpty={tasks.length === 0}
+            emptyText={i18n.t('tasks.noTasks')}
+            isLoading={isTasksLoading}
+            onNextPage={() => {
+              setPageNumber(pageNumber + 1);
+              fetchTasks();
+            }}
+            onRefresh={() => {
+              refreshTasks();
+            }}
+          >
+            {tasks.map((task) => (
+              <TaskAnimalCard key={task.id} task={task} />
+            ))}
+          </RefreshScroll>
         </View>
       )}
     </UniversalSafeArea>

@@ -15,7 +15,7 @@ const AddPetCard = (props: AddPetCardProps) => {
     <TouchableOpacity
       style={[
         {
-          height: '100%',
+          height: 180,
           borderColor: theme.colors.secondary,
           borderWidth: 1,
           borderRadius: 8,

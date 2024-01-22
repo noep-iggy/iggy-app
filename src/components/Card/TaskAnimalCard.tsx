@@ -7,6 +7,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar, Icon, Text, useTheme } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
+import { formatDateTime } from '@/utils';
 
 interface TaskAnimalCardProps {
   task: TaskDto;
@@ -30,6 +31,10 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
           alignItems: 'center',
           marginBottom: 4,
           backgroundColor: theme.colors.surfaceVariant,
+          borderWidth: 1,
+          borderColor: task.isArchived
+            ? theme.colors.error
+            : theme.colors.primary,
         },
         style,
       ]}
@@ -38,7 +43,7 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
         router.setParams({ id: task?.id ?? '0' });
       }}
     >
-      <View style={[genericStyles.flexColumn]}>
+      <View style={[genericStyles.flexColumn, { minWidth: '70%' }]}>
         <Text
           variant="bodyLarge"
           style={{ fontWeight: 'bold', marginBottom: 1 }}
@@ -57,13 +62,25 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
             {task.users.map((user) => user.firstName).join(', ')}
           </Text>
         </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 5,
+          }}
+        >
+          <Icon source="clock-outline" size={16} />
+          <Text variant="bodySmall" style={{ marginLeft: 4 }}>
+            {formatDateTime(task.date)}
+          </Text>
+        </View>
         <TaskStatus taskStatus={task.status} />
       </View>
       <View style={[genericStyles.flexRow, { position: 'relative' }]}>
         {isAnimalVisible &&
           task.animals.map((animal, index) => (
             <Avatar.Image
-              key={index} // Ajoutez une clé unique pour chaque Avatar
+              key={`image-${task.id}}-${animal.id}`}
               size={40}
               source={animalResolver(animal.type)}
               style={{

@@ -56,6 +56,7 @@ export const API_ROUTES = {
     validate: (id: string) => `/tasks/${id}/validate`,
     refuse: (id: string) => `/tasks/${id}/refuse`,
     deleteById: (id: string) => `/tasks/${id}`,
+    animal: (id: string) => `/tasks/animal/${id}`,
   },
   users: {
     me: '/users/me',

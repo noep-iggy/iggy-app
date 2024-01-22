@@ -13,7 +13,8 @@
   },
   "generics": {
     "back": "Retour",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "empty": "Aucun élément"
   },
   "enums": {
     "recurrence": {
