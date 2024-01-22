@@ -42,7 +42,7 @@ export function JoinParentHouse(props: JoinParentHouseProps): JSX.Element {
         text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.house.join'),
       });
-      router.push(ROUTES.dashboard.parent);
+      router.replace(ROUTES.dashboard.parent);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

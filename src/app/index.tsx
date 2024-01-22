@@ -22,20 +22,18 @@ const Home = () => {
     if (currentUser) {
       if (!currentUser.house) return;
       if (currentUser.role === UserRoleEnum.PARENT)
-        router.push(ROUTES.dashboard.parent);
+        router.replace(ROUTES.dashboard.parent);
       else if (currentUser.role === UserRoleEnum.CHILD)
         router.push(ROUTES.dashboard.child);
-      else router.push(ROUTES.auth.index);
+      else router.replace(ROUTES.auth.index);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
     }
   }, [currentUser]);
 
   const router = useRouter();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  });
 
   return (
     <ImageBackground

@@ -28,33 +28,29 @@ const ParentDashboard = () => {
     setIsLoadingAnimals(false);
   }
 
-  async function fetchTasks() {
+  async function fetchTasks(newPageNumber = 0) {
     setIsLoadingTasks(true);
     const tasksFetched = await ApiService.tasks.getByStatus(
       TaskStatusEnum.TODO,
       {
-        page: pageNumber,
-        pageSize: 5,
+        page: newPageNumber,
+        pageSize: 10,
       }
     );
+    setPageNumber(newPageNumber);
     setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsLoadingTasks(false);
   }
 
-  function refreshTasks() {
-    setTasks([]);
-    setPageNumber(0);
-    fetchTasks();
-  }
-
   useEffect(() => {
     fetchAnimals();
-    fetchTasks();
   }, []);
 
   useFocusEffect(
     useCallback(() => {
-      refreshTasks();
+      setTasks([]);
+      setPageNumber(0);
+      fetchTasks(0);
     }, [])
   );
 
@@ -120,11 +116,11 @@ const ParentDashboard = () => {
         emptyText={i18n.t('tasks.noTasks')}
         isLoading={isLoadingTasks}
         onNextPage={() => {
-          setPageNumber(pageNumber + 1);
-          fetchTasks();
+          fetchTasks(pageNumber + 1);
         }}
         onRefresh={() => {
-          refreshTasks();
+          setTasks([]);
+          fetchTasks(0);
         }}
       >
         {tasks.map((task) => (

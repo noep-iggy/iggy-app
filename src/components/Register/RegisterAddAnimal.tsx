@@ -27,8 +27,8 @@ export function RegisterAddAnimal(): JSX.Element {
       text1: `${i18n.t('success.register.title')} ${currentUser?.firstName} !`,
     });
     if (currentUser?.role === UserRoleEnum.CHILD)
-      router.push(ROUTES.dashboard.child);
-    else router.push(ROUTES.dashboard.parent);
+      router.replace(ROUTES.dashboard.child);
+    else router.replace(ROUTES.dashboard.parent);
   }
 
   async function fetchAnimals() {

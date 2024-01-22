@@ -89,21 +89,21 @@ const Pets = () => {
               </View>
             </TouchableOpacity>
           ))}
-          <PrimaryButton
-            title="Ajouter"
-            icon="plus"
-            style={{
-              marginTop: 16,
-              height: 50,
-              justifyContent: 'center',
-              alignSelf: 'center',
-            }}
-            onPress={() => {
-              router.push(ROUTES.animal.create);
-            }}
-          />
         </View>
       </RefreshScroll>
+      <PrimaryButton
+        title="Ajouter"
+        icon="plus"
+        style={{
+          marginVertical: 16,
+          height: 50,
+          justifyContent: 'center',
+          alignSelf: 'center',
+        }}
+        onPress={() => {
+          router.push(ROUTES.animal.create);
+        }}
+      />
     </UniversalSafeArea>
   );
 };

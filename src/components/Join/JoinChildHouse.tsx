@@ -42,7 +42,7 @@ export function JoinChildHouse(props: JoinChildHouseProps): JSX.Element {
         type: 'success',
         text1: i18n.t('success.api.house.join'),
       });
-      router.push(ROUTES.dashboard.child);
+      router.replace(ROUTES.dashboard.child);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

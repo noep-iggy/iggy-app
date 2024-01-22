@@ -28,35 +28,31 @@ const AnimalDetail = () => {
     setIsLoading(false);
   }
 
-  async function fetchTasks() {
+  async function fetchTasks(newPageNumber = 0) {
     if (!params) return;
     setIsTasksLoading(true);
     const tasksFetched = await ApiService.tasks.getAnimalTasks(
       params.id as string,
       {
-        page: pageNumber,
-        pageSize: 5,
+        page: newPageNumber,
+        pageSize: 10,
       }
     );
+    setPageNumber(newPageNumber);
     setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsTasksLoading(false);
   }
 
-  function refreshTasks() {
-    setTasks([]);
-    setPageNumber(0);
-    fetchTasks();
-  }
-
   useEffect(() => {
     fetchAnimal();
-    fetchTasks();
   }, [params]);
 
   useFocusEffect(
     useCallback(() => {
-      refreshTasks();
-    }, [])
+      setTasks([]);
+      setPageNumber(0);
+      fetchTasks(0);
+    }, [params])
   );
 
   return (
@@ -106,11 +102,11 @@ const AnimalDetail = () => {
             emptyText={i18n.t('tasks.noTasks')}
             isLoading={isTasksLoading}
             onNextPage={() => {
-              setPageNumber(pageNumber + 1);
-              fetchTasks();
+              fetchTasks(pageNumber + 1);
             }}
             onRefresh={() => {
-              refreshTasks();
+              setTasks([]);
+              fetchTasks(0);
             }}
           >
             {tasks.map((task) => (

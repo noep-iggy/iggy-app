@@ -3,43 +3,42 @@ import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { RefreshScroll } from '@/components/Scroll';
 import i18n from '@/locales/localization';
-import { TaskDto } from '@/types';
+import { TaskDto, TaskStatusEnum } from '@/types';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { useTheme, SegmentedButtons } from 'react-native-paper';
-
-enum PageEnum {
-  IN_PROGRESS = 'IN_PROGRESS',
-  ARCHIVED = 'ARCHIVED',
-}
 
 const TasksPage = () => {
   const theme = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [tasks, setTasks] = useState<TaskDto[]>([]);
-  const [page, setPage] = useState(PageEnum.IN_PROGRESS);
+  const [page, setPage] = useState<TaskStatusEnum | 'ARCHIVED'>(
+    TaskStatusEnum.TODO
+  );
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  async function fetchTasks() {
+  async function fetchTasks(newPageNumber = 0) {
     setIsLoading(true);
     const tasksFetched =
-      page === PageEnum.IN_PROGRESS
-        ? await ApiService.tasks.getAll({ page: pageNumber, pageSize: 5 })
-        : await ApiService.tasks.getArchive({ page: pageNumber, pageSize: 5 });
-
-    setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
+      page === 'ARCHIVED'
+        ? await ApiService.tasks.getArchive({
+            page: newPageNumber,
+            pageSize: 10,
+          })
+        : await ApiService.tasks.getByStatus(page, {
+            page: newPageNumber,
+            pageSize: 10,
+          });
+    setPageNumber(newPageNumber);
+    setTasks((prevTasks) => [...prevTasks, ...tasksFetched]);
     setIsLoading(false);
-  }
-
-  function refreshTasks() {
-    setTasks([]);
-    setPageNumber(0);
-    fetchTasks();
   }
 
   useFocusEffect(
     useCallback(() => {
-      refreshTasks();
+      setTasks([]);
+      setPageNumber(0);
+      fetchTasks(0);
     }, [page])
   );
 
@@ -49,15 +48,23 @@ const TasksPage = () => {
         style={{ paddingVertical: 16 }}
         value={page}
         onValueChange={(value) => {
-          setPage(value as PageEnum);
+          setPage(value as TaskStatusEnum | 'ARCHIVED');
         }}
         buttons={[
           {
-            value: PageEnum.IN_PROGRESS,
+            value: TaskStatusEnum.TODO,
             label: 'Prévu',
           },
           {
-            value: PageEnum.ARCHIVED,
+            value: TaskStatusEnum.TO_VALIDATE,
+            label: 'À valider',
+          },
+          {
+            value: TaskStatusEnum.DONE,
+            label: 'Terminé',
+          },
+          {
+            value: 'ARCHIVED',
             label: 'Archivé',
           },
         ]}
@@ -67,11 +74,11 @@ const TasksPage = () => {
         emptyText={i18n.t('tasks.noTasks')}
         isLoading={isLoading}
         onNextPage={() => {
-          setPageNumber(pageNumber + 1);
-          fetchTasks();
+          fetchTasks(pageNumber + 1);
         }}
         onRefresh={() => {
-          refreshTasks();
+          setTasks([]);
+          fetchTasks(0);
         }}
       >
         {tasks.map((task) => (
