@@ -37,7 +37,7 @@ const AddPictureCard = (props: AddPictureCardProps) => {
     <TouchableOpacity
       style={[
         {
-          height: 500,
+          height: 350,
           width: '100%',
           borderColor: theme.colors.secondary,
           borderWidth: 1,
@@ -67,7 +67,7 @@ const AddPictureCard = (props: AddPictureCardProps) => {
               position: 'absolute',
               bottom: 10,
               right: 10,
-
+              padding: 10,
               borderRadius: 30,
               backgroundColor: theme.colors.surfaceVariant,
               justifyContent: 'center',
@@ -75,8 +75,8 @@ const AddPictureCard = (props: AddPictureCardProps) => {
             }}
           >
             <Icon
-              source="plus"
-              size={40}
+              source="camera"
+              size={35}
               color={theme.colors.onSurfaceVariant}
             />
           </View>
@@ -92,7 +92,11 @@ const AddPictureCard = (props: AddPictureCardProps) => {
             alignItems: 'center',
           }}
         >
-          <Icon source="plus" size={24} color={theme.colors.onSurfaceVariant} />
+          <Icon
+            source="camera"
+            size={24}
+            color={theme.colors.onSurfaceVariant}
+          />
         </View>
       )}
     </TouchableOpacity>

@@ -23,11 +23,11 @@ const TasksPage = () => {
       page === 'ARCHIVED'
         ? await ApiService.tasks.getArchive({
             page: newPageNumber,
-            pageSize: 10,
+            pageSize: 20,
           })
         : await ApiService.tasks.getByStatus(page, {
             page: newPageNumber,
-            pageSize: 10,
+            pageSize: 20,
           });
     setPageNumber(newPageNumber);
     setTasks((prevTasks) => [...prevTasks, ...tasksFetched]);

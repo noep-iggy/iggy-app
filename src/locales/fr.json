@@ -8,7 +8,8 @@
     "animal_detail": "Chargement de l'animal",
     "dashboard": "Tableau de bord",
     "tasks_create": "Créer une tâche",
-    "tasks_detail": "Chargement de la tâche"
+    "tasks_parent-detail": "Détail de la tâche",
+    "modals_refuse-task-modal": "Refuser la tâche"
   },
   "generics": {
     "back": "Retour",
@@ -28,7 +29,7 @@
       }
     },
     "status": {
-      "TODO": "A faire",
+      "TODO": "À faire",
       "DONE": "Terminé",
       "TO_VALIDATE": "À valider",
       "ARCHIVED": "Archivé",
@@ -73,9 +74,15 @@
   },
   "tasks": {
     "noTasks": "Aucune tâche de prévue",
-    "check": "Vérifier",
+    "check": "Faire vérifier la tâche",
     "validate": "Valider",
-    "refuse": "Refuser"
+    "refuse": "Refuser",
+    "confirmRefuse": {
+      "title": "Refuser la tâche",
+      "subtitle": "Êtes-vous sûr de vouloir refuser cette tâche ?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    }
   },
   "joinPage": {
     "add": {
@@ -140,6 +147,14 @@
       "errors": {
         "required": "Le nom est requis",
         "notString": "Le nom doit être une chaîne de caractères"
+      }
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Entrez un message",
+      "errors": {
+        "required": "Le message est requis",
+        "notString": "Le message doit être une chaîne de caractères"
       }
     },
     "animals": {

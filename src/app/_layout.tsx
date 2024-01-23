@@ -63,14 +63,20 @@ const Layout = () => {
               }}
             />
             <Stack.Screen
-              name={ROUTES.task.detail}
+              name={ROUTES.task.parentDetail}
+              options={{
+                presentation: 'card',
+              }}
+            />
+            <Stack.Screen
+              name={ROUTES.task.childDetail}
               options={{
                 presentation: 'modal',
                 header: (props) => <CustomModalBar {...props} />,
               }}
             />
             <Stack.Screen
-              name={ROUTES.task.childDetail}
+              name={ROUTES.modals.refuseTaskModal}
               options={{
                 presentation: 'modal',
                 header: (props) => <CustomModalBar {...props} />,

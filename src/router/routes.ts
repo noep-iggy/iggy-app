@@ -17,8 +17,10 @@ export const ROUTES = {
   task: {
     create: 'tasks/create' as never,
     list: 'dashboard/(parent)/tasks' as never,
-    detail: 'tasks/detail' as never,
+    parentDetail: 'tasks/parent-detail' as never,
     childDetail: 'tasks/child-detail' as never,
   },
-  camera: 'camera' as never,
+  modals: {
+    refuseTaskModal: 'modals/refuse-task-modal' as never,
+  },
 };

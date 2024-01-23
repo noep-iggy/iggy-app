@@ -39,7 +39,7 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
         style,
       ]}
       onPress={() => {
-        router.push(ROUTES.task.detail);
+        router.push(ROUTES.task.parentDetail);
         router.setParams({ id: task?.id ?? '0' });
       }}
     >
@@ -92,6 +92,7 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
                 shadowRadius: 6,
                 backgroundColor: theme.colors.surfaceVariant,
                 borderWidth: 1,
+                borderColor: theme.colors.secondary,
                 width: 45,
                 height: 45,
                 display: 'flex',
@@ -102,6 +103,11 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
             />
           ))}
       </View>
+      {task.recurrence && (
+        <View style={[{ position: 'absolute', top: 5, right: 5 }]}>
+          <Icon source="clock-time-eight" size={17} />
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

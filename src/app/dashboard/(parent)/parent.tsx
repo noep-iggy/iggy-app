@@ -75,7 +75,7 @@ const ParentDashboard = () => {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ gap: 8, paddingHorizontal: 16 }}
+            contentContainerStyle={{ gap: 8 }}
           >
             {animals.map((animal) => (
               <PetCard key={animal.id} animal={animal} />
