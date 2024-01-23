@@ -1,4 +1,6 @@
+import { RefuseTaskAPi } from './../../types/api/Task';
 import {
+  CheckTaskApi,
   CreateTaskApi,
   SearchParams,
   TaskDto,
@@ -51,16 +53,16 @@ const updateById = async (
   return (await HttpService.patch(API_ROUTES.tasks.updateById(id), task)).data;
 };
 
-const check = async (id: string): Promise<TaskDto> => {
-  return (await HttpService.patch(API_ROUTES.tasks.check(id))).data;
+const check = async (id: string, body: CheckTaskApi): Promise<TaskDto> => {
+  return (await HttpService.patch(API_ROUTES.tasks.check(id), body)).data;
 };
 
 const validate = async (id: string): Promise<TaskDto> => {
   return (await HttpService.get(API_ROUTES.tasks.validate(id))).data;
 };
 
-const refuse = async (id: string): Promise<TaskDto> => {
-  return (await HttpService.patch(API_ROUTES.tasks.refuse(id))).data;
+const refuse = async (id: string, body: RefuseTaskAPi): Promise<TaskDto> => {
+  return (await HttpService.patch(API_ROUTES.tasks.refuse(id), body)).data;
 };
 
 const deleteById = async (id: string): Promise<void> => {

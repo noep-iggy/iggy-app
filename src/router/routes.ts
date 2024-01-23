@@ -20,4 +20,5 @@ export const ROUTES = {
     detail: 'tasks/detail' as never,
     childDetail: 'tasks/child-detail' as never,
   },
+  camera: 'camera' as never,
 };

@@ -1,5 +1,5 @@
 import { Text } from 'react-native-paper';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ActivityIndicator, View } from 'react-native';
@@ -8,7 +8,7 @@ import { AnimalDto, TaskDto, TaskStatusEnum } from '@/types';
 import { ApiService } from '@/api';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ROUTES } from '@/router/routes';
-import { router, useFocusEffect } from 'expo-router';
+import { router } from 'expo-router';
 import i18n from '@/locales/localization';
 import AddPetCard from '@/components/Card/AddPetCard';
 import PetCard from '@/components/Card/PetCard';
@@ -43,16 +43,9 @@ const ParentDashboard = () => {
   }
 
   useEffect(() => {
+    fetchTasks(0);
     fetchAnimals();
   }, []);
-
-  useFocusEffect(
-    useCallback(() => {
-      setTasks([]);
-      setPageNumber(0);
-      fetchTasks(0);
-    }, [])
-  );
 
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>

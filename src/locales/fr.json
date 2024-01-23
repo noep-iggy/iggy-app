@@ -1,6 +1,5 @@
 {
   "welcome": "Bonjour",
-
   "Router": {
     "auth_join": "Rejoindre une maison",
     "auth_login": "Se connecter",
@@ -15,6 +14,9 @@
     "back": "Retour",
     "edit": "Modifier",
     "empty": "Aucun élément"
+  },
+  "camera": {
+    "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
   },
   "enums": {
     "recurrence": {
@@ -70,7 +72,10 @@
     "createHouse": "Créer mon foyer"
   },
   "tasks": {
-    "noTasks": "Aucune tâche de prévue"
+    "noTasks": "Aucune tâche de prévue",
+    "check": "Vérifier",
+    "validate": "Valider",
+    "refuse": "Refuser"
   },
   "joinPage": {
     "add": {
