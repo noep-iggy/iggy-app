@@ -3,10 +3,12 @@ import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { RefreshScroll } from '@/components/Scroll';
 import i18n from '@/locales/localization';
+import { ROUTES } from '@/router/routes';
 import { TaskDto, TaskStatusEnum } from '@/types';
-import { useFocusEffect } from 'expo-router';
+import { Stack, router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { useTheme, SegmentedButtons } from 'react-native-paper';
+import { TouchableOpacity } from 'react-native';
+import { useTheme, SegmentedButtons, Icon, Text } from 'react-native-paper';
 
 const TasksPage = () => {
   const theme = useTheme();
@@ -19,17 +21,14 @@ const TasksPage = () => {
 
   async function fetchTasks(newPageNumber = 0) {
     setIsLoading(true);
-    const tasksFetched =
-      page === 'ARCHIVED'
-        ? await ApiService.tasks.getArchive({
-            page: newPageNumber,
-            pageSize: 20,
-          })
-        : await ApiService.tasks.getByStatus(page, {
-            page: newPageNumber,
-            pageSize: 20,
-          });
     setPageNumber(newPageNumber);
+    const tasksFetched = await ApiService.tasks.getAll({
+      page: newPageNumber,
+      pageSize: 10,
+      date: page !== 'ARCHIVED' ? 'today' : undefined,
+      status: page !== 'ARCHIVED' ? page : undefined,
+      isArchived: page === 'ARCHIVED' ? true : undefined,
+    });
     setTasks((prevTasks) => [...prevTasks, ...tasksFetched]);
     setIsLoading(false);
   }
@@ -44,6 +43,32 @@ const TasksPage = () => {
 
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => router.push(ROUTES.task.create)}
+              style={{
+                backgroundColor: theme.colors.primary,
+                borderRadius: 50,
+                marginHorizontal: 8,
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingHorizontal: 8,
+                paddingVertical: 6,
+              }}
+            >
+              <Icon source="plus" size={20} color="white" />
+              <Text
+                variant="bodyMedium"
+                style={{ color: 'white', marginLeft: 2 }}
+              >
+                {i18n.t('generics.add')}
+              </Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
       <SegmentedButtons
         style={{ paddingVertical: 16 }}
         value={page}
@@ -53,7 +78,7 @@ const TasksPage = () => {
         buttons={[
           {
             value: TaskStatusEnum.TODO,
-            label: 'Prévu',
+            label: 'À faire',
           },
           {
             value: TaskStatusEnum.TO_VALIDATE,

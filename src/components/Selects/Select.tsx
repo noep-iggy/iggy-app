@@ -45,7 +45,7 @@ export function Select(props: SelectProps): JSX.Element {
               }}
               placeholder={{
                 label: placeholder,
-                value: null,
+                value: undefined,
                 color: theme.colors.scrim,
               }}
               onValueChange={(value) => onChange(value)}

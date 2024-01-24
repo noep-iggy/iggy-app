@@ -2,7 +2,7 @@ import { RefuseTaskAPi } from './../../types/api/Task';
 import {
   CheckTaskApi,
   CreateTaskApi,
-  SearchParams,
+  TaskSearchParams,
   TaskDto,
   TaskStatusEnum,
   UpdateTaskApi,
@@ -18,32 +18,12 @@ const create = async (task: CreateTaskApi): Promise<TaskDto> => {
   return (await HttpService.post(API_ROUTES.tasks.create, task)).data;
 };
 
-const getAll = async (params: SearchParams): Promise<TaskDto[]> => {
+const getAll = async (params: TaskSearchParams): Promise<TaskDto[]> => {
   return (await HttpService.get(API_ROUTES.tasks.getAll, { params })).data;
 };
 
 const getById = async (id: string): Promise<TaskDto> => {
   return (await HttpService.get(API_ROUTES.tasks.getById(id))).data;
-};
-
-const getAnimalTasks = async (
-  id: string,
-  params: SearchParams
-): Promise<TaskDto[]> => {
-  return (await HttpService.get(API_ROUTES.tasks.animal(id), { params })).data;
-};
-
-const getByStatus = async (
-  status: TaskStatusEnum,
-  params: SearchParams
-): Promise<TaskDto[]> => {
-  return (
-    await HttpService.get(API_ROUTES.tasks.getByStatus(status), { params })
-  ).data;
-};
-
-const getArchive = async (params: SearchParams): Promise<TaskDto[]> => {
-  return (await HttpService.get(API_ROUTES.tasks.getArchive, { params })).data;
 };
 
 const updateById = async (
@@ -74,12 +54,9 @@ export const TaskApiService = {
   create,
   getAll,
   getById,
-  getByStatus,
   updateById,
   check,
   validate,
   refuse,
   deleteById,
-  getArchive,
-  getAnimalTasks,
 };

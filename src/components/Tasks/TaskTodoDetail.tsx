@@ -6,6 +6,10 @@ import AddPictureCard from '../Card/AddPictureCard';
 import { ApiService } from '@/api';
 import { useState } from 'react';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
+import { genericStyles } from '@/constants';
+import SecondaryButton from '../Buttons/SecondaryButton';
+import { ROUTES } from '@/router/routes';
+import { useRouter } from 'expo-router';
 
 interface TaskTodoDetailProps {
   task: TaskDto;
@@ -16,6 +20,7 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
   const { task, setTask } = props;
   const [newPictureUri, setNewPictureUri] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   async function checkTask() {
     if (!task || !newPictureUri) return;
@@ -45,13 +50,29 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
         />
         <TaskHeaderDetail task={task} />
       </View>
-      <PrimaryButton
-        disabled={!newPictureUri || isLoading}
-        loading={isLoading}
-        onPress={() => checkTask()}
-        title={i18n.t('tasks.check')}
-        big
-      />
+      <View
+        style={[
+          genericStyles.flexRow,
+          { width: '100%', justifyContent: 'center', gap: 8 },
+        ]}
+      >
+        <SecondaryButton
+          onPress={() => {
+            router.push(ROUTES.task.update);
+            router.setParams({ id: task.id });
+          }}
+          title={i18n.t('generics.edit')}
+          big
+          icon="pencil"
+        />
+        <PrimaryButton
+          disabled={!newPictureUri || isLoading}
+          loading={isLoading}
+          onPress={() => checkTask()}
+          title={i18n.t('tasks.check')}
+          big
+        />
+      </View>
     </View>
   );
 }

@@ -1,4 +1,3 @@
-import i18n from '@/locales/localization';
 import {
   ScrollView,
   RefreshControl,
@@ -15,6 +14,17 @@ interface RefreshScrollProps extends ScrollViewProps {
   emptyText?: string;
 }
 
+const debounce = (func: Function, delay: number) => {
+  let timeoutId: NodeJS.Timeout;
+
+  return function (...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
 export function RefreshScroll(props: RefreshScrollProps): JSX.Element {
   const {
     isLoading,
@@ -22,30 +32,41 @@ export function RefreshScroll(props: RefreshScrollProps): JSX.Element {
     onNextPage,
     onRefresh,
     isEmpty,
-    emptyText = i18n.t('generics.empty'),
+    emptyText = 'Generics Empty',
     showsVerticalScrollIndicator = false,
     ...restProps
   } = props;
-  const pageSize = 120;
+  const pageSize = 300;
+
+  const debouncedNextPage = debounce(() => {
+    if (!isLoading && onNextPage) {
+      onNextPage();
+    }
+  }, 800);
+
+  const debouncedRefresh = debounce(() => {
+    if (!isLoading && onRefresh) {
+      onRefresh();
+    }
+  }, 800);
 
   const handleScroll = (event: any) => {
     const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    const paddingToBottom = 0; // Vous pouvez ajuster cette valeur selon vos besoins
+    const paddingToBottom = 0;
 
     if (
       layoutMeasurement.height + contentOffset.y >=
       contentSize.height - paddingToBottom
     ) {
-      // Vous avez atteint le bas de la liste
       if (!isLoading && onNextPage && contentSize.height >= pageSize) {
-        onNextPage();
+        debouncedNextPage();
       }
     }
   };
 
   const handleRefresh = () => {
-    if (!isLoading && onRefresh) {
-      onRefresh();
+    if (!isLoading && debouncedRefresh) {
+      debouncedRefresh();
     }
   };
 

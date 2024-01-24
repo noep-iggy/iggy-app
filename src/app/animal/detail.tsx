@@ -31,13 +31,12 @@ const AnimalDetail = () => {
   async function fetchTasks(newPageNumber = 0) {
     if (!params) return;
     setIsTasksLoading(true);
-    const tasksFetched = await ApiService.tasks.getAnimalTasks(
-      params.id as string,
-      {
-        page: newPageNumber,
-        pageSize: 10,
-      }
-    );
+    const tasksFetched = await ApiService.tasks.getAll({
+      page: newPageNumber,
+      pageSize: 10,
+      animalId: params.id as string,
+      date: 'today',
+    });
     setPageNumber(newPageNumber);
     setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsTasksLoading(false);

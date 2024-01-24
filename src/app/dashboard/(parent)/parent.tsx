@@ -4,7 +4,7 @@ import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ActivityIndicator, View } from 'react-native';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
-import { AnimalDto, TaskDto, TaskStatusEnum } from '@/types';
+import { AnimalDto, TaskDto } from '@/types';
 import { ApiService } from '@/api';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ROUTES } from '@/router/routes';
@@ -30,13 +30,11 @@ const ParentDashboard = () => {
 
   async function fetchTasks(newPageNumber = 0) {
     setIsLoadingTasks(true);
-    const tasksFetched = await ApiService.tasks.getByStatus(
-      TaskStatusEnum.TODO,
-      {
-        page: newPageNumber,
-        pageSize: 10,
-      }
-    );
+    const tasksFetched = await ApiService.tasks.getAll({
+      page: newPageNumber,
+      pageSize: 10,
+      date: 'today',
+    });
     setPageNumber(newPageNumber);
     setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsLoadingTasks(false);
@@ -94,7 +92,7 @@ const ParentDashboard = () => {
         }}
       >
         <Text variant="headlineMedium" style={{ fontWeight: 'bold' }}>
-          Tâches
+          Tâches du jour
         </Text>
         <PrimaryButton
           title="Ajouter"

@@ -8,13 +8,16 @@
     "animal_detail": "Chargement de l'animal",
     "dashboard": "Tableau de bord",
     "tasks_create": "Créer une tâche",
+    "tasks_update": "Modifier une tâche",
     "tasks_parent-detail": "Détail de la tâche",
     "modals_refuse-task-modal": "Refuser la tâche"
   },
   "generics": {
     "back": "Retour",
     "edit": "Modifier",
-    "empty": "Aucun élément"
+    "empty": "Aucun élément",
+    "add": "Ajouter",
+    "update": "Mettre à jour"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -344,7 +347,8 @@
         "create": "L'animal a bien été créé"
       },
       "task": {
-        "create": "La tâche a bien été créée"
+        "create": "La tâche a bien été créée",
+        "update": "La tâche a bien été mise à jour"
       }
     },
     "register": {
