@@ -13,9 +13,11 @@ export function formatDate(date: Date): string {
   const dateObj = new Date(date);
   const day = dateObj.getDate().toString().padStart(2, '0');
   const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+  const year = dateObj.getFullYear();
 
   const today = new Date();
   const yesterday = new Date().setDate(today.getDate() - 1);
+  const tomorrow = new Date().setDate(today.getDate() + 1);
 
   if (
     dateObj.getDate() === today.getDate() &&
@@ -29,7 +31,13 @@ export function formatDate(date: Date): string {
   ) {
     return 'Hier';
   }
-  return `${day}/${month}`;
+  if (
+    dateObj.getDate() === new Date(tomorrow).getDate() &&
+    dateObj.getMonth() === new Date(tomorrow).getMonth()
+  ) {
+    return 'Demain';
+  }
+  return `${day}/${month}/${year}`;
 }
 
 export function formatDateTime(date: Date): string {

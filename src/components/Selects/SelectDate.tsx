@@ -1,19 +1,20 @@
+import { formatDate, formatDateTime } from '@/utils';
 import { ErrorMessage } from '@hookform/error-message';
 import { useState } from 'react';
 import { Controller, useFormContext, useFormState } from 'react-hook-form';
-import { Pressable, ViewProps } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { Pressable, ViewProps, StyleSheet } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Icon, Text, useTheme } from 'react-native-paper';
 
 interface SelectDateProps extends ViewProps {
   placeholder?: string;
   name: string;
+  mode?: 'date' | 'time' | 'datetime';
 }
 
 export function SelectDate(props: SelectDateProps): JSX.Element {
-  const { name, placeholder, style, ...rest } = props;
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const { name, placeholder, style, mode = 'date', ...rest } = props;
+  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const { control } = useFormContext();
   const { errors } = useFormState();
   const theme = useTheme();
@@ -24,19 +25,19 @@ export function SelectDate(props: SelectDateProps): JSX.Element {
         render={({ field: { onChange, value } }) => (
           <Pressable
             style={[{ ...pickerSelectStyles.select }, style]}
-            onPress={() => setDatePickerVisibility(true)}
+            onPress={() => setIsDatePickerVisible(true)}
             {...rest}
           >
             {value ? (
               <Text style={{ ...pickerSelectStyles.text }} variant="bodyMedium">
-                {value.toLocaleDateString()}
+                {mode === 'date' ? formatDate(value) : formatDateTime(value)}
               </Text>
             ) : (
               <Text
                 variant="bodyMedium"
                 style={[
                   pickerSelectStyles.text,
-                  { color: theme.colors.outlineVariant },
+                  { color: theme.colors.outline },
                 ]}
               >
                 {placeholder}
@@ -48,14 +49,14 @@ export function SelectDate(props: SelectDateProps): JSX.Element {
               confirmTextIOS="OK"
               cancelTextIOS="Annuler"
               isVisible={isDatePickerVisible}
-              mode="date"
+              mode={mode}
               locale="fr_FR"
               date={value}
               onConfirm={(value) => {
                 onChange(new Date(value));
-                setDatePickerVisibility(false);
+                setIsDatePickerVisible(false);
               }}
-              onCancel={() => setDatePickerVisibility(false)}
+              onCancel={() => setIsDatePickerVisible(false)}
             />
           </Pressable>
         )}

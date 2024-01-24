@@ -37,7 +37,7 @@ export function Select(props: SelectProps): JSX.Element {
                   top: 12,
                   right: 5,
                 },
-                placeholder: { color: theme.colors.outlineVariant },
+                placeholder: { color: theme.colors.outline },
                 inputIOS: {
                   ...pickerSelectStyles.inputIOS,
                   color: theme.dark ? 'white' : 'black',
@@ -46,7 +46,7 @@ export function Select(props: SelectProps): JSX.Element {
               placeholder={{
                 label: placeholder,
                 value: null,
-                color: 'grey',
+                color: theme.colors.scrim,
               }}
               onValueChange={(value) => onChange(value)}
               value={value}

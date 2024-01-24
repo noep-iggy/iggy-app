@@ -82,6 +82,11 @@
       "subtitle": "Êtes-vous sûr de vouloir refuser cette tâche ?",
       "cancel": "Annuler",
       "confirm": "Confirmer"
+    },
+    "create": {
+      "title": "Créer une tâche",
+      "subtitle": "Indiquez ici les informations de la tâche",
+      "submit": "Créer la tâche"
     }
   },
   "joinPage": {
@@ -133,6 +138,15 @@
         "notValid": "L'email n'est pas valide"
       }
     },
+    "date": {
+      "label": "Date",
+      "placeholder": "Choisissez une date",
+      "errors": {
+        "required": "La date est requise",
+        "notString": "La date doit être une chaîne de caractères",
+        "notValid": "La date n'est pas valide"
+      }
+    },
     "role": {
       "label": "Rôle",
       "placeholder": "Choisissez un rôle",
@@ -158,11 +172,19 @@
       }
     },
     "animals": {
-      "label": "Animaux",
+      "label": "Quel animal ?",
       "placeholder": "Choisissez un animal ou plusieurs animaux",
       "errors": {
         "required": "L'animal est requis",
         "notString": "L'animal doit être une chaîne de caractères"
+      }
+    },
+    "users": {
+      "label": "Qui doit faire la tâche ?",
+      "placeholder": "Choisissez un utilisateur ou plusieurs utilisateurs",
+      "errors": {
+        "required": "L'utilisateur est requis",
+        "notString": "L'utilisateur doit être une chaîne de caractères"
       }
     },
     "basePrice": {
@@ -209,7 +231,7 @@
       }
     },
     "description": {
-      "label": "Description",
+      "label": "Description (optionnel)",
       "placeholder": "Entrez une description",
       "errors": {
         "required": "La description est requise",
@@ -225,7 +247,7 @@
       }
     },
     "recurrence": {
-      "label": "Récurrence",
+      "label": "Récurrence (optionnel)",
       "placeholder": "Choisissez une récurrence",
       "errors": {
         "required": "La récurrence est requise",
@@ -309,6 +331,7 @@
     "api": {
       "login": "Vous êtes connecté",
       "logout": "Vous êtes déconnecté",
+
       "register": "Votre compte a bien été créé",
       "house": {
         "create": "La maison a bien été créée",
@@ -319,6 +342,9 @@
       },
       "animal": {
         "create": "L'animal a bien été créé"
+      },
+      "task": {
+        "create": "La tâche a bien été créée"
       }
     },
     "register": {
