@@ -14,10 +14,12 @@
   },
   "generics": {
     "back": "Retour",
+    "cancel": "Annuler",
     "edit": "Modifier",
     "empty": "Aucun élément",
     "add": "Ajouter",
-    "update": "Mettre à jour"
+    "update": "Mettre à jour",
+    "delete": "Supprimer"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -348,7 +350,8 @@
       },
       "task": {
         "create": "La tâche a bien été créée",
-        "update": "La tâche a bien été mise à jour"
+        "update": "La tâche a bien été mise à jour",
+        "delete": "La tâche a bien été supprimée"
       }
     },
     "register": {

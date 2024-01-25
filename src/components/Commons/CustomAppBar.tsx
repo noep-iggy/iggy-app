@@ -1,6 +1,7 @@
 import i18n from '@/locales/localization';
 import { transformPathToKey } from '@/utils';
 import { usePathname } from 'expo-router';
+import { View } from 'react-native';
 import { Appbar } from 'react-native-paper';
 
 interface CustomNavigationBarProps {
@@ -24,6 +25,9 @@ const CustomNavigationBar = ({
     <Appbar.Header statusBarHeight={removeStatusBar ? 0 : undefined}>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={title} />
+      {options.headerRight ? (
+        <View style={{ marginRight: 10 }}>{options.headerRight()}</View>
+      ) : null}
     </Appbar.Header>
   );
 };

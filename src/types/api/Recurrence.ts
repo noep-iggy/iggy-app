@@ -6,6 +6,6 @@ export interface CreateRecurrenceApi {
 }
 
 export interface UpdateRecurrenceApi {
-  type?: TaskRecurrenceEnum;
+  type?: TaskRecurrenceEnum | null;
   date?: Date;
 }
