@@ -5,6 +5,10 @@ export const ROUTES = {
     register: 'auth/register' as never,
     join: 'auth/join' as never,
   },
+  user: {
+    update: 'user/update' as never,
+    detail: 'user/detail' as never,
+  },
   dashboard: {
     parent: 'dashboard/parent' as never,
     child: 'dashboard/child' as never,

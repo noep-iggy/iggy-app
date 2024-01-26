@@ -2,41 +2,44 @@ import { ApiService } from '@/api';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
 import { genericStyles } from '@/constants';
-import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
+import { UserDto } from '@/types';
 import { formatDateTime } from '@/utils';
 import { useActionSheet } from '@expo/react-native-action-sheet';
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import {
+  Stack,
+  useFocusEffect,
+  useLocalSearchParams,
+  useRouter,
+} from 'expo-router';
+import { useCallback, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useTheme, Icon, Text, Divider } from 'react-native-paper';
 
-const ProfileSettings = () => {
-  const { currentUser, removeToken } = useAuthContext();
+const UserDetail = () => {
   const { showActionSheetWithOptions } = useActionSheet();
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
+  const [user, setUser] = useState<UserDto>();
   const params = useLocalSearchParams();
   const theme = useTheme();
   const router = useRouter();
 
   async function removeUser() {
     if (!params) return;
-    await ApiService.users.deleteMe();
-    removeToken();
-    router.push(ROUTES.auth.login);
+    await ApiService.users.deleteById(params.id as string);
+    router.back();
   }
 
   const onPress = () => {
     const options = [
       i18n.t('generics.update'),
-      i18n.t('generics.logout'),
       i18n.t('generics.delete'),
       i18n.t('generics.cancel'),
     ];
-    const destructiveButtonIndex = 2;
-    const cancelButtonIndex = 3;
+    const destructiveButtonIndex = 1;
+    const cancelButtonIndex = 2;
 
     showActionSheetWithOptions(
       {
@@ -50,11 +53,7 @@ const ProfileSettings = () => {
         switch (selectedIndex) {
           case 0:
             router.push(ROUTES.user.update);
-            router.setParams({ id: currentUser?.id ?? '' });
-            break;
-          case 1:
-            removeToken();
-            router.push(ROUTES.auth.login);
+            router.setParams({ id: user?.id ?? '' });
             break;
           case destructiveButtonIndex:
             setIsConfirmVisible(true);
@@ -64,36 +63,47 @@ const ProfileSettings = () => {
       }
     );
   };
+
+  async function fetchUser(id: string) {
+    const user = await ApiService.users.getById(id);
+    setUser(user);
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!params.id) return;
+      fetchUser(params.id as string);
+    }, [params])
+  );
+
   const PROFILE = [
     {
       label: i18n.t('fields.firstName.label'),
-      value: currentUser?.firstName,
+      value: user?.firstName,
     },
     {
       label: i18n.t('fields.lastName.label'),
-      value: currentUser?.lastName,
+      value: user?.lastName ?? i18n.t('generics.empty'),
     },
     {
       label: i18n.t('fields.email.label'),
-      value: currentUser?.email,
+      value: user?.email ?? i18n.t('generics.empty'),
     },
     {
       label: i18n.t('fields.role.label'),
-      value: i18n.t(`enums.role.${currentUser?.role}`),
+      value: i18n.t(`enums.role.${user?.role}`),
     },
     {
       label: i18n.t('fields.generics.createdAt'),
-      value: formatDateTime(currentUser?.createdAt ?? new Date()),
+      value: formatDateTime(user?.createdAt ?? new Date()),
     },
     {
       label: i18n.t('fields.generics.updatedAt'),
-      value: formatDateTime(currentUser?.updatedAt ?? new Date()),
+      value: formatDateTime(user?.updatedAt ?? new Date()),
     },
     {
       label: i18n.t('fields.generics.admin'),
-      value: currentUser?.isAdmin
-        ? i18n.t('generics.yes')
-        : i18n.t('generics.no'),
+      value: user?.isAdmin ? i18n.t('generics.yes') : i18n.t('generics.no'),
     },
   ];
 
@@ -108,7 +118,7 @@ const ProfileSettings = () => {
       >
         <Stack.Screen
           options={{
-            headerTitle: currentUser?.firstName,
+            headerTitle: user?.firstName,
             headerRight: () => (
               <TouchableOpacity onPress={onPress}>
                 <Icon size={25} source="dots-vertical" />
@@ -142,4 +152,4 @@ const ProfileSettings = () => {
   );
 };
 
-export default ProfileSettings;
+export default UserDetail;

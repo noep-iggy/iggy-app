@@ -120,6 +120,20 @@ const Layout = () => {
                   header: (props) => <CustomAppBar {...props} />,
                 }}
               />
+              <Stack.Screen
+                name={ROUTES.user.update}
+                options={{
+                  presentation: 'modal',
+                  header: (props) => <CustomModalBar {...props} />,
+                }}
+              />
+              <Stack.Screen
+                name={ROUTES.user.detail}
+                options={{
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
+                }}
+              />
             </Stack>
             <Toast topOffset={insets.top} />
           </SafeAreaProvider>

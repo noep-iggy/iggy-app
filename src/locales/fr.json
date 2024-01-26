@@ -14,7 +14,8 @@
     "modals_refuse-task-modal": "Refuser la tâche",
     "settings_profile": "Mon profil",
     "settings_house": "Ma maison",
-    "settings_family": "Ma famille"
+    "settings_family": "Ma famille",
+    "user_update": "Modifier un utilisateur"
   },
   "generics": {
     "back": "Retour",
@@ -22,8 +23,11 @@
     "edit": "Modifier",
     "empty": "Aucun élément",
     "add": "Ajouter",
-    "update": "Mettre à jour",
-    "delete": "Supprimer"
+    "update": "Modifier",
+    "delete": "Supprimer",
+    "logout": "Se déconnecter",
+    "yes": "Oui",
+    "no": "Non"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -69,6 +73,15 @@
     "billingPlan": {
       "MONTHLY": "Mensuel",
       "FOR_LIFE": "A vie"
+    }
+  },
+  "users": {
+    "empty": "Aucun utilisateurs",
+    "me": {
+      "confirmDelete": {
+        "title": "Supprimer mon compte",
+        "subtitle": "Êtes-vous sûr de vouloir supprimer votre compte ?"
+      }
     }
   },
   "LoginPage": {
@@ -140,7 +153,10 @@
   },
   "fields": {
     "generics": {
-      "addData": "Ajouter une valeur"
+      "addData": "Ajouter une valeur",
+      "createdAt": "Date de création",
+      "updatedAt": "Date de mise à jour",
+      "admin": "Administrateur"
     },
     "firstName": {
       "label": "Prénom",
@@ -378,6 +394,10 @@
         "create": "La tâche a bien été créée",
         "update": "La tâche a bien été mise à jour",
         "delete": "La tâche a bien été supprimée"
+      },
+      "user": {
+        "update": "L'utilisateur a bien été mis à jour",
+        "delete": "L'utilisateur a bien été supprimé"
       }
     },
     "register": {

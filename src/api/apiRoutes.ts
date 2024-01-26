@@ -61,5 +61,6 @@ export const API_ROUTES = {
     deleteMe: '/users/me',
     updateById: (id: string) => `/users/${id}`,
     deleteById: (id: string) => `/users/${id}`,
+    getById: (id: string) => `/users/${id}`,
   },
 };

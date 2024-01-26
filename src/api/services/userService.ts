@@ -22,6 +22,10 @@ const updateById = async (
     .data;
 };
 
+const getById = async (id: string): Promise<UserDto> => {
+  return (await HttpService.get(API_ROUTES.users.getById(id))).data;
+};
+
 const deleteById = async (id: string): Promise<void> => {
   await HttpService.delete(API_ROUTES.users.deleteById(id));
 };
@@ -32,4 +36,5 @@ export const UserApiService = {
   deleteMe,
   updateById,
   deleteById,
+  getById,
 };

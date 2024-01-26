@@ -94,6 +94,7 @@ const TaskUpdate = () => {
   }
 
   useEffect(() => {
+    if (!params.id) return;
     fetchTask(params.id as string);
     fetchUsers();
     fetchAnimals();

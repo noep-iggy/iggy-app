@@ -78,6 +78,7 @@ const AnimalUpdate = () => {
     if (!params.id) return;
     fetchAnimal(params.id as string);
   }, [params]);
+
   const ANIMALS = [
     {
       id: 0,

@@ -1,9 +1,9 @@
 import { genericStyles } from '@/constants';
-import { TouchableOpacity, View, ViewProps } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { Icon, Text, useTheme } from 'react-native-paper';
 
-interface SettingCardProps extends ViewProps {
-  icon: string;
+interface SettingCardProps extends TouchableOpacityProps {
+  icon?: string;
   title: string;
   description: string;
 }
@@ -31,7 +31,7 @@ export function SettingCard(props: SettingCardProps): JSX.Element {
       ]}
       {...props}
     >
-      <Icon color={colors.primary} source={icon} size={24} />
+      {icon && <Icon color={colors.primary} source={icon} size={24} />}
       <View style={[genericStyles.flexColumn, { flex: 1, marginLeft: 16 }]}>
         <Text variant="titleMedium" style={{ fontWeight: 'bold' }}>
           {title}
