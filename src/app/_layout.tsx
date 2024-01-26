@@ -53,8 +53,8 @@ const Layout = () => {
               <Stack.Screen
                 name={ROUTES.animal.detail}
                 options={{
-                  presentation: 'modal',
-                  header: (props) => <CustomModalBar {...props} />,
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
                 }}
               />
               <Stack.Screen
@@ -87,6 +87,13 @@ const Layout = () => {
               />
               <Stack.Screen
                 name={ROUTES.task.update}
+                options={{
+                  presentation: 'modal',
+                  header: (props) => <CustomModalBar {...props} />,
+                }}
+              />
+              <Stack.Screen
+                name={ROUTES.animal.update}
                 options={{
                   presentation: 'modal',
                   header: (props) => <CustomModalBar {...props} />,

@@ -17,6 +17,7 @@ import i18n from '@/locales/localization';
 import Toast from 'react-native-toast-message';
 import { useActionSheet } from '@expo/react-native-action-sheet';
 import { ROUTES } from '@/router/routes';
+import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
 
 const TaskDetail = () => {
   const params = useLocalSearchParams();
@@ -24,6 +25,7 @@ const TaskDetail = () => {
   const { showActionSheetWithOptions } = useActionSheet();
   const [task, setTask] = useState<TaskDto>();
   const [isLoading, setIsLoading] = useState(true);
+  const [isConfirmVisible, setIsConfirmVisible] = useState(false);
 
   async function fetchTask() {
     if (!params) return;
@@ -104,7 +106,7 @@ const TaskDetail = () => {
             router.setParams({ id: params.id as string });
             break;
           case destructiveButtonIndex:
-            removeTask();
+            setIsConfirmVisible(true);
             break;
           case cancelButtonIndex:
         }
@@ -113,24 +115,36 @@ const TaskDetail = () => {
   };
 
   return (
-    <UniversalSafeArea
-      style={{
-        padding: 16,
-      }}
-      asView
-    >
-      <Stack.Screen
-        options={{
-          headerRight: () => (
-            <TouchableOpacity onPress={onPress}>
-              <Icon size={25} source="dots-vertical" />
-            </TouchableOpacity>
-          ),
+    <>
+      <UniversalSafeArea
+        style={{
+          padding: 16,
         }}
-      />
+        asView
+      >
+        <Stack.Screen
+          options={{
+            headerRight: () => (
+              <TouchableOpacity onPress={onPress}>
+                <Icon size={25} source="dots-vertical" />
+              </TouchableOpacity>
+            ),
+          }}
+        />
 
-      {taskRender(task.status)}
-    </UniversalSafeArea>
+        {taskRender(task.status)}
+      </UniversalSafeArea>
+      <DeleteDialog
+        visible={isConfirmVisible}
+        onConfirm={() => {
+          setIsConfirmVisible(false);
+          removeTask();
+        }}
+        onCancel={() => setIsConfirmVisible(false)}
+        title={i18n.t('tasks.confirmDelete.title')}
+        content={i18n.t('tasks.confirmDelete.subtitle')}
+      />
+    </>
   );
 };
 

@@ -6,6 +6,7 @@
     "auth_register": "Créer une maison",
     "animal_create": "Ajouter un animal",
     "animal_detail": "Chargement de l'animal",
+    "animal_update": "Modifier un animal",
     "dashboard": "Tableau de bord",
     "tasks_create": "Créer une tâche",
     "tasks_update": "Modifier une tâche",
@@ -33,11 +34,18 @@
         "NULL": "Aucune récurrence"
       }
     },
+    "period": {
+      "YESTERDAY": "Hier",
+      "TODAY": "Aujourd'hui",
+      "TOMORROW": "Demain",
+      "WEEK": "Cette semaine",
+      "MONTH": "Ce mois-ci"
+    },
     "status": {
       "TODO": "À faire",
       "DONE": "Terminé",
       "TO_VALIDATE": "À valider",
-      "ARCHIVED": "Archivé",
+      "ARCHIVED": "En retard",
       "SLEEPING": "En sommeil",
       "HAPPY": "Heureux",
       "NORMAL": "Normal",
@@ -77,6 +85,15 @@
     },
     "createHouse": "Créer mon foyer"
   },
+  "animals": {
+    "detail": {
+      "tasks": "Tâches du jour :"
+    },
+    "confirmDelete": {
+      "title": "Supprimer l'animal",
+      "subtitle": "Êtes-vous sûr de vouloir supprimer cet animal ?"
+    }
+  },
   "tasks": {
     "noTasks": "Aucune tâche de prévue",
     "check": "Faire vérifier la tâche",
@@ -87,6 +104,10 @@
       "subtitle": "Êtes-vous sûr de vouloir refuser cette tâche ?",
       "cancel": "Annuler",
       "confirm": "Confirmer"
+    },
+    "confirmDelete": {
+      "title": "Supprimer la tâche",
+      "subtitle": "Êtes-vous sûr de vouloir supprimer cette tâche ?"
     },
     "create": {
       "title": "Créer une tâche",
@@ -346,7 +367,9 @@
         "join": "Bienvenue dans votre nouvelle maison"
       },
       "animal": {
-        "create": "L'animal a bien été créé"
+        "create": "L'animal a bien été créé",
+        "update": "L'animal a bien été mis à jour",
+        "delete": "L'animal a bien été supprimé"
       },
       "task": {
         "create": "La tâche a bien été créée",

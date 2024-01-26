@@ -30,7 +30,9 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: 4,
-          backgroundColor: theme.colors.surfaceVariant,
+          backgroundColor: task.isArchived
+            ? theme.colors.errorContainer
+            : theme.colors.surfaceVariant,
           borderWidth: 1,
           borderColor: task.isArchived
             ? theme.colors.error

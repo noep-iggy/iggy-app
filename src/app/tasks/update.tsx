@@ -38,7 +38,7 @@ const TaskUpdate = () => {
     mode: 'onTouched',
   });
 
-  const { handleSubmit, formState, setError, getValues } = formApi;
+  const { handleSubmit, formState, setError } = formApi;
   const { isSubmitting, isValid } = formState;
 
   async function onSubmit(data: UpdateTaskApi) {
@@ -94,15 +94,10 @@ const TaskUpdate = () => {
   }
 
   useEffect(() => {
+    fetchTask(params.id as string);
     fetchUsers();
     fetchAnimals();
   }, [params]);
-
-  useEffect(() => {
-    if (params.id && users.length && animals.length) {
-      fetchTask(params.id as string);
-    }
-  }, [params, users, animals]);
 
   return (
     <KeyboardAvoidingView

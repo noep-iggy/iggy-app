@@ -1,14 +1,14 @@
 import { Text } from 'react-native-paper';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ActivityIndicator, View } from 'react-native';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
-import { AnimalDto, TaskDto } from '@/types';
+import { AnimalDto, TaskDto, TaskPeriodEnum } from '@/types';
 import { ApiService } from '@/api';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { ROUTES } from '@/router/routes';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import i18n from '@/locales/localization';
 import AddPetCard from '@/components/Card/AddPetCard';
 import PetCard from '@/components/Card/PetCard';
@@ -33,17 +33,21 @@ const ParentDashboard = () => {
     const tasksFetched = await ApiService.tasks.getAll({
       page: newPageNumber,
       pageSize: 10,
-      date: 'today',
+      date: TaskPeriodEnum.TODAY,
     });
     setPageNumber(newPageNumber);
     setTasks((existingTasks) => [...existingTasks, ...tasksFetched]);
     setIsLoadingTasks(false);
   }
 
-  useEffect(() => {
-    fetchTasks(0);
-    fetchAnimals();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchTasks(0);
+      setTasks([]);
+      setPageNumber(0);
+      fetchAnimals();
+    }, [])
+  );
 
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>

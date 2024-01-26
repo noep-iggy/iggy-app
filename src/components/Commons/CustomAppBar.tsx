@@ -24,7 +24,7 @@ const CustomNavigationBar = ({
   return (
     <Appbar.Header statusBarHeight={removeStatusBar ? 0 : undefined}>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-      <Appbar.Content title={title} />
+      <Appbar.Content title={options.headerTitle ?? title} />
       {options.headerRight ? (
         <View style={{ marginRight: 10 }}>{options.headerRight()}</View>
       ) : null}

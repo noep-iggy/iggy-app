@@ -111,7 +111,7 @@ const AnimalCreate = () => {
             <View
               onTouchEnd={() => {
                 if (ANIMALS_AVAIABLE.includes(animal.id)) {
-                  setValue('type', animal.type as AnimalTypeEnum);
+                  setValue('type', animal.type);
                 }
               }}
               key={animal.id}
