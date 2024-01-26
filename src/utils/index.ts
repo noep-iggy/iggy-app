@@ -43,3 +43,14 @@ export function formatDate(date: Date): string {
 export function formatDateTime(date: Date): string {
   return `${formatDate(date)} à ${formatTime(date)}`;
 }
+
+export function extractSubstring(inputString: string): string {
+  const separatorIndex: number = inputString.indexOf('/');
+
+  if (separatorIndex !== -1) {
+    return inputString.substring(separatorIndex + 1);
+  } else {
+    // Retourner la chaîne d'origine si '/' n'est pas trouvé
+    return inputString;
+  }
+}

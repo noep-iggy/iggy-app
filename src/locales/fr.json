@@ -11,7 +11,10 @@
     "tasks_create": "Créer une tâche",
     "tasks_update": "Modifier une tâche",
     "tasks_parent-detail": "Détail de la tâche",
-    "modals_refuse-task-modal": "Refuser la tâche"
+    "modals_refuse-task-modal": "Refuser la tâche",
+    "settings_profile": "Mon profil",
+    "settings_house": "Ma maison",
+    "settings_family": "Ma famille"
   },
   "generics": {
     "back": "Retour",

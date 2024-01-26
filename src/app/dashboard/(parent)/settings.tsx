@@ -1,70 +1,64 @@
-import { View } from 'react-native';
-import { useAuthContext } from '@/contexts';
-import { Button, Text } from 'react-native-paper';
-import { JoinCodeDto } from '@/types';
-import { useState } from 'react';
-import { ApiService } from '@/api';
+import { ScrollView, View } from 'react-native';
 import { genericStyles } from '@/constants';
+import { SettingCard } from '@/components/Card/SettingCard';
+import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
+import { ROUTES } from '@/router/routes';
+import { useRouter } from 'expo-router';
 
 const Settings = () => {
-  const { currentUser, removeToken } = useAuthContext();
-  const [code, setCode] = useState<JoinCodeDto>();
+  const router = useRouter();
 
-  async function createJoinCodeParent() {
-    const joinCode = await ApiService.joinCode.create.parent();
-    setCode(joinCode);
-  }
-
-  async function createJoinCodeChild() {
-    const joinCode = await ApiService.joinCode.create.child();
-    setCode(joinCode);
-  }
+  const SETTINGS = [
+    {
+      icon: 'account-circle',
+      title: 'Profile',
+      description: 'Gérer votre profil',
+      onPress: () => router.push(ROUTES.settings.profile),
+    },
+    {
+      icon: 'account-multiple',
+      title: 'Famille',
+      description: 'Gérer votre famille',
+      onPress: () => router.push(ROUTES.settings.family),
+    },
+    {
+      icon: 'home',
+      title: 'Maison',
+      description: 'Gérer votre maison',
+      onPress: () => router.push(ROUTES.settings.house),
+    },
+    {
+      icon: 'bell',
+      title: 'Notifications',
+      description: 'Gérer vos notifications',
+    },
+    {
+      icon: 'lock',
+      title: 'Privacy',
+      description: 'Gérer votre vie privée',
+    },
+    {
+      icon: 'help-circle',
+      title: 'Help',
+      description: "Besoin d'aide ?",
+    },
+    {
+      icon: 'information',
+      title: 'À Propos',
+      description: 'Qui sommes-nous ?',
+    },
+  ];
 
   return (
-    <View>
-      <Text>Settings</Text>
-      {currentUser && (
-        <Button
-          mode="outlined"
-          style={{ backgroundColor: 'white' }}
-          onPress={() => removeToken()}
-        >
-          {'Logout'}
-        </Button>
-      )}
-      <View
-        style={[
-          genericStyles.colCenter,
-          {
-            marginTop: 20,
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            padding: 20,
-          },
-        ]}
-      >
-        <Text variant="headlineMedium">{'Create Join Code'}</Text>
-        <Text variant="headlineSmall" style={{ marginTop: 10 }}>
-          {code?.code}
-        </Text>
-        <View style={[genericStyles.flexRow, { marginTop: 20, gap: 5 }]}>
-          <Button
-            mode="outlined"
-            style={{ backgroundColor: 'white' }}
-            onPress={createJoinCodeParent}
-          >
-            {'Parent'}
-          </Button>
-          <Button
-            mode="outlined"
-            style={{ backgroundColor: 'white' }}
-            onPress={createJoinCodeChild}
-          >
-            {'Child'}
-          </Button>
+    <UniversalSafeArea asView>
+      <ScrollView style={{ padding: 16 }}>
+        <View style={[genericStyles.colCenter, { gap: 10 }]}>
+          {SETTINGS.map((setting) => (
+            <SettingCard key={setting.title} {...setting} />
+          ))}
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </UniversalSafeArea>
   );
 };
 

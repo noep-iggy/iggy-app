@@ -26,6 +26,8 @@ export function DeleteDialog(props: DeleteDialogProps): JSX.Element {
       <Dialog
         style={{
           backgroundColor: theme.colors.onError,
+          borderColor: theme.colors.errorContainer,
+          borderWidth: 2,
         }}
         visible={visible}
         onDismiss={() => onCancel()}

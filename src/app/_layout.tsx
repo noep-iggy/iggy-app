@@ -99,6 +99,27 @@ const Layout = () => {
                   header: (props) => <CustomModalBar {...props} />,
                 }}
               />
+              <Stack.Screen
+                name={ROUTES.settings.profile}
+                options={{
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
+                }}
+              />
+              <Stack.Screen
+                name={ROUTES.settings.family}
+                options={{
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
+                }}
+              />
+              <Stack.Screen
+                name={ROUTES.settings.house}
+                options={{
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
+                }}
+              />
             </Stack>
             <Toast topOffset={insets.top} />
           </SafeAreaProvider>

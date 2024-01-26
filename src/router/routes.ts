@@ -25,4 +25,9 @@ export const ROUTES = {
   modals: {
     refuseTaskModal: 'modals/refuse-task-modal' as never,
   },
+  settings: {
+    profile: 'settings/profile' as never,
+    family: 'settings/family' as never,
+    house: 'settings/house' as never,
+  },
 };
