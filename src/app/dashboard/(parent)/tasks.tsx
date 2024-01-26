@@ -22,7 +22,7 @@ const TasksPage = () => {
   const theme = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [tasks, setTasks] = useState<TaskDto[]>([]);
-  const [page, setPage] = useState<TaskStatusEnum>(TaskStatusEnum.TODO);
+  const [page, setPage] = useState<TaskStatusEnum>(TaskStatusEnum.TO_VALIDATE);
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [period, setPeriod] = useState<TaskPeriodEnum>(TaskPeriodEnum.TODAY);
   const [isArchivedSelected, setIsArchivedSelected] = useState<boolean>(false);

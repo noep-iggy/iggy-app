@@ -1,10 +1,10 @@
-import { Card } from 'react-native-paper';
-import { BasicAnimalDto } from '@/types';
+import { Card, Text } from 'react-native-paper';
+import { AnimalTypeEnum, BasicAnimalDto } from '@/types';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { animalResolver } from '@/utils/animal';
-
+import LottieView from 'lottie-react-native';
+import { animalAnimationResolver } from '@/utils/animal';
 export interface PetCardProps {
   animal?: BasicAnimalDto;
 }
@@ -21,20 +21,16 @@ const PetCard = ({ animal }: PetCardProps) => {
         mode="contained"
         contentStyle={{ alignItems: 'center', width: 175 }}
       >
-        <Card.Title
-          title={animal?.name ?? 'Animal'}
-          titleStyle={{ textAlign: 'center' }}
-        />
-        <Card.Cover
-          source={animalResolver(animal?.type)}
-          style={{
-            width: 175,
-            height: 120,
-            backgroundColor: 'transparent',
-            backgroundPosition: 'top',
-            marginBottom: 10,
-          }}
-          resizeMode="contain"
+        <Text
+          variant="headlineSmall"
+          style={{ textAlign: 'center', marginTop: 5 }}
+        >
+          {animal?.name ?? 'Animal'}
+        </Text>
+        <LottieView
+          autoPlay={true}
+          source={animalAnimationResolver(animal?.type ?? AnimalTypeEnum.DOG)}
+          style={{ width: 150, height: 150 }}
         />
       </Card>
     </TouchableOpacity>

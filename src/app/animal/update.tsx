@@ -22,6 +22,8 @@ import FormField from '@/components/Forms/FormField';
 import { Select, SelectDate } from '@/components/Selects';
 import { useEffect, useState } from 'react';
 import SecondaryButton from '@/components/Buttons/SecondaryButton';
+import LottieView from 'lottie-react-native';
+import { animalAnimationResolver } from '@/utils/animal';
 
 const AnimalUpdate = () => {
   const router = useRouter();
@@ -129,10 +131,12 @@ const AnimalUpdate = () => {
           <View
             style={[genericStyles.colCenter, { marginTop: 30, width: '100%' }]}
           >
-            <Image
-              source={animalSelected?.url}
-              resizeMode="contain"
-              style={{ width: 250, height: 250 }}
+            <LottieView
+              autoPlay={true}
+              source={animalAnimationResolver(
+                animalSelected?.type ?? AnimalTypeEnum.DOG
+              )}
+              style={{ width: 300, height: 300 }}
             />
             <View
               style={[
