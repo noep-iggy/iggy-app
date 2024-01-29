@@ -18,6 +18,7 @@ export function InputCode(props: InputCodeProps): JSX.Element {
   const [code, setCode] = useState<string[]>(Array(6).fill(''));
   const inputRefs = useRef<Array<TextInput | null>>(Array(6).fill(null));
   const theme = useTheme();
+
   useEffect(() => {
     inputRefs.current.forEach((ref, index) => {
       if (ref && index < inputRefs.current.length - 1) {
@@ -72,10 +73,6 @@ export function InputCode(props: InputCodeProps): JSX.Element {
   useEffect(() => {
     onChangeText?.(code.join(''));
   }, [code]);
-
-  useEffect(() => {
-    inputRefs.current[0]?.focus();
-  }, []);
 
   return (
     <View

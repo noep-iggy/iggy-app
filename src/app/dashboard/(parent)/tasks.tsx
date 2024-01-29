@@ -99,7 +99,7 @@ const TasksPage = () => {
             borderWidth: 1,
             borderColor: theme.colors.outline,
           }}
-          textColor={'black'}
+          textColor={theme.colors.onSurface}
           icon={({ color }) => <Icon source="clock" size={18} color={color} />}
           mode={isArchivedSelected ? 'contained' : 'outlined'}
           onPress={() => setIsArchivedSelected((prev) => !prev)}

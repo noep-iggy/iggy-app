@@ -12,6 +12,8 @@ import { genericStyles } from '@/constants';
 import FormField from '../Forms/FormField';
 import { JoinCodeDto } from '@/types';
 import { useEffect } from 'react';
+import * as Clipboard from 'expo-clipboard';
+import PrimaryButton from '../Buttons/PrimaryButton';
 
 interface AddJoinCodeProps {
   setCurrentStep: (step: number) => void;
@@ -78,6 +80,20 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
     }
   }, [watch('code')]);
 
+  async function pastJoinCode() {
+    const code = await Clipboard.getStringAsync();
+    await Clipboard.setStringAsync(code);
+    if (code.length !== 6) {
+      Toast.show({
+        type: 'error',
+        text1: i18n.t('errors.api.title'),
+        text2: i18n.t('errors.api.house.notFound'),
+      });
+      return;
+    }
+    formApi.reset({ code });
+  }
+
   return (
     <View
       style={[
@@ -105,6 +121,28 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
             type="code"
           />
         </FormProvider>
+
+        <Text
+          variant="titleLarge"
+          style={{
+            textAlign: 'center',
+            marginTop: 10,
+            textTransform: 'uppercase',
+          }}
+        >
+          {i18n.t('generics.or')}
+        </Text>
+
+        <PrimaryButton
+          style={{
+            marginTop: 10,
+            alignSelf: 'center',
+          }}
+          loading={isSubmitting}
+          icon="clipboard-arrow-down"
+          title={i18n.t('joinCode.past')}
+          onPress={pastJoinCode}
+        />
       </View>
     </View>
   );

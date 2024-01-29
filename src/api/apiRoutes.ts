@@ -32,6 +32,7 @@ export const API_ROUTES = {
     getJoinCode: '/house/join-code',
     getAnimals: '/house/animals',
     getAffiliates: '/house/affiliates',
+    remove: '/house',
   },
   joinCode: {
     create: {

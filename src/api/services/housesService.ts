@@ -38,6 +38,10 @@ const getAffiliates = async (): Promise<AffiliateDto[]> => {
   return (await HttpService.get(API_ROUTES.house.getAffiliates)).data;
 };
 
+const remove = async (): Promise<void> => {
+  return (await HttpService.delete(API_ROUTES.house.remove)).data;
+};
+
 export const HouseApiService = {
   create,
   get,
@@ -46,4 +50,5 @@ export const HouseApiService = {
   getJoinCode,
   getAnimals,
   getAffiliates,
+  remove,
 };

@@ -101,8 +101,7 @@ const ProfileSettings = () => {
     <>
       <UniversalSafeArea
         style={{
-          paddingVertical: 16,
-          paddingHorizontal: 32,
+          padding: 16,
         }}
         asView
       >

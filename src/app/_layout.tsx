@@ -134,6 +134,13 @@ const Layout = () => {
                   header: (props) => <CustomAppBar {...props} />,
                 }}
               />
+              <Stack.Screen
+                name={ROUTES.house.update}
+                options={{
+                  presentation: 'card',
+                  header: (props) => <CustomAppBar {...props} />,
+                }}
+              />
             </Stack>
             <Toast topOffset={insets.top} />
           </SafeAreaProvider>

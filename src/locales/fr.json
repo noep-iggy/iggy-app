@@ -15,7 +15,8 @@
     "settings_profile": "Mon profil",
     "settings_house": "Ma maison",
     "settings_family": "Ma famille",
-    "user_update": "Modifier un utilisateur"
+    "user_update": "Modifier un utilisateur",
+    "house_update": "Modifier la maison"
   },
   "generics": {
     "back": "Retour",
@@ -27,7 +28,9 @@
     "delete": "Supprimer",
     "logout": "Se déconnecter",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "copy": "Copier",
+    "or": "ou"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -149,6 +152,21 @@
     "create": {
       "subtitle": "Donnez un nom à votre maison avant d’ajouter votre animal",
       "submit": "Créer ma maison"
+    },
+    "confirmDelete": {
+      "title": "Supprimer la maison",
+      "subtitle": "Êtes-vous sûr de vouloir supprimer cette maison ?"
+    }
+  },
+  "joinCode": {
+    "past": "Collez le code",
+    "create": {
+      "title": "Créer un code de maison",
+      "subtitle": "Le code de maison permettra à d'autres personnes de rejoindre votre maison",
+      "parent": "Code parent",
+      "child": "Code enfant",
+      "copyText": "Copier le code",
+      "time": "Le code expire dans 15min"
     }
   },
   "fields": {
@@ -373,6 +391,9 @@
     }
   },
   "success": {
+    "joinCode": {
+      "copy": "Le code a été copié dans le presse-papier"
+    },
     "api": {
       "login": "Vous êtes connecté",
       "logout": "Vous êtes déconnecté",

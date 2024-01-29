@@ -13,6 +13,9 @@ export const ROUTES = {
     parent: 'dashboard/parent' as never,
     child: 'dashboard/child' as never,
   },
+  house: {
+    update: 'house/update' as never,
+  },
   animal: {
     create: 'animal/create' as never,
     list: 'dashboard/(parent)/animals' as never,
