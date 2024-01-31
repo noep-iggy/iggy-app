@@ -70,7 +70,6 @@ function useAuthProvider() {
   }
 
   async function removeToken() {
-    await AsyncStorage.clear();
     setToken('');
   }
 

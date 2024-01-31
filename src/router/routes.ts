@@ -31,6 +31,7 @@ export const ROUTES = {
   },
   modals: {
     refuseTaskModal: 'modals/refuse-task-modal' as never,
+    filtersShopModal: 'modals/filters-shop-modal' as never,
   },
   settings: {
     profile: 'settings/profile' as never,

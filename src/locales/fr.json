@@ -12,6 +12,7 @@
     "tasks_update": "Modifier une tâche",
     "tasks_parent-detail": "Détail de la tâche",
     "modals_refuse-task-modal": "Refuser la tâche",
+    "modals_filters-shop-modal": "Filtres de la boutique",
     "settings_profile": "Mon profil",
     "settings_house": "Ma maison",
     "settings_family": "Ma famille",
@@ -30,7 +31,10 @@
     "yes": "Oui",
     "no": "Non",
     "copy": "Copier",
-    "or": "ou"
+    "or": "ou",
+    "filter": "Filtrer",
+    "filterBy": "Filtrer par",
+    "orderBy": "Trier par"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -86,6 +90,10 @@
         "subtitle": "Êtes-vous sûr de vouloir supprimer votre compte ?"
       }
     }
+  },
+  "shop": {
+    "totalProduct": "produits affichés",
+    "subTitle": "Achetez vos produits du quotidien à prix réduits"
   },
   "LoginPage": {
     "Login": "Se connecter à un compte existant",

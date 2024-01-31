@@ -5,12 +5,11 @@ import { Icon, useTheme } from 'react-native-paper';
 
 export interface SelectBaseProps extends Omit<PickerSelectProps, 'style'> {
   style?: ViewStyle;
-  name: string;
   placeholder?: string;
 }
 
 export function SelectBase(props: SelectBaseProps): JSX.Element {
-  const { style, name, placeholder, ...rest } = props;
+  const { style, placeholder, ...rest } = props;
 
   const theme = useTheme();
   return (

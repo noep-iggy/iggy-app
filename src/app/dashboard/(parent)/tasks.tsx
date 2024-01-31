@@ -80,13 +80,11 @@ const TasksPage = () => {
       <View style={[genericStyles.flexRow, { marginTop: 16, gap: 8 }]}>
         <SelectBase
           style={{ flex: 1 }}
-          name="period"
           value={period}
           onValueChange={(value) => {
             setPeriod(value as TaskPeriodEnum);
           }}
           items={Object.values(TaskPeriodEnum).map((v) => ({
-            key: v,
             label: i18n.t(`enums.period.${v}`),
             value: v,
           }))}
@@ -113,7 +111,7 @@ const TasksPage = () => {
         onValueChange={(value) => {
           setPage(value as TaskStatusEnum);
         }}
-        buttons={Object.values(TaskStatusEnum).map((v) => ({
+        buttons={Object.values(TaskStatusEnum).map((v, i) => ({
           key: v,
           label: i18n.t(`enums.status.${v}`),
           value: v,

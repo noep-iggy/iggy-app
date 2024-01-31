@@ -25,7 +25,7 @@ const ProfileSettings = () => {
     if (!params) return;
     await ApiService.users.deleteMe();
     removeToken();
-    router.push(ROUTES.auth.login);
+    router.push(ROUTES.auth.index);
   }
 
   const onPress = () => {
@@ -54,7 +54,7 @@ const ProfileSettings = () => {
             break;
           case 1:
             removeToken();
-            router.push(ROUTES.auth.login);
+            router.replace(ROUTES.auth.index);
             break;
           case destructiveButtonIndex:
             setIsConfirmVisible(true);

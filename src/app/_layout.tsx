@@ -141,6 +141,13 @@ const Layout = () => {
                   header: (props) => <CustomAppBar {...props} />,
                 }}
               />
+              <Stack.Screen
+                name={ROUTES.modals.filtersShopModal}
+                options={{
+                  presentation: 'modal',
+                  header: (props) => <CustomModalBar {...props} />,
+                }}
+              />
             </Stack>
             <Toast topOffset={insets.top} />
           </SafeAreaProvider>

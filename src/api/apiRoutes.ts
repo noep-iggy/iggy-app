@@ -1,10 +1,10 @@
-import { AnimalTypeEnum, BillingPlanTypeEnum, TaskStatusEnum } from '@/types';
+import { BillingPlanTypeEnum } from '@/types';
 
 export const API_ROUTES = {
   affiliates: {
     getById: (id: string) => `/affiliates/${id}`,
-    getByAnimalType: (animalType: AnimalTypeEnum) =>
-      `/affiliates/type/${animalType}`,
+    getAll: '/affiliates',
+    getBrands: '/affiliates/search/brands',
   },
   animals: {
     create: '/animals',

@@ -13,13 +13,14 @@ import { useAuthContext } from '@/contexts';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
-import { useRouter } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 
 const Login = () => {
   const logo = require('@/assets/images/app/logo-color.png');
   const { setToken } = useAuthContext();
   const router = useRouter();
+  const navigation = useNavigation();
 
   const formApi = useForm<AuthLoginApi>({
     resolver: yupResolver(userValidation.login),

@@ -3,16 +3,9 @@ import { useAuthContext } from '@/contexts';
 import { ROUTES } from '@/router/routes';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useRef } from 'react';
-import {
-  ImageBackground,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from 'react-native';
+import { ImageBackground, View, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
-  Card,
   Icon,
   Surface,
   Text,
