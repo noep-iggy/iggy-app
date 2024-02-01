@@ -4,7 +4,7 @@ import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { AuthLoginApi } from '@/types';
 import { userValidation } from '@/validations';
-import { Image, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -59,42 +59,46 @@ const Login = () => {
   }
 
   return (
-    <UniversalSafeArea
-      style={[
-        {
-          justifyContent: 'flex-end',
-          padding: 16,
-        },
-      ]}
-      edges={['right', 'left', 'bottom']}
+    <KeyboardAvoidingView
+      style={[genericStyles.flexColumn, { flex: 1 }]}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <View
+      <UniversalSafeArea
         style={[
-          genericStyles.flexCenter,
-          { width: '100%', flexGrow: 1, gap: 16 },
+          {
+            justifyContent: 'flex-end',
+            padding: 16,
+          },
         ]}
+        edges={['right', 'left', 'bottom']}
       >
-        <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
-        <Text variant="bodyMedium">{i18n.t('LoginPage.Subtitle')}</Text>
-        <View style={[genericStyles.flexColumn, { width: '100%', gap: 6 }]}>
-          <FormProvider {...formApi}>
-            <FormField
-              label={i18n.t('fields.email.label')}
-              name="email"
-              type="text"
-              autoCapitalize="none"
-              keyboardType="email-address"
-            />
-            <FormField
-              label={i18n.t('fields.password.label')}
-              name="password"
-              type="password"
-            />
-          </FormProvider>
-        </View>
-      </View>
+        <View
+          style={[
+            genericStyles.flexCenter,
 
-      <View>
+            { width: '100%', flexGrow: 1, gap: 16 },
+          ]}
+        >
+          <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
+          <Text variant="bodyMedium">{i18n.t('LoginPage.Subtitle')}</Text>
+          <View style={[genericStyles.flexColumn, { width: '100%', gap: 6 }]}>
+            <FormProvider {...formApi}>
+              <FormField
+                label={i18n.t('fields.email.label')}
+                name="email"
+                type="text"
+                autoCapitalize="none"
+                keyboardType="email-address"
+              />
+              <FormField
+                label={i18n.t('fields.password.label')}
+                name="password"
+                type="password"
+              />
+            </FormProvider>
+          </View>
+        </View>
+
         <PrimaryButton
           disabled={!isValid || isSubmitting}
           loading={isSubmitting}
@@ -102,8 +106,8 @@ const Login = () => {
           title={i18n.t('LoginPage.Submit')}
           big
         />
-      </View>
-    </UniversalSafeArea>
+      </UniversalSafeArea>
+    </KeyboardAvoidingView>
   );
 };
 

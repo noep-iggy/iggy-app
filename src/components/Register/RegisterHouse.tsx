@@ -11,6 +11,7 @@ import { ApiService } from '@/api';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
+import { useEffect } from 'react';
 
 interface RegisterHouseProps {
   setCurrentStep: (step: number) => void;
@@ -51,6 +52,8 @@ export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
         });
     }
   }
+
+  useEffect(() => {}, []);
 
   return (
     <>

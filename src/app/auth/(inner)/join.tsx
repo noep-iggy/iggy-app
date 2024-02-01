@@ -7,6 +7,7 @@ import {
   JoinParentHouse,
 } from '@/components/Join';
 import { JoinCodeDto, JoinCodeTypeEnum } from '@/types';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
 export default function Join() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -29,17 +30,22 @@ export default function Join() {
   }
 
   return (
-    <UniversalSafeArea
-      style={[
-        {
-          justifyContent: 'space-between',
-          padding: 16,
-        },
-      ]}
-      edges={['right', 'left', 'bottom']}
+    <KeyboardAvoidingView
+      style={[{ flex: 1 }]}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <Stepper currentStep={currentStep} totalSteps={2} />
-      {renderStep()}
-    </UniversalSafeArea>
+      <UniversalSafeArea
+        style={[
+          {
+            justifyContent: 'space-between',
+            padding: 16,
+          },
+        ]}
+        edges={['right', 'left', 'bottom']}
+      >
+        <Stepper currentStep={currentStep} totalSteps={2} />
+        {renderStep()}
+      </UniversalSafeArea>
+    </KeyboardAvoidingView>
   );
 }

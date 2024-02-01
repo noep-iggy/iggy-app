@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import { genericStyles } from '@/constants';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
@@ -44,6 +45,7 @@ const AnimalUpdate = () => {
     try {
       await ApiService.animals.updateById(params.id as string, data);
       router.back();
+      router.setParams({ refresh: 'true' });
       Toast.show({
         type: 'success',
         text1: i18n.t('success.api.animal.update'),
@@ -111,161 +113,166 @@ const AnimalUpdate = () => {
   const animalSelected = ANIMALS.find((v) => v.type === watch('type'));
 
   return (
-    <KeyboardAvoidingView
-      style={{
-        flex: 1,
-      }}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <UniversalSafeArea
+      style={[
+        {
+          justifyContent: 'space-between',
+          padding: 16,
+        },
+      ]}
+      asView
     >
-      <UniversalSafeArea
-        style={[
-          {
-            justifyContent: 'space-between',
-            padding: 16,
-          },
-        ]}
-        asView
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        {isLoadingAnimal ? (
-          <ActivityIndicator animating={true} />
-        ) : (
-          <View
-            style={[genericStyles.colCenter, { marginTop: 30, width: '100%' }]}
-          >
-            <LottieView
-              autoPlay={true}
-              source={animalAnimationResolver(
-                animalSelected?.type ?? AnimalTypeEnum.DOG
-              )}
-              style={{ width: 300, height: 300 }}
-            />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {isLoadingAnimal ? (
+            <ActivityIndicator animating={true} />
+          ) : (
             <View
               style={[
-                genericStyles.flexRow,
-                {
-                  justifyContent: 'space-around',
-                  marginTop: 30,
-                  width: '100%',
-                },
+                genericStyles.colCenter,
+                { marginTop: 30, width: '100%' },
               ]}
             >
-              {ANIMALS.map((animal) => (
-                <View
-                  onTouchEnd={() => {
-                    if (ANIMALS_AVAIABLE.includes(animal.id)) {
-                      setValue('type', animal.type);
-                    }
-                  }}
-                  key={animal.id}
-                  style={{
-                    width: 60,
-                    height: 60,
-                    borderWidth: 1,
-                    borderColor:
-                      animalSelected === animal ? theme.colors.primary : 'grey',
-                    borderRadius: 10,
-                    padding: 5,
-                    backgroundColor:
-                      animalSelected === animal
-                        ? theme.colors.primary
-                        : 'transparent',
-                  }}
-                >
-                  <Image
-                    source={animal.url}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      opacity: ANIMALS_AVAIABLE.includes(animal.id) ? 1 : 0.2,
-                    }}
-                    resizeMode="contain"
-                  />
+              <LottieView
+                autoPlay={true}
+                source={animalAnimationResolver(
+                  animalSelected?.type ?? AnimalTypeEnum.DOG
+                )}
+                style={{ width: 300, height: 300 }}
+              />
+              <View
+                style={[
+                  genericStyles.flexRow,
+                  {
+                    justifyContent: 'space-around',
+                    marginTop: 30,
+                    width: '100%',
+                  },
+                ]}
+              >
+                {ANIMALS.map((animal) => (
                   <View
+                    onTouchEnd={() => {
+                      if (ANIMALS_AVAIABLE.includes(animal.id)) {
+                        setValue('type', animal.type);
+                      }
+                    }}
+                    key={animal.id}
                     style={{
-                      position: 'absolute',
-                      display: ANIMALS_AVAIABLE.includes(animal.id)
-                        ? 'none'
-                        : 'flex',
-                      width: '100%',
-                      height: '100%',
+                      width: 60,
+                      height: 60,
+                      borderWidth: 1,
+                      borderColor:
+                        animalSelected === animal
+                          ? theme.colors.primary
+                          : 'grey',
                       borderRadius: 10,
-                      left: 5,
-                      top: 5,
-                      justifyContent: 'center',
-                      alignItems: 'center',
+                      padding: 5,
+                      backgroundColor:
+                        animalSelected === animal
+                          ? theme.colors.primary
+                          : 'transparent',
                     }}
                   >
-                    <Icon
-                      source="close-octagon"
-                      color={MD3Colors.error50}
-                      size={20}
+                    <Image
+                      source={animal.url}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        opacity: ANIMALS_AVAIABLE.includes(animal.id) ? 1 : 0.2,
+                      }}
+                      resizeMode="contain"
+                    />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        display: ANIMALS_AVAIABLE.includes(animal.id)
+                          ? 'none'
+                          : 'flex',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: 10,
+                        left: 5,
+                        top: 5,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Icon
+                        source="close-octagon"
+                        color={MD3Colors.error50}
+                        size={20}
+                      />
+                    </View>
+                  </View>
+                ))}
+              </View>
+              <View
+                style={[
+                  genericStyles.flexColumn,
+                  { width: '100%', gap: 15, marginTop: 20 },
+                ]}
+              >
+                <FormProvider {...formApi}>
+                  <FormField
+                    label={i18n.t('fields.name.label')}
+                    name="name"
+                    type="text"
+                  />
+                  <View
+                    style={[
+                      genericStyles.flexRow,
+                      { justifyContent: 'space-between' },
+                    ]}
+                  >
+                    <Select
+                      name="gender"
+                      items={Object.values(AnimalGenderEnum).map((v) => ({
+                        label: i18n.t(`enums.gender.${v}`),
+                        value: v,
+                      }))}
+                      style={{
+                        width: '48%',
+                      }}
+                      placeholder="Sexe"
+                    />
+                    <SelectDate
+                      name="bornDate"
+                      style={{
+                        width: '48%',
+                      }}
+                      placeholder="Âge"
                     />
                   </View>
-                </View>
-              ))}
-            </View>
-            <View
-              style={[
-                genericStyles.flexColumn,
-                { width: '100%', gap: 15, marginTop: 20 },
-              ]}
-            >
-              <FormProvider {...formApi}>
-                <FormField
-                  label={i18n.t('fields.name.label')}
-                  name="name"
-                  type="text"
+                </FormProvider>
+              </View>
+              <View
+                style={[
+                  genericStyles.flexRow,
+                  { justifyContent: 'space-between', marginTop: 30, gap: 10 },
+                ]}
+              >
+                <SecondaryButton
+                  onPress={router.back}
+                  title={i18n.t('generics.back')}
+                  big
                 />
-                <View
-                  style={[
-                    genericStyles.flexRow,
-                    { justifyContent: 'space-between' },
-                  ]}
-                >
-                  <Select
-                    name="gender"
-                    items={Object.values(AnimalGenderEnum).map((v) => ({
-                      label: i18n.t(`enums.gender.${v}`),
-                      value: v,
-                    }))}
-                    style={{
-                      width: '48%',
-                    }}
-                    placeholder="Sexe"
-                  />
-                  <SelectDate
-                    name="bornDate"
-                    style={{
-                      width: '48%',
-                    }}
-                    placeholder="Âge"
-                  />
-                </View>
-              </FormProvider>
+                <PrimaryButton
+                  style={{ flex: 1 }}
+                  disabled={!isValid || isSubmitting}
+                  loading={isSubmitting}
+                  onPress={handleSubmit(onSubmit)}
+                  title={i18n.t('generics.update')}
+                  big
+                />
+              </View>
             </View>
-            <View
-              style={[
-                genericStyles.flexRow,
-                { justifyContent: 'space-between', marginTop: 30, gap: 10 },
-              ]}
-            >
-              <SecondaryButton
-                onPress={router.back}
-                title={i18n.t('generics.back')}
-                big
-              />
-              <PrimaryButton
-                disabled={!isValid || isSubmitting}
-                loading={isSubmitting}
-                onPress={handleSubmit(onSubmit)}
-                title={i18n.t('generics.update')}
-                big
-              />
-            </View>
-          </View>
-        )}
-      </UniversalSafeArea>
-    </KeyboardAvoidingView>
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </UniversalSafeArea>
   );
 };
 

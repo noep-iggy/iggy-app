@@ -6,6 +6,7 @@ import {
   RegisterHouse,
   RegisterUser,
 } from '@/components/Register';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -29,10 +30,15 @@ export default function Register() {
           padding: 16,
         },
       ]}
+      asView
       edges={['right', 'left', 'bottom']}
     >
       <Stepper currentStep={currentStep} totalSteps={3} />
-      {renderStep()}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        {renderStep()}
+      </KeyboardAvoidingView>
     </UniversalSafeArea>
   );
 }

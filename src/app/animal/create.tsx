@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Image, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { genericStyles } from '@/constants';
 import { Icon, MD3Colors, useTheme } from 'react-native-paper';
 import FormField from '@/components/Forms/FormField';
@@ -17,6 +17,7 @@ import { Select, SelectDate } from '@/components/Selects';
 import { ApiService } from '@/api';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const AnimalCreate = () => {
   const theme = useTheme();
@@ -97,134 +98,147 @@ const AnimalCreate = () => {
       ]}
       asView
     >
-      <View style={[genericStyles.colCenter, { marginTop: 30, width: '100%' }]}>
-        <LottieView
-          autoPlay={true}
-          source={animalAnimationResolver(
-            animalSelected?.type ?? AnimalTypeEnum.DOG
-          )}
-          style={{ width: 300, height: 300 }}
-        />
-        <View
-          style={[
-            genericStyles.flexRow,
-            { justifyContent: 'space-around', marginTop: 30, width: '100%' },
-          ]}
-        >
-          {ANIMALS.map((animal) => (
-            <View
-              onTouchEnd={() => {
-                if (ANIMALS_AVAIABLE.includes(animal.id)) {
-                  setValue('type', animal.type);
-                }
-              }}
-              key={animal.id}
-              style={{
-                width: 60,
-                height: 60,
-                borderWidth: 1,
-                borderColor:
-                  animalSelected === animal ? theme.colors.primary : 'grey',
-                borderRadius: 10,
-                padding: 5,
-                backgroundColor:
-                  animalSelected === animal
-                    ? theme.colors.primary
-                    : 'transparent',
-              }}
-            >
-              <Image
-                source={animal.url}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  opacity: ANIMALS_AVAIABLE.includes(animal.id) ? 1 : 0.2,
-                }}
-                resizeMode="contain"
-              />
-              <View
-                style={{
-                  position: 'absolute',
-                  display: ANIMALS_AVAIABLE.includes(animal.id)
-                    ? 'none'
-                    : 'flex',
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: 10,
-                  left: 5,
-                  top: 5,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Icon
-                  source="close-octagon"
-                  color={MD3Colors.error50}
-                  size={20}
-                />
-              </View>
-            </View>
-          ))}
-        </View>
-        <View
-          style={[
-            genericStyles.flexColumn,
-            { width: '100%', gap: 15, marginTop: 20 },
-          ]}
-        >
-          <FormProvider {...formApi}>
-            <FormField
-              label={i18n.t('fields.name.label')}
-              name="name"
-              type="text"
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View
+            style={[genericStyles.colCenter, { marginTop: 30, width: '100%' }]}
+          >
+            <LottieView
+              autoPlay={true}
+              source={animalAnimationResolver(
+                animalSelected?.type ?? AnimalTypeEnum.DOG
+              )}
+              style={{ width: 300, height: 300 }}
             />
             <View
               style={[
                 genericStyles.flexRow,
-                { justifyContent: 'space-between' },
+                {
+                  justifyContent: 'space-around',
+                  marginTop: 30,
+                  width: '100%',
+                },
               ]}
             >
-              <Select
-                name="gender"
-                items={Object.values(AnimalGenderEnum).map((v) => ({
-                  label: i18n.t(`enums.gender.${v}`),
-                  value: v,
-                }))}
-                style={{
-                  width: '48%',
-                }}
-                placeholder="Sexe"
+              {ANIMALS.map((animal) => (
+                <View
+                  onTouchEnd={() => {
+                    if (ANIMALS_AVAIABLE.includes(animal.id)) {
+                      setValue('type', animal.type);
+                    }
+                  }}
+                  key={animal.id}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderWidth: 1,
+                    borderColor:
+                      animalSelected === animal ? theme.colors.primary : 'grey',
+                    borderRadius: 10,
+                    padding: 5,
+                    backgroundColor:
+                      animalSelected === animal
+                        ? theme.colors.primary
+                        : 'transparent',
+                  }}
+                >
+                  <Image
+                    source={animal.url}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      opacity: ANIMALS_AVAIABLE.includes(animal.id) ? 1 : 0.2,
+                    }}
+                    resizeMode="contain"
+                  />
+                  <View
+                    style={{
+                      position: 'absolute',
+                      display: ANIMALS_AVAIABLE.includes(animal.id)
+                        ? 'none'
+                        : 'flex',
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 10,
+                      left: 5,
+                      top: 5,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Icon
+                      source="close-octagon"
+                      color={MD3Colors.error50}
+                      size={20}
+                    />
+                  </View>
+                </View>
+              ))}
+            </View>
+            <View
+              style={[
+                genericStyles.flexColumn,
+                { width: '100%', gap: 15, marginTop: 20 },
+              ]}
+            >
+              <FormProvider {...formApi}>
+                <FormField
+                  label={i18n.t('fields.name.label')}
+                  name="name"
+                  type="text"
+                />
+                <View
+                  style={[
+                    genericStyles.flexRow,
+                    { justifyContent: 'space-between' },
+                  ]}
+                >
+                  <Select
+                    name="gender"
+                    items={Object.values(AnimalGenderEnum).map((v) => ({
+                      label: i18n.t(`enums.gender.${v}`),
+                      value: v,
+                    }))}
+                    style={{
+                      width: '48%',
+                    }}
+                    placeholder="Sexe"
+                  />
+                  <SelectDate
+                    name="bornDate"
+                    style={{
+                      width: '48%',
+                    }}
+                    placeholder="Âge"
+                  />
+                </View>
+              </FormProvider>
+            </View>
+            <View
+              style={[
+                genericStyles.flexRow,
+                { justifyContent: 'space-between', marginTop: 30, gap: 10 },
+              ]}
+            >
+              <SecondaryButton
+                onPress={router.back}
+                title={i18n.t('generics.back')}
+                big
               />
-              <SelectDate
-                name="bornDate"
-                style={{
-                  width: '48%',
-                }}
-                placeholder="Âge"
+              <PrimaryButton
+                style={{ flexGrow: 1 }}
+                disabled={!isValid || isSubmitting}
+                loading={isSubmitting}
+                onPress={handleSubmit(onSubmit)}
+                title={i18n.t('registerPage.animal.submit')}
+                big
               />
             </View>
-          </FormProvider>
-        </View>
-        <View
-          style={[
-            genericStyles.flexRow,
-            { justifyContent: 'space-between', marginTop: 30, gap: 10 },
-          ]}
-        >
-          <SecondaryButton
-            onPress={router.back}
-            title={i18n.t('generics.back')}
-            big
-          />
-          <PrimaryButton
-            disabled={!isValid || isSubmitting}
-            loading={isSubmitting}
-            onPress={handleSubmit(onSubmit)}
-            title={i18n.t('registerPage.animal.submit')}
-            big
-          />
-        </View>
-      </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </UniversalSafeArea>
   );
 };

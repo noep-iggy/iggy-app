@@ -55,10 +55,7 @@ export function RegisterAddAnimal(): JSX.Element {
   return (
     <>
       <View
-        style={[
-          genericStyles.flexCenter,
-          { width: '100%', gap: 5, flexGrow: 1 },
-        ]}
+        style={[genericStyles.flexCenter, { width: '100%', gap: 5, flex: 1 }]}
       >
         <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
         <View>
@@ -110,7 +107,10 @@ export function RegisterAddAnimal(): JSX.Element {
                 <Text variant="bodyLarge">{animal.name}</Text>
                 <View style={[genericStyles.flexRow]}>
                   <IconButton
-                    onPress={() => console.log('Faire la page de modification')}
+                    onPress={() => {
+                      router.push(ROUTES.animal.update);
+                      router.setParams({ id: animal.id });
+                    }}
                     icon={({ size }) => (
                       <Icon
                         source="pencil"
@@ -154,6 +154,7 @@ export function RegisterAddAnimal(): JSX.Element {
       </View>
 
       <PrimaryButton
+        style={{ marginTop: 30 }}
         disabled={animals.length === 0}
         onPress={onSubmit}
         title={i18n.t('registerPage.createHouse')}
