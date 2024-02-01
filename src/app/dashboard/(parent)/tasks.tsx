@@ -49,6 +49,12 @@ const TasksPage = () => {
     }, [page, period, isArchivedSelected])
   );
 
+  const PERIOD = Object.values(TaskPeriodEnum).map((v, i) => ({
+    key: `${i}-${v}-period`,
+    label: i18n.t(`enums.period.${v}`),
+    value: v,
+  }));
+
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>
       <Stack.Screen
@@ -84,7 +90,9 @@ const TasksPage = () => {
           onValueChange={(value) => {
             setPeriod(value as TaskPeriodEnum);
           }}
-          items={Object.values(TaskPeriodEnum).map((v) => ({
+          placeholder="Period"
+          items={Object.values(TaskPeriodEnum).map((v, i) => ({
+            key: `${i}-${v}-period`,
             label: i18n.t(`enums.period.${v}`),
             value: v,
           }))}
@@ -111,8 +119,7 @@ const TasksPage = () => {
         onValueChange={(value) => {
           setPage(value as TaskStatusEnum);
         }}
-        buttons={Object.values(TaskStatusEnum).map((v, i) => ({
-          key: v,
+        buttons={Object.values(TaskStatusEnum).map((v) => ({
           label: i18n.t(`enums.status.${v}`),
           value: v,
         }))}

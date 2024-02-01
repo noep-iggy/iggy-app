@@ -92,7 +92,8 @@
     }
   },
   "shop": {
-    "totalProduct": "produits affichés",
+    "noProduct": "Aucun produits",
+    "totalProduct": "produits en stock",
     "subTitle": "Achetez vos produits du quotidien à prix réduits"
   },
   "LoginPage": {

@@ -29,7 +29,7 @@ export function AffiliateCard(props: AffiliateCardProps): JSX.Element {
           backgroundColor: colors.surfaceDisabled,
           padding: 5,
           borderRadius: 8,
-          maxHeight: 500,
+          height: 335,
         },
         style,
       ]}
@@ -43,27 +43,38 @@ export function AffiliateCard(props: AffiliateCardProps): JSX.Element {
       />
       <View style={[genericStyles.flexColumn, { marginTop: 5 }]}>
         <Text variant="titleMedium">{`${
-          affiliate.title.length > 20
-            ? affiliate.title.substring(0, 20) + '...'
+          affiliate.title.length > 15
+            ? affiliate.title.substring(0, 15) + '...'
             : affiliate.title
         }`}</Text>
       </View>
-      <Text variant="bodySmall">
-        {affiliate.description && affiliate.description.length > 50
-          ? affiliate?.description?.substring(0, 50) + '...'
+      <Text
+        variant="bodySmall"
+        style={{
+          flex: 1,
+        }}
+      >
+        {affiliate.description && affiliate.description.length > 70
+          ? affiliate?.description?.substring(0, 70) + '...'
           : affiliate.description}
       </Text>
-      <View style={[genericStyles.flexRow, { marginTop: 3 }]}>
-        <Text
-          variant="titleLarge"
-          style={{ color: colors.error, textDecorationLine: 'line-through' }}
-        >{`${affiliate.basePrice}€`}</Text>
-        <Text
-          variant="titleLarge"
-          style={{ marginLeft: 10, color: colors.primary }}
-        >
+      <View
+        style={[
+          genericStyles.flexRow,
+          { marginTop: 3, alignItems: 'flex-end' },
+        ]}
+      >
+        <Text variant="titleLarge" style={{ color: colors.primary }}>
           {`${affiliate.discountPrice}€`}
         </Text>
+        <Text
+          variant="titleSmall"
+          style={{
+            marginLeft: 10,
+            color: colors.error,
+            textDecorationLine: 'line-through',
+          }}
+        >{`${affiliate.basePrice}€`}</Text>
       </View>
       <Chip
         compact

@@ -56,7 +56,7 @@ const ParentLayout = () => {
       <Tabs.Screen
         name="shop"
         options={{
-          title: 'Shopping',
+          title: 'Boutique',
           tabBarIcon: ({ color, size }) => (
             <Icon source="cart" size={size} color={color} />
           ),

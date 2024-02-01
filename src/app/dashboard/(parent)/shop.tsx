@@ -10,29 +10,38 @@ import { useState, useCallback, useEffect } from 'react';
 import { useTheme, Text } from 'react-native-paper';
 import { RefreshScroll } from '@/components/Scroll';
 import { AffiliateCard } from '@/components/Card/AffiliateCard';
-import { SimpleGrid } from 'react-native-super-grid';
 import i18n from '@/locales/localization';
 import { View } from 'react-native';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { ROUTES } from '@/router/routes';
 import { genericStyles } from '@/constants';
+import { SimpleGrid } from 'react-native-super-grid';
 
 const Shop = () => {
   const theme = useTheme();
   const params = useLocalSearchParams();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [affiliates, setAffiliates] =
+  const [affiliatesFetched, setAffiliatesFetched] =
     useState<ApiSearchResponse<AffiliateDto>>();
+
+  const [affiliates, setAffiliates] = useState<AffiliateDto[]>([]);
 
   const [filters, setFilters] = useState<AffiliateSearchParams>({
     page: 0,
+    orderBy: 'createdAt',
+    orderType: 'DESC',
+    pageSize: 10,
   });
 
   async function fetchAffiliates() {
     setIsLoading(true);
     const affiliatesFetched = await ApiService.affiliates.getAll(filters);
-    setAffiliates(affiliatesFetched);
+    setAffiliatesFetched(affiliatesFetched);
+    setAffiliates((prevAffiliates) => [
+      ...prevAffiliates,
+      ...affiliatesFetched.items,
+    ]);
 
     setIsLoading(false);
   }
@@ -45,6 +54,7 @@ const Shop = () => {
 
   useEffect(() => {
     if (params?.filters) {
+      setAffiliates([]);
       setFilters(JSON.parse(params.filters as string));
     }
   }, [params]);
@@ -59,7 +69,7 @@ const Shop = () => {
           ]}
         >
           <Text variant="titleLarge">
-            {`${affiliates?.total ?? 0} ${i18n.t('shop.totalProduct')}`}
+            {`${affiliatesFetched?.total ?? 0} ${i18n.t('shop.totalProduct')}`}
           </Text>
           <PrimaryButton
             icon="filter-variant"
@@ -77,13 +87,22 @@ const Shop = () => {
         </Text>
       </View>
       <RefreshScroll
-        isEmpty={affiliates?.total === 0}
+        emptyText={i18n.t('shop.noProduct')}
+        isEmpty={affiliatesFetched?.total === 0}
         isLoading={isLoading}
-        onRefresh={() => fetchAffiliates()}
+        onRefresh={() => {
+          setAffiliatesFetched(undefined);
+          setAffiliates([]);
+          setFilters({ page: 0, orderBy: 'createdAt', orderType: 'DESC' });
+        }}
+        onNextPage={() => {
+          const newPage = (filters?.page ?? 0) + 1;
+          setFilters({ ...filters, page: newPage });
+        }}
       >
         <SimpleGrid
           itemContainerStyle={{ justifyContent: 'flex-start' }}
-          data={affiliates?.items ?? []}
+          data={affiliates}
           renderItem={({ item }) => <AffiliateCard affiliate={item} />}
           listKey={undefined}
         />

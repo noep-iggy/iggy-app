@@ -57,7 +57,12 @@ const FilterShopModal = () => {
             onPress={() => {
               router.back();
               router.setParams({
-                filters: JSON.stringify({}),
+                filters: JSON.stringify({
+                  page: 0,
+                  orderBy: 'createdAt',
+                  orderType: 'DESC',
+                  pageSize: 10,
+                }),
               });
             }}
           />
@@ -90,6 +95,7 @@ const FilterShopModal = () => {
                       brands: prevFilters?.brands?.includes(brand)
                         ? prevFilters?.brands?.filter((b) => b !== brand)
                         : [...(prevFilters?.brands ?? []), brand],
+                      page: 0,
                     }));
                   }}
                 />
@@ -116,6 +122,7 @@ const FilterShopModal = () => {
                     ...prevFilters,
                     maxPrice: 50,
                     minPrice: 0,
+                    page: 0,
                   }));
                 }}
               />
@@ -131,6 +138,7 @@ const FilterShopModal = () => {
                     ...prevFilters,
                     maxPrice: 100,
                     minPrice: 50,
+                    page: 0,
                   }));
                 }}
               />
@@ -146,6 +154,7 @@ const FilterShopModal = () => {
                     ...prevFilters,
                     maxPrice: 200,
                     minPrice: 100,
+                    page: 0,
                   }));
                 }}
               />
@@ -161,6 +170,7 @@ const FilterShopModal = () => {
                     ...prevFilters,
                     maxPrice: 0,
                     minPrice: 200,
+                    page: 0,
                   }));
                 }}
               />
@@ -170,7 +180,7 @@ const FilterShopModal = () => {
                 borderBottomWidth: 1,
                 borderBottomColor: theme.colors.outline,
               }}
-              title="Animals"
+              title="Animaux"
               titleStyle={{ fontSize: 15 }}
               left={(props) => <List.Icon {...props} icon="dog" />}
             >
@@ -189,6 +199,7 @@ const FilterShopModal = () => {
                       animalTypes: prevFilters?.animalTypes?.includes(type)
                         ? prevFilters?.animalTypes?.filter((b) => b !== type)
                         : [...(prevFilters?.animalTypes ?? []), type],
+                      page: 0,
                     }));
                   }}
                 />
@@ -219,6 +230,7 @@ const FilterShopModal = () => {
                   setFilters((prevFilters) => ({
                     ...prevFilters,
                     orderType: 'ASC',
+                    page: 0,
                   }));
                 }}
               />
@@ -229,6 +241,7 @@ const FilterShopModal = () => {
                   setFilters((prevFilters) => ({
                     ...prevFilters,
                     orderType: 'DESC',
+                    page: 0,
                   }));
                 }}
               />
@@ -245,6 +258,19 @@ const FilterShopModal = () => {
               )}
             >
               <Checkbox.Item
+                label="Date"
+                status={
+                  filters?.orderBy === 'createdAt' ? 'checked' : 'unchecked'
+                }
+                onPress={() => {
+                  setFilters((prevFilters) => ({
+                    ...prevFilters,
+                    orderBy: 'createdAt',
+                    page: 0,
+                  }));
+                }}
+              />
+              <Checkbox.Item
                 label="Prix"
                 status={
                   filters?.orderBy === 'discountPrice' ? 'checked' : 'unchecked'
@@ -253,6 +279,7 @@ const FilterShopModal = () => {
                   setFilters((prevFilters) => ({
                     ...prevFilters,
                     orderBy: 'discountPrice',
+                    page: 0,
                   }));
                 }}
               />
@@ -263,6 +290,7 @@ const FilterShopModal = () => {
                   setFilters((prevFilters) => ({
                     ...prevFilters,
                     orderBy: 'title',
+                    page: 0,
                   }));
                 }}
               />
@@ -275,6 +303,7 @@ const FilterShopModal = () => {
                   setFilters((prevFilters) => ({
                     ...prevFilters,
                     orderBy: 'animals',
+                    page: 0,
                   }));
                 }}
               />
