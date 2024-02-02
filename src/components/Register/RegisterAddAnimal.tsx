@@ -1,16 +1,17 @@
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
-import { AnimalDto, UserRoleEnum } from '@/types';
+import { AnimalDto } from '@/types';
 import { ActivityIndicator, Image, View } from 'react-native';
 import { Button, Icon, IconButton, Text, useTheme } from 'react-native-paper';
 import { useAuthContext } from '@/contexts';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import Toast from 'react-native-toast-message';
 import { useEffect, useState } from 'react';
 import { ApiService } from '@/api';
 import { animalResolver } from '@/utils/animal';
+import { clearHistoryAndRedirect } from '@/utils';
 
 export function RegisterAddAnimal(): JSX.Element {
   const logo = require('@/assets/images/app/logo-color.png');
@@ -20,15 +21,15 @@ export function RegisterAddAnimal(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const theme = useTheme();
   const params = useLocalSearchParams();
+  const navigation = useNavigation();
 
   async function onSubmit() {
     Toast.show({
       type: 'success',
       text1: `${i18n.t('success.register.title')} ${currentUser?.firstName} !`,
     });
-    if (currentUser?.role === UserRoleEnum.CHILD)
-      router.replace(ROUTES.dashboard.child);
-    else router.replace(ROUTES.dashboard.parent);
+
+    clearHistoryAndRedirect('dashboard', navigation);
   }
 
   async function fetchAnimals() {

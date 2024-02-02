@@ -11,10 +11,9 @@ import { ApiService } from '@/api';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
-import { ROUTES } from '@/router/routes';
-import { router } from 'expo-router';
+import { useNavigation } from 'expo-router';
 import { useAuthContext } from '@/contexts';
-import { formatTime } from '@/utils';
+import { clearHistoryAndRedirect, formatTime } from '@/utils';
 
 interface JoinChildHouseProps {
   joinCode: JoinCodeDto;
@@ -23,6 +22,7 @@ interface JoinChildHouseProps {
 export function JoinChildHouse(props: JoinChildHouseProps): JSX.Element {
   const { joinCode } = props;
   const { setToken } = useAuthContext();
+  const navigation = useNavigation();
 
   const formApi = useForm<JoinChildApi>({
     resolver: yupResolver(userValidation.joinChild),
@@ -42,7 +42,7 @@ export function JoinChildHouse(props: JoinChildHouseProps): JSX.Element {
         type: 'success',
         text1: i18n.t('success.api.house.join'),
       });
-      router.replace(ROUTES.dashboard.child);
+      clearHistoryAndRedirect('index', navigation);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

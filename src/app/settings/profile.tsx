@@ -5,9 +5,14 @@ import { genericStyles } from '@/constants';
 import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
-import { formatDateTime } from '@/utils';
+import { clearHistoryAndRedirect, formatDateTime } from '@/utils';
 import { useActionSheet } from '@expo/react-native-action-sheet';
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import {
+  Stack,
+  useLocalSearchParams,
+  useNavigation,
+  useRouter,
+} from 'expo-router';
 import { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -20,12 +25,13 @@ const ProfileSettings = () => {
   const params = useLocalSearchParams();
   const theme = useTheme();
   const router = useRouter();
+  const navigation = useNavigation();
 
   async function removeUser() {
     if (!params) return;
     await ApiService.users.deleteMe();
     removeToken();
-    router.push(ROUTES.auth.index);
+    clearHistoryAndRedirect('index', navigation);
   }
 
   const onPress = () => {
@@ -54,7 +60,7 @@ const ProfileSettings = () => {
             break;
           case 1:
             removeToken();
-            router.replace(ROUTES.auth.index);
+            clearHistoryAndRedirect('index', navigation);
             break;
           case destructiveButtonIndex:
             setIsConfirmVisible(true);

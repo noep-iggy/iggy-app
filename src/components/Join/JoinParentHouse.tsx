@@ -11,10 +11,9 @@ import { ApiService } from '@/api';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
-import { router } from 'expo-router';
-import { ROUTES } from '@/router/routes';
+import { useNavigation } from 'expo-router';
 import { useAuthContext } from '@/contexts';
-import { formatTime } from '@/utils';
+import { clearHistoryAndRedirect, formatTime } from '@/utils';
 
 interface JoinParentHouseProps {
   joinCode: JoinCodeDto;
@@ -27,6 +26,7 @@ export function JoinParentHouse(props: JoinParentHouseProps): JSX.Element {
     mode: 'onTouched',
   });
   const { setToken } = useAuthContext();
+  const navigation = useNavigation();
 
   const { handleSubmit, formState, setError } = formApi;
   const { isSubmitting, isValid } = formState;
@@ -36,13 +36,12 @@ export function JoinParentHouse(props: JoinParentHouseProps): JSX.Element {
       const token = await ApiService.auth.join(joinCode.code, data);
       setToken(token);
       const user = await ApiService.users.me();
-
       Toast.show({
         type: 'success',
         text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.house.join'),
       });
-      router.replace(ROUTES.dashboard.parent);
+      clearHistoryAndRedirect('dashboard', navigation);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

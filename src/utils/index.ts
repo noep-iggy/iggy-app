@@ -1,3 +1,5 @@
+import { CommonActions } from '@react-navigation/native';
+
 export function transformPathToKey(path: string): string {
   return path.replace(/^\//, '').replace(/\//g, '_');
 }
@@ -53,4 +55,13 @@ export function extractSubstring(inputString: string): string {
     // Retourner la chaîne d'origine si '/' n'est pas trouvé
     return inputString;
   }
+}
+
+export function clearHistoryAndRedirect(name: string, navigation: any) {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [{ name }],
+    })
+  );
 }

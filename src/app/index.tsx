@@ -7,8 +7,8 @@ import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { UserRoleEnum } from '@/types';
-import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
@@ -17,23 +17,24 @@ const Home = () => {
   const logo = require('@/assets/images/app/logo.png');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { currentUser } = useAuthContext();
-
-  useEffect(() => {
-    if (currentUser) {
-      if (!currentUser.house) return;
-      if (currentUser.role === UserRoleEnum.PARENT)
-        router.replace(ROUTES.dashboard.parent);
-      else if (currentUser.role === UserRoleEnum.CHILD)
-        router.push(ROUTES.dashboard.child);
-      else router.replace(ROUTES.auth.index);
-    } else {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    }
-  }, [currentUser]);
-
   const router = useRouter();
+
+  useFocusEffect(
+    useCallback(() => {
+      if (currentUser) {
+        if (!currentUser.house) return;
+        if (currentUser.role === UserRoleEnum.PARENT)
+          router.replace(ROUTES.dashboard.parent);
+        else if (currentUser.role === UserRoleEnum.CHILD)
+          router.replace(ROUTES.dashboard.child);
+        else router.replace(ROUTES.auth.index);
+      } else {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+      }
+    }, [currentUser])
+  );
 
   return (
     <ImageBackground

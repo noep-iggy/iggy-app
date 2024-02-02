@@ -13,13 +13,12 @@ import { useAuthContext } from '@/contexts';
 import FormField from '@/components/Forms/FormField';
 import { formatValidationErrorMessage } from '@/utils/error';
 import Toast from 'react-native-toast-message';
-import { useNavigation, useRouter } from 'expo-router';
-import { ROUTES } from '@/router/routes';
+import { useNavigation } from 'expo-router';
+import { clearHistoryAndRedirect } from '@/utils';
 
 const Login = () => {
   const logo = require('@/assets/images/app/logo-color.png');
   const { setToken } = useAuthContext();
-  const router = useRouter();
   const navigation = useNavigation();
 
   const formApi = useForm<AuthLoginApi>({
@@ -44,7 +43,7 @@ const Login = () => {
         text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.login'),
       });
-      router.replace(ROUTES.dashboard.parent);
+      clearHistoryAndRedirect('dashboard', navigation);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
@@ -70,15 +69,8 @@ const Login = () => {
             padding: 16,
           },
         ]}
-        edges={['right', 'left', 'bottom']}
       >
-        <View
-          style={[
-            genericStyles.flexCenter,
-
-            { width: '100%', flexGrow: 1, gap: 16 },
-          ]}
-        >
+        <View style={[genericStyles.flexCenter, { width: '100%', gap: 16 }]}>
           <Image source={logo} resizeMode="contain" style={{ width: 150 }} />
           <Text variant="bodyMedium">{i18n.t('LoginPage.Subtitle')}</Text>
           <View style={[genericStyles.flexColumn, { width: '100%', gap: 6 }]}>
@@ -100,6 +92,7 @@ const Login = () => {
         </View>
 
         <PrimaryButton
+          style={{ marginTop: 30 }}
           disabled={!isValid || isSubmitting}
           loading={isSubmitting}
           onPress={handleSubmit(onSubmit)}

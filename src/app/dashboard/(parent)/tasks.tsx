@@ -49,12 +49,6 @@ const TasksPage = () => {
     }, [page, period, isArchivedSelected])
   );
 
-  const PERIOD = Object.values(TaskPeriodEnum).map((v, i) => ({
-    key: `${i}-${v}-period`,
-    label: i18n.t(`enums.period.${v}`),
-    value: v,
-  }));
-
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>
       <Stack.Screen
