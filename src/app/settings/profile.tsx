@@ -1,4 +1,5 @@
 import { ApiService } from '@/api';
+import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
 import { genericStyles } from '@/constants';
@@ -6,7 +7,6 @@ import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { clearHistoryAndRedirect, formatDateTime } from '@/utils';
-import { useActionSheet } from '@expo/react-native-action-sheet';
 import {
   Stack,
   useLocalSearchParams,
@@ -14,13 +14,12 @@ import {
   useRouter,
 } from 'expo-router';
 import { useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useTheme, Icon, Text, Divider } from 'react-native-paper';
+import { useTheme, Text, Divider } from 'react-native-paper';
 
 const ProfileSettings = () => {
   const { currentUser, removeToken } = useAuthContext();
-  const { showActionSheetWithOptions } = useActionSheet();
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const params = useLocalSearchParams();
   const theme = useTheme();
@@ -34,42 +33,6 @@ const ProfileSettings = () => {
     clearHistoryAndRedirect('index', navigation);
   }
 
-  const onPress = () => {
-    const options = [
-      i18n.t('generics.update'),
-      i18n.t('generics.logout'),
-      i18n.t('generics.delete'),
-      i18n.t('generics.cancel'),
-    ];
-    const destructiveButtonIndex = 2;
-    const cancelButtonIndex = 3;
-
-    showActionSheetWithOptions(
-      {
-        userInterfaceStyle: theme.dark ? 'dark' : 'light',
-        options,
-        cancelButtonIndex,
-        destructiveButtonIndex,
-        tintIcons: true,
-      },
-      (selectedIndex?: number) => {
-        switch (selectedIndex) {
-          case 0:
-            router.push(ROUTES.user.update);
-            router.setParams({ id: currentUser?.id ?? '' });
-            break;
-          case 1:
-            removeToken();
-            clearHistoryAndRedirect('index', navigation);
-            break;
-          case destructiveButtonIndex:
-            setIsConfirmVisible(true);
-            break;
-          case cancelButtonIndex:
-        }
-      }
-    );
-  };
   const PROFILE = [
     {
       label: i18n.t('fields.firstName.label'),
@@ -114,11 +77,6 @@ const ProfileSettings = () => {
         <Stack.Screen
           options={{
             headerTitle: currentUser?.firstName,
-            headerRight: () => (
-              <TouchableOpacity onPress={onPress}>
-                <Icon size={25} source="dots-vertical" />
-              </TouchableOpacity>
-            ),
           }}
         />
         <ScrollView>
@@ -142,6 +100,34 @@ const ProfileSettings = () => {
         onCancel={() => setIsConfirmVisible(false)}
         title={i18n.t('users.me.confirmDelete.title')}
         content={i18n.t('users.me.confirmDelete.subtitle')}
+      />
+      <ButtonsAction
+        icon="cog"
+        items={[
+          {
+            icon: 'pencil',
+            label: i18n.t('generics.update'),
+            onPress: () => {
+              router.push(ROUTES.user.update);
+              router.setParams({ id: currentUser?.id ?? '' });
+            },
+          },
+          {
+            icon: 'logout',
+            label: i18n.t('generics.logout'),
+            onPress: () => {
+              removeToken();
+              clearHistoryAndRedirect('index', navigation);
+            },
+          },
+          {
+            icon: 'trash-can',
+            label: i18n.t('generics.delete'),
+            onPress: () => {
+              setIsConfirmVisible(true);
+            },
+          },
+        ]}
       />
     </>
   );

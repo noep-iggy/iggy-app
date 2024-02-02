@@ -1,4 +1,5 @@
 import { ApiService } from '@/api';
+import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
 import { genericStyles } from '@/constants';
@@ -6,7 +7,6 @@ import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { UserDto } from '@/types';
 import { formatDateTime } from '@/utils';
-import { useActionSheet } from '@expo/react-native-action-sheet';
 import {
   Stack,
   useFocusEffect,
@@ -14,12 +14,11 @@ import {
   useRouter,
 } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useTheme, Icon, Text, Divider } from 'react-native-paper';
+import { useTheme, Text, Divider } from 'react-native-paper';
 
 const UserDetail = () => {
-  const { showActionSheetWithOptions } = useActionSheet();
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const [user, setUser] = useState<UserDto>();
   const params = useLocalSearchParams();
@@ -31,38 +30,6 @@ const UserDetail = () => {
     await ApiService.users.deleteById(params.id as string);
     router.back();
   }
-
-  const onPress = () => {
-    const options = [
-      i18n.t('generics.update'),
-      i18n.t('generics.delete'),
-      i18n.t('generics.cancel'),
-    ];
-    const destructiveButtonIndex = 1;
-    const cancelButtonIndex = 2;
-
-    showActionSheetWithOptions(
-      {
-        userInterfaceStyle: theme.dark ? 'dark' : 'light',
-        options,
-        cancelButtonIndex,
-        destructiveButtonIndex,
-        tintIcons: true,
-      },
-      (selectedIndex?: number) => {
-        switch (selectedIndex) {
-          case 0:
-            router.push(ROUTES.user.update);
-            router.setParams({ id: user?.id ?? '' });
-            break;
-          case destructiveButtonIndex:
-            setIsConfirmVisible(true);
-            break;
-          case cancelButtonIndex:
-        }
-      }
-    );
-  };
 
   async function fetchUser(id: string) {
     const user = await ApiService.users.getById(id);
@@ -119,11 +86,6 @@ const UserDetail = () => {
         <Stack.Screen
           options={{
             headerTitle: user?.firstName,
-            headerRight: () => (
-              <TouchableOpacity onPress={onPress}>
-                <Icon size={25} source="dots-vertical" />
-              </TouchableOpacity>
-            ),
           }}
         />
         <ScrollView>
@@ -147,6 +109,26 @@ const UserDetail = () => {
         onCancel={() => setIsConfirmVisible(false)}
         title={i18n.t('users.me.confirmDelete.title')}
         content={i18n.t('users.me.confirmDelete.subtitle')}
+      />
+      <ButtonsAction
+        icon="cog"
+        items={[
+          {
+            icon: 'pencil',
+            label: i18n.t('generics.update'),
+            onPress: () => {
+              router.push(ROUTES.user.update);
+              router.setParams({ id: user?.id ?? '' });
+            },
+          },
+          {
+            icon: 'trash-can',
+            label: i18n.t('generics.delete'),
+            onPress: () => {
+              setIsConfirmVisible(true);
+            },
+          },
+        ]}
       />
     </>
   );

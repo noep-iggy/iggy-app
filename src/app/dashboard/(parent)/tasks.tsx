@@ -1,4 +1,5 @@
 import { ApiService } from '@/api';
+import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { RefreshScroll } from '@/components/Scroll';
@@ -7,16 +8,10 @@ import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
-import { Stack, router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import {
-  useTheme,
-  SegmentedButtons,
-  Icon,
-  Text,
-  Button,
-} from 'react-native-paper';
+import { View } from 'react-native';
+import { useTheme, SegmentedButtons, Icon, Button } from 'react-native-paper';
 
 const TasksPage = () => {
   const theme = useTheme();
@@ -51,32 +46,6 @@ const TasksPage = () => {
 
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>
-      <Stack.Screen
-        options={{
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => router.push(ROUTES.task.create)}
-              style={{
-                backgroundColor: theme.colors.primary,
-                borderRadius: 50,
-                marginHorizontal: 8,
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingHorizontal: 7,
-                paddingVertical: 7,
-              }}
-            >
-              <Icon source="plus" size={20} color="white" />
-              <Text
-                variant="bodyMedium"
-                style={{ color: 'white', marginLeft: 2 }}
-              >
-                {i18n.t('generics.add')}
-              </Text>
-            </TouchableOpacity>
-          ),
-        }}
-      />
       <View style={[genericStyles.flexRow, { marginTop: 16, gap: 8 }]}>
         <SelectBase
           style={{ flex: 1 }}
@@ -135,6 +104,7 @@ const TasksPage = () => {
           <TaskAnimalCard isAnimalVisible key={task.id} task={task} />
         ))}
       </RefreshScroll>
+      <ButtonsAction onPress={() => router.push(ROUTES.task.create)} />
     </UniversalSafeArea>
   );
 };

@@ -1,28 +1,22 @@
-import { ActivityIndicator, TouchableOpacity } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useState, useCallback } from 'react';
-import {
-  Stack,
-  router,
-  useFocusEffect,
-  useLocalSearchParams,
-} from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { TaskDto, TaskStatusEnum } from '@/types';
 import { ApiService } from '@/api';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { Icon, useTheme } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { TaskTodoDetail } from '@/components/Tasks/TaskTodoDetail';
 import { TaskValidateDetail } from '@/components/Tasks/TaskValidateDetail';
 import { TaskDoneDetail } from '@/components/Tasks/TaskDoneDetail';
 import i18n from '@/locales/localization';
 import Toast from 'react-native-toast-message';
-import { useActionSheet } from '@expo/react-native-action-sheet';
 import { ROUTES } from '@/router/routes';
 import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
+import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 
 const TaskDetail = () => {
   const params = useLocalSearchParams();
   const theme = useTheme();
-  const { showActionSheetWithOptions } = useActionSheet();
   const [task, setTask] = useState<TaskDto>();
   const [isLoading, setIsLoading] = useState(true);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
@@ -79,41 +73,6 @@ const TaskDetail = () => {
     return null;
   }
 
-  const onPress = () => {
-    const options = [
-      i18n.t('generics.update'),
-      i18n.t('generics.delete'),
-      i18n.t('generics.cancel'),
-    ];
-    const destructiveButtonIndex = 1;
-    const cancelButtonIndex = 2;
-    const disabledButtonIndices =
-      task.status !== TaskStatusEnum.TODO ? [0] : [];
-
-    showActionSheetWithOptions(
-      {
-        userInterfaceStyle: theme.dark ? 'dark' : 'light',
-        options,
-        cancelButtonIndex,
-        destructiveButtonIndex,
-        disabledButtonIndices,
-        tintIcons: true,
-      },
-      (selectedIndex?: number) => {
-        switch (selectedIndex) {
-          case 0:
-            router.push(ROUTES.task.update);
-            router.setParams({ id: params.id as string });
-            break;
-          case destructiveButtonIndex:
-            setIsConfirmVisible(true);
-            break;
-          case cancelButtonIndex:
-        }
-      }
-    );
-  };
-
   return (
     <>
       <UniversalSafeArea
@@ -122,16 +81,6 @@ const TaskDetail = () => {
         }}
         asView
       >
-        <Stack.Screen
-          options={{
-            headerRight: () => (
-              <TouchableOpacity onPress={onPress}>
-                <Icon size={25} source="dots-vertical" />
-              </TouchableOpacity>
-            ),
-          }}
-        />
-
         {taskRender(task.status)}
       </UniversalSafeArea>
       <DeleteDialog
@@ -143,6 +92,41 @@ const TaskDetail = () => {
         onCancel={() => setIsConfirmVisible(false)}
         title={i18n.t('tasks.confirmDelete.title')}
         content={i18n.t('tasks.confirmDelete.subtitle')}
+      />
+      <ButtonsAction
+        icon="cog"
+        style={{
+          paddingBottom: 100,
+        }}
+        items={
+          task.status === TaskStatusEnum.TODO
+            ? [
+                {
+                  icon: 'pencil',
+                  label: i18n.t('generics.update'),
+                  onPress: () => {
+                    router.push(ROUTES.task.update);
+                    router.setParams({ id: params.id as string });
+                  },
+                },
+                {
+                  icon: 'trash-can',
+                  label: i18n.t('generics.delete'),
+                  onPress: () => {
+                    setIsConfirmVisible(true);
+                  },
+                },
+              ]
+            : [
+                {
+                  icon: 'trash-can',
+                  label: i18n.t('generics.delete'),
+                  onPress: () => {
+                    setIsConfirmVisible(true);
+                  },
+                },
+              ]
+        }
       />
     </>
   );

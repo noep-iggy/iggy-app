@@ -6,10 +6,10 @@ import { genericStyles } from '@/constants';
 import { animalResolver } from '@/utils/animal';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { useTheme, Text } from 'react-native-paper';
-import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { RefreshScroll } from '@/components/Scroll';
+import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 
 const Pets = () => {
   const theme = useTheme();
@@ -91,19 +91,7 @@ const Pets = () => {
           ))}
         </View>
       </RefreshScroll>
-      <PrimaryButton
-        title="Ajouter"
-        icon="plus"
-        style={{
-          marginVertical: 16,
-          height: 50,
-          justifyContent: 'center',
-          alignSelf: 'center',
-        }}
-        onPress={() => {
-          router.push(ROUTES.animal.create);
-        }}
-      />
+      <ButtonsAction onPress={() => router.push(ROUTES.animal.create)} />
     </UniversalSafeArea>
   );
 };
