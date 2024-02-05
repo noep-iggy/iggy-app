@@ -1,5 +1,5 @@
 import i18n from '@/locales/localization';
-import { TaskDto } from '@/types';
+import { TaskDto, TaskStatusEnum } from '@/types';
 import { View } from 'react-native';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import AddPictureCard from '../Card/AddPictureCard';
@@ -7,6 +7,8 @@ import { ApiService } from '@/api';
 import { useState } from 'react';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
 import { useRouter } from 'expo-router';
+import { useAuthContext } from '@/contexts';
+import Toast from 'react-native-toast-message';
 
 interface TaskTodoDetailProps {
   task: TaskDto;
@@ -18,6 +20,7 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
   const [newPictureUri, setNewPictureUri] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { currentUser } = useAuthContext();
 
   async function checkTask() {
     if (!task || !newPictureUri) return;
@@ -28,6 +31,17 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
       pictureId: createPicture.id,
     });
     setTask(taskFetched);
+    if (
+      taskFetched.status === TaskStatusEnum.TO_VALIDATE &&
+      currentUser?.role === 'CHILD'
+    ) {
+      Toast.show({
+        type: 'success',
+        text1: i18n.t('generics.yay'),
+        text2: i18n.t('tasks.wentToValidation'),
+      });
+      router.back();
+    }
     setIsLoading(false);
   }
 

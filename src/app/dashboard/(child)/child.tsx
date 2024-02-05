@@ -27,6 +27,7 @@ import { ApiService } from '@/api';
 import ChildPetSlide from '@/components/Card/ChildPetSlide';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
 import i18n from '@/locales/localization';
+import { set } from 'react-hook-form';
 
 const ChildDashboard = () => {
   const splashImage = require('@/assets/images/app/splash.png');
@@ -36,18 +37,20 @@ const ChildDashboard = () => {
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
   const [tasks, setTasks] = useState<TaskDto[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [currentAnimal, setCurrentAnimal] = useState<AnimalDto>();
 
   async function fetchAnimals() {
-    setIsLoading(true);
     const animalsFetched = await ApiService.house.getAnimals();
     setAnimals(animalsFetched);
+    setCurrentAnimal(animalsFetched[0]);
   }
 
-  async function fetchTasks() {
+  async function fetchTasks(index: number = 0) {
+    setIsLoading(true);
     const tasksFetched = await ApiService.tasks.getAll({
       status: TaskStatusEnum.TODO,
       date: TaskPeriodEnum.TODAY,
-      animalId: animals[0].id,
+      animalId: animals[index]?.id,
       userId: currentUser?.id,
       orderBy: 'date',
       orderType: 'ASC',
@@ -93,13 +96,28 @@ const ChildDashboard = () => {
                 router.push(ROUTES.settings.childSettings);
               }}
             >
-              <Icon source="cog" size={32} color="white" />
+              <Icon source="cog" size={24} color="white" />
             </TouchableRipple>
             <ScrollView
               horizontal
               decelerationRate={0}
               snapToInterval={windowWidth}
               snapToAlignment="center"
+              onScroll={(e) => {
+                const index = Math.round(
+                  e.nativeEvent.contentOffset.x /
+                    e.nativeEvent.layoutMeasurement.width
+                );
+                setTimeout(() => {
+                  setIsLoading(true);
+                  setCurrentAnimal(animals[index]);
+                  if (currentAnimal?.id !== animals[index]?.id) {
+                    fetchTasks(index);
+                  }
+                  setIsLoading(false);
+                }, 100);
+              }}
+              scrollEventThrottle={16}
             >
               {animals.map((animal, index) => (
                 <ChildPetSlide
@@ -115,7 +133,7 @@ const ChildDashboard = () => {
                 padding: 16,
                 paddingBottom: 38,
                 borderRadius: 8,
-                // maxHeight: 175,
+                maxHeight: 175,
                 marginHorizontal: 16,
                 gap: 12,
               }}

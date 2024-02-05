@@ -38,7 +38,8 @@
     "or": "ou",
     "filter": "Filtrer",
     "filterBy": "Filtrer par",
-    "orderBy": "Trier par"
+    "orderBy": "Trier par",
+    "yay": "Youpi !"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -132,6 +133,7 @@
     "todo": "Tâches à faire",
     "validate": "Valider",
     "refuse": "Refuser",
+    "wentToValidation": "La tâche a été envoyée à tes parents pour validation",
     "confirmRefuse": {
       "title": "Refuser la tâche",
       "subtitle": "Êtes-vous sûr de vouloir refuser cette tâche ?",
