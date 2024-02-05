@@ -1,4 +1,4 @@
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { useState, useCallback } from 'react';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { TaskDto } from '@/types';
@@ -38,16 +38,14 @@ const TaskDetail = () => {
   }
 
   return (
-    <>
-      <UniversalSafeArea
-        style={{
-          padding: 16,
-        }}
-        asView
-      >
-        {renderTask()}
-      </UniversalSafeArea>
-    </>
+    <UniversalSafeArea
+      style={{
+        paddingHorizontal: 16,
+      }}
+      asView
+    >
+      <View style={{ flex: 1, paddingVertical: 16 }}>{renderTask()}</View>
+    </UniversalSafeArea>
   );
 };
 

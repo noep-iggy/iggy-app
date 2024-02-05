@@ -12,14 +12,17 @@ import { animalAnimationResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import AddPictureCard from '../Card/AddPictureCard';
 import { genericStyles } from '@/constants';
+import { ViewProps } from '@expo/html-elements/build/primitives/View';
 
 interface TaskTodoDetailProps {
   task: TaskDto;
   setTask: (task: TaskDto) => void;
+  isChild?: boolean;
+  style?: ViewProps['style'];
 }
 
 export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
-  const { task, setTask } = props;
+  const { task, setTask, isChild = true, style } = props;
   const [newPictureUri, setNewPictureUri] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -50,15 +53,18 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
 
   return (
     <View
-      style={{
-        width: '100%',
-        height: '100%',
-        justifyContent: 'space-between',
-        paddingBottom: 16,
-      }}
+      style={[
+        {
+          width: '100%',
+          height: '100%',
+          justifyContent: 'space-between',
+          paddingBottom: 16,
+        },
+        style,
+      ]}
     >
       <View>
-        {newPictureUri ? (
+        {newPictureUri || isChild ? (
           <AddPictureCard
             pictureUri={newPictureUri}
             setPictureUri={setNewPictureUri}
@@ -76,7 +82,7 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
         <TaskHeaderDetail task={task} />
       </View>
       <View style={[genericStyles.flexRow, {}]}>
-        {!newPictureUri && (
+        {!newPictureUri && !isChild && (
           <AddPictureCard
             size="small"
             style={{ height: 50, width: 80, borderRadius: 20 }}

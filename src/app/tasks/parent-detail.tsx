@@ -61,7 +61,7 @@ const TaskDetail = () => {
     if (!task) return null;
     switch (status) {
       case TaskStatusEnum.TODO:
-        return <TaskTodoDetail task={task} setTask={setTask} />;
+        return <TaskTodoDetail isChild={false} task={task} setTask={setTask} />;
       case TaskStatusEnum.TO_VALIDATE:
         return <TaskValidateDetail task={task} setTask={setTask} />;
       case TaskStatusEnum.DONE:
