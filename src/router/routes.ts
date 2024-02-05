@@ -37,5 +37,6 @@ export const ROUTES = {
     profile: 'settings/profile' as never,
     family: 'settings/family' as never,
     house: 'settings/house' as never,
+    childSettings: 'settings/child-settings' as never,
   },
 };

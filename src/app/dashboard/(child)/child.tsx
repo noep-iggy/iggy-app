@@ -1,11 +1,12 @@
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { useAuthContext } from '@/contexts';
 import { ROUTES } from '@/router/routes';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
+  ActivityIndicator,
   Icon,
   Surface,
   Text,
@@ -14,13 +15,56 @@ import {
 } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
-import { AnimalTypeEnum } from '@/types';
+import {
+  AnimalDto,
+  AnimalTypeEnum,
+  TaskDto,
+  TaskPeriodEnum,
+  TaskStatusEnum,
+} from '@/types';
+import { useCallback, useEffect, useState } from 'react';
+import { ApiService } from '@/api';
+import ChildPetSlide from '@/components/Card/ChildPetSlide';
+import ChildTaskCard from '@/components/Card/ChildTaskCard';
+import i18n from '@/locales/localization';
 
 const ChildDashboard = () => {
   const splashImage = require('@/assets/images/app/splash.png');
-  const { removeToken } = useAuthContext();
+  const { removeToken, currentUser } = useAuthContext();
   const theme = useTheme();
   const { width: windowWidth } = useWindowDimensions();
+  const [animals, setAnimals] = useState<AnimalDto[]>([]);
+  const [tasks, setTasks] = useState<TaskDto[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  async function fetchAnimals() {
+    setIsLoading(true);
+    const animalsFetched = await ApiService.house.getAnimals();
+    setAnimals(animalsFetched);
+  }
+
+  async function fetchTasks() {
+    const tasksFetched = await ApiService.tasks.getAll({
+      status: TaskStatusEnum.TODO,
+      date: TaskPeriodEnum.TODAY,
+      animalId: animals[0].id,
+      userId: currentUser?.id,
+      orderBy: 'date',
+      orderType: 'ASC',
+    });
+    setTasks(tasksFetched);
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    fetchAnimals();
+  }, []);
+
+  useEffect(() => {
+    if (animals.length > 0) {
+      fetchTasks();
+    }
+  }, [animals]);
 
   return (
     <>
@@ -38,50 +82,40 @@ const ChildDashboard = () => {
               height: '100%',
             }}
           >
+            <TouchableRipple
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                zIndex: 1,
+              }}
+              onPress={() => {
+                router.push(ROUTES.settings.childSettings);
+              }}
+            >
+              <Icon source="cog" size={32} color="white" />
+            </TouchableRipple>
             <ScrollView
               horizontal
               decelerationRate={0}
               snapToInterval={windowWidth}
               snapToAlignment="center"
             >
-              <View
-                style={{ width: windowWidth, height: '100%', paddingTop: 70 }}
-              >
-                <Text
-                  variant="headlineLarge"
-                  style={{
-                    textAlign: 'center',
-                    color: 'white',
-                  }}
-                >
-                  Pépito
-                </Text>
-                <View
-                  style={{
-                    height: '100%',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexShrink: 1,
-                  }}
-                >
-                  <LottieView
-                    autoPlay={true}
-                    source={animalAnimationResolver(AnimalTypeEnum.DOG)}
-                    style={{
-                      alignSelf: 'center',
-                      height: 'auto',
-                    }}
-                  />
-                </View>
-              </View>
+              {animals.map((animal, index) => (
+                <ChildPetSlide
+                  key={index}
+                  animal={animal}
+                  cardWidth={windowWidth}
+                />
+              ))}
             </ScrollView>
             <Surface
               style={{
                 backgroundColor: theme.colors.surface,
                 padding: 16,
-                paddingBottom: 26,
+                paddingBottom: 38,
                 borderRadius: 8,
-                maxHeight: 175,
+                // maxHeight: 175,
                 marginHorizontal: 16,
                 gap: 12,
               }}
@@ -101,7 +135,7 @@ const ChildDashboard = () => {
                     minHeight: 0,
                   }}
                 >
-                  Tâches à faire
+                  {i18n.t('tasks.todo')}
                 </Text>
                 <View>
                   <Icon
@@ -121,70 +155,33 @@ const ChildDashboard = () => {
                       fontSize: 16,
                     }}
                   >
-                    3
+                    {tasks.length > 9 ? '9+' : tasks.length}
                   </Text>
                 </View>
               </View>
               <View>
-                <TouchableRipple
-                  onPress={() => router.push(ROUTES.task.childDetail)}
-                >
-                  <Surface
+                {!tasks.length && !isLoading ? (
+                  <Text
+                    variant="bodyLarge"
                     style={{
-                      maxHeight: 75,
-                      borderRadius: 8,
-                      backgroundColor: theme.colors.inversePrimary,
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      paddingHorizontal: 14,
-                      paddingVertical: 12,
+                      textAlign: 'center',
+                      color: theme.colors.onSurface,
                     }}
                   >
-                    <View>
-                      <Text variant="titleMedium">Donner à boire</Text>
-                      <Text variant="labelSmall">Hier - 19h30</Text>
-                    </View>
-                    <Icon
-                      size={32}
-                      source="alarm"
-                      color={theme.colors.onPrimaryContainer}
-                    />
-                  </Surface>
-                </TouchableRipple>
-                <TouchableRipple
-                  disabled
-                  style={{
-                    position: 'absolute',
-                    width: '100%',
-                    transform: [{ translateY: 15 }, { scale: 0.9 }],
-                    zIndex: -1,
-                  }}
-                  onPress={() => router.push(ROUTES.task.childDetail)}
-                >
-                  <Surface
-                    style={{
-                      maxHeight: 75,
-                      borderRadius: 8,
-                      backgroundColor: theme.colors.inversePrimary,
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      paddingHorizontal: 14,
-                      paddingVertical: 12,
-                    }}
-                  >
-                    <View>
-                      <Text variant="titleMedium">Donner à boire</Text>
-                      <Text variant="labelSmall">Hier - 19h30</Text>
-                    </View>
-                    <Icon
-                      size={32}
-                      source="alarm"
-                      color={theme.colors.onPrimaryContainer}
-                    />
-                  </Surface>
-                </TouchableRipple>
+                    {i18n.t('tasks.noTasks')}
+                  </Text>
+                ) : (
+                  tasks
+                    .slice(0, 2)
+                    .map((task, index) => (
+                      <ChildTaskCard
+                        key={index}
+                        task={task}
+                        isSecondary={index === 1}
+                      />
+                    ))
+                )}
+                {isLoading && <ActivityIndicator size="small" />}
               </View>
             </Surface>
           </View>

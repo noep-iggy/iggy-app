@@ -10,12 +10,15 @@
     "dashboard": "Tableau de bord",
     "tasks_create": "Créer une tâche",
     "tasks_update": "Modifier une tâche",
+    "tasks_detail": "Chargement de la tâche",
+    "tasks_child-detail": "Tâche",
     "tasks_parent-detail": "Détail de la tâche",
     "modals_refuse-task-modal": "Refuser la tâche",
     "modals_filters-shop-modal": "Filtres de la boutique",
     "settings_profile": "Mon profil",
     "settings_house": "Ma maison",
     "settings_family": "Ma famille",
+    "settings_child-settings": "Paramètres",
     "user_update": "Modifier un utilisateur",
     "user_detail": "Chargement",
     "house_update": "Modifier la maison"
@@ -126,6 +129,7 @@
   "tasks": {
     "noTasks": "Aucune tâche de prévue",
     "check": "Faire vérifier la tâche",
+    "todo": "Tâches à faire",
     "validate": "Valider",
     "refuse": "Refuser",
     "confirmRefuse": {
