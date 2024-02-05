@@ -2,13 +2,16 @@ import i18n from '@/locales/localization';
 import { TaskDto, TaskStatusEnum } from '@/types';
 import { View } from 'react-native';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import AddPictureCard from '../Card/AddPictureCard';
 import { ApiService } from '@/api';
 import { useState } from 'react';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
 import { useRouter } from 'expo-router';
 import { useAuthContext } from '@/contexts';
 import Toast from 'react-native-toast-message';
+import { animalAnimationResolver } from '@/utils/animal';
+import LottieView from 'lottie-react-native';
+import AddPictureCard from '../Card/AddPictureCard';
+import { genericStyles } from '@/constants';
 
 interface TaskTodoDetailProps {
   task: TaskDto;
@@ -55,20 +58,41 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
       }}
     >
       <View>
-        <AddPictureCard
-          pictureUri={newPictureUri}
-          setPictureUri={setNewPictureUri}
-        />
+        {newPictureUri ? (
+          <AddPictureCard
+            pictureUri={newPictureUri}
+            setPictureUri={setNewPictureUri}
+          />
+        ) : (
+          <LottieView
+            autoPlay={true}
+            source={animalAnimationResolver(task.animals[0].type)}
+            style={{
+              height: 300,
+            }}
+          />
+        )}
+
         <TaskHeaderDetail task={task} />
       </View>
+      <View style={[genericStyles.flexRow, {}]}>
+        {!newPictureUri && (
+          <AddPictureCard
+            size="small"
+            style={{ height: 50, width: 80, borderRadius: 20 }}
+            setPictureUri={setNewPictureUri}
+          />
+        )}
 
-      <PrimaryButton
-        disabled={!newPictureUri || isLoading}
-        loading={isLoading}
-        onPress={() => checkTask()}
-        title={i18n.t('tasks.check')}
-        big
-      />
+        <PrimaryButton
+          style={{ flex: 1, marginLeft: 8 }}
+          disabled={!newPictureUri || isLoading}
+          loading={isLoading}
+          onPress={() => checkTask()}
+          title={i18n.t('tasks.check')}
+          big
+        />
+      </View>
     </View>
   );
 }

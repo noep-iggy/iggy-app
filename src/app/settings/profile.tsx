@@ -6,13 +6,8 @@ import { genericStyles } from '@/constants';
 import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
-import { clearHistoryAndRedirect, formatDateTime } from '@/utils';
-import {
-  Stack,
-  useLocalSearchParams,
-  useNavigation,
-  useRouter,
-} from 'expo-router';
+import { formatDateTime } from '@/utils';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -24,13 +19,11 @@ const ProfileSettings = () => {
   const params = useLocalSearchParams();
   const theme = useTheme();
   const router = useRouter();
-  const navigation = useNavigation();
 
   async function removeUser() {
     if (!params) return;
     await ApiService.users.deleteMe();
     removeToken();
-    clearHistoryAndRedirect('index', navigation);
   }
 
   const PROFILE = [
@@ -117,7 +110,6 @@ const ProfileSettings = () => {
             label: i18n.t('generics.logout'),
             onPress: () => {
               removeToken();
-              clearHistoryAndRedirect('index', navigation);
             },
           },
           {

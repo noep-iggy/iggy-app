@@ -8,6 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar, Icon, Text, useTheme } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
 import { formatDateTime } from '@/utils';
+import i18n from '@/locales/localization';
 
 interface TaskAnimalCardProps {
   task: TaskDto;
@@ -105,11 +106,39 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
             />
           ))}
       </View>
-      {task.recurrence && (
-        <View style={[{ position: 'absolute', top: 5, right: 5 }]}>
-          <Icon source="clock-time-eight" size={17} />
-        </View>
-      )}
+
+      <View
+        style={[
+          genericStyles.flexRow,
+          { position: 'absolute', top: 5, right: 5 },
+        ]}
+      >
+        {task.isArchived && (
+          <View
+            style={[
+              genericStyles.flexRow,
+              {
+                alignItems: 'center',
+                borderWidth: 1,
+                borderColor: theme.colors.error,
+                padding: 4,
+                backgroundColor: theme.colors.surfaceVariant,
+                borderRadius: 4,
+                marginRight: task.recurrence ? 5 : 0,
+              },
+            ]}
+          >
+            <Icon source="alert" size={15} color={theme.colors.error} />
+            <Text
+              variant="bodySmall"
+              style={{ marginLeft: 4, color: theme.colors.error }}
+            >
+              {i18n.t('generics.late')}
+            </Text>
+          </View>
+        )}
+        {task.recurrence && <Icon source="clock-time-eight" size={17} />}
+      </View>
     </TouchableOpacity>
   );
 };

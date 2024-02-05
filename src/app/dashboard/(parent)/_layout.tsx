@@ -1,9 +1,20 @@
 import { ROUTES } from '@/router/routes';
 import { Tabs } from 'expo-router';
 import { Icon, useTheme } from 'react-native-paper';
+import { Image } from 'react-native';
 
 const ParentLayout = () => {
   const theme = useTheme();
+  const background = require('@/assets/images/app/splash.png');
+
+  const commons = {
+    headerBackground: () => (
+      <Image source={background} style={{ width: '100%', height: '100%' }} />
+    ),
+    headerTitleStyle: {
+      color: 'white',
+    },
+  };
 
   return (
     <Tabs
@@ -23,9 +34,11 @@ const ParentLayout = () => {
         options={{
           tabBarLabel: 'Accueil',
           headerTitle: 'Bienvenue',
+
           tabBarIcon: ({ color, size }) => (
             <Icon source="home" size={size} color={color} />
           ),
+          ...commons,
         }}
       />
       <Tabs.Screen
@@ -39,6 +52,7 @@ const ParentLayout = () => {
               color={color}
             />
           ),
+          ...commons,
         }}
       />
       <Tabs.Screen
@@ -51,6 +65,7 @@ const ParentLayout = () => {
           href: {
             pathname: ROUTES.animal.list,
           },
+          ...commons,
         }}
       />
       <Tabs.Screen
@@ -60,6 +75,7 @@ const ParentLayout = () => {
           tabBarIcon: ({ color, size }) => (
             <Icon source="cart" size={size} color={color} />
           ),
+          ...commons,
         }}
       />
       <Tabs.Screen
@@ -69,6 +85,7 @@ const ParentLayout = () => {
           tabBarIcon: ({ color, size }) => (
             <Icon source="account-cog" size={size} color={color} />
           ),
+          ...commons,
         }}
       />
     </Tabs>

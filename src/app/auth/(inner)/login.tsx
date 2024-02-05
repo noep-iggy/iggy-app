@@ -23,10 +23,6 @@ const Login = () => {
 
   const formApi = useForm<AuthLoginApi>({
     resolver: yupResolver(userValidation.login),
-    defaultValues: {
-      email: 'dorian@gmail.com',
-      password: 'Azerty12!',
-    },
     mode: 'onTouched',
   });
 
@@ -65,7 +61,7 @@ const Login = () => {
       <UniversalSafeArea
         style={[
           {
-            justifyContent: 'flex-end',
+            justifyContent: 'center',
             padding: 16,
           },
         ]}

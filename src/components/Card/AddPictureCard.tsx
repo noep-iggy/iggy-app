@@ -7,10 +7,11 @@ interface AddPictureCardProps {
   style?: TouchableOpacityProps['style'];
   setPictureUri: (pictureUri?: string) => void;
   pictureUri?: string;
+  size?: 'small' | 'large';
 }
 
 const AddPictureCard = (props: AddPictureCardProps) => {
-  const { style, pictureUri, setPictureUri } = props;
+  const { style, pictureUri, setPictureUri, size = 'large' } = props;
   const theme = useTheme();
 
   const selectImage = async (useLibrary: boolean) => {
@@ -37,7 +38,7 @@ const AddPictureCard = (props: AddPictureCardProps) => {
     <TouchableOpacity
       style={[
         {
-          height: 350,
+          height: size === 'large' ? 350 : 50,
           width: '100%',
           borderColor: theme.colors.secondary,
           borderWidth: 1,
@@ -76,7 +77,7 @@ const AddPictureCard = (props: AddPictureCardProps) => {
           >
             <Icon
               source="camera"
-              size={35}
+              size={size === 'large' ? 24 : 18}
               color={theme.colors.onSurfaceVariant}
             />
           </View>
@@ -84,8 +85,8 @@ const AddPictureCard = (props: AddPictureCardProps) => {
       ) : (
         <View
           style={{
-            width: 75,
-            height: 75,
+            width: size === 'large' ? 75 : 35,
+            height: size === 'large' ? 75 : 35,
             borderRadius: 75,
             backgroundColor: theme.colors.surfaceVariant,
             justifyContent: 'center',
@@ -94,7 +95,7 @@ const AddPictureCard = (props: AddPictureCardProps) => {
         >
           <Icon
             source="camera"
-            size={24}
+            size={size === 'large' ? 40 : 18}
             color={theme.colors.onSurfaceVariant}
           />
         </View>

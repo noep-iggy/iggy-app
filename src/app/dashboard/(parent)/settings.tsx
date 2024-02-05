@@ -34,8 +34,9 @@ const Settings = () => {
     },
     {
       icon: 'lock',
-      title: 'Privacy',
+      title: 'Vie Privée',
       description: 'Gérer votre vie privée',
+      onPress: () => router.push(ROUTES.settings.cgu),
     },
     {
       icon: 'help-circle',

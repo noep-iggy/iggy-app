@@ -177,6 +177,16 @@ const ChildDashboard = () => {
                   </Text>
                 </View>
               </View>
+              <PrimaryButton
+                onPress={() => {
+                  removeToken();
+                }}
+                title="Déconnexion"
+                style={{
+                  backgroundColor: theme.colors.primary,
+                  borderRadius: 8,
+                }}
+              />
               <View>
                 {!tasks.length && !isLoading ? (
                   <Text

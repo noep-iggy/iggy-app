@@ -1,7 +1,6 @@
 import { TaskDto } from '@/types';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { Image } from 'react-native';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
 
 interface TaskDoneDetailProps {

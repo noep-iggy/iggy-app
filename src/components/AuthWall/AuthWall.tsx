@@ -1,8 +1,8 @@
 import { ReactNode, useEffect } from 'react';
 import { useAuthContext } from '@/contexts';
-import { useRouter } from 'expo-router';
-import { ROUTES } from '@/router/routes';
+import { useNavigation } from 'expo-router';
 import { ActivityIndicator } from 'react-native';
+import { clearHistoryAndRedirect } from '@/utils';
 
 interface AuthWallProps {
   children?: ReactNode;
@@ -10,14 +10,14 @@ interface AuthWallProps {
 
 export function AuthWall(props: AuthWallProps): React.JSX.Element {
   const { children } = props;
-  const router = useRouter();
+  const navigation = useNavigation();
 
   const { isAuthenticated, removeToken, token } = useAuthContext();
 
   useEffect(() => {
     if (!isAuthenticated()) {
       removeToken();
-      router.push(ROUTES.auth.index);
+      clearHistoryAndRedirect('index', navigation);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);

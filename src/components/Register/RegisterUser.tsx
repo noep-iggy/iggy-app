@@ -41,7 +41,7 @@ export function RegisterUser(props: RegisterUserProps): JSX.Element {
         text1: `${i18n.t('welcome')} ${user?.firstName ?? ''} !`,
         text2: i18n.t('success.api.register'),
       });
-      setCurrentStep(1);
+      setCurrentStep(2);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

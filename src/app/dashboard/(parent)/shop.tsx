@@ -5,8 +5,8 @@ import {
   ApiSearchResponse,
 } from '@/types';
 import { ApiService } from '@/api';
-import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { useState, useCallback, useEffect } from 'react';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useState, useEffect } from 'react';
 import { useTheme, Text } from 'react-native-paper';
 import { RefreshScroll } from '@/components/Scroll';
 import { AffiliateCard } from '@/components/Card/AffiliateCard';
@@ -34,9 +34,10 @@ const Shop = () => {
     pageSize: 10,
   });
 
-  async function fetchAffiliates() {
+  async function fetchAffiliates(newFilters: AffiliateSearchParams) {
     setIsLoading(true);
-    const affiliatesFetched = await ApiService.affiliates.getAll(filters);
+    console.log('[D] shop', newFilters);
+    const affiliatesFetched = await ApiService.affiliates.getAll(newFilters);
     setAffiliatesFetched(affiliatesFetched);
     setAffiliates((prevAffiliates) => [
       ...prevAffiliates,
@@ -46,16 +47,16 @@ const Shop = () => {
     setIsLoading(false);
   }
 
-  useFocusEffect(
-    useCallback(() => {
-      fetchAffiliates();
-    }, [filters])
-  );
+  useEffect(() => {
+    fetchAffiliates(filters);
+  }, []);
 
   useEffect(() => {
     if (params?.filters) {
       setAffiliates([]);
-      setFilters(JSON.parse(params.filters as string));
+      const filters = JSON.parse(params.filters as string);
+      setFilters(filters);
+      fetchAffiliates(filters);
     }
   }, [params]);
 
@@ -94,13 +95,16 @@ const Shop = () => {
           setAffiliatesFetched(undefined);
           setAffiliates([]);
           setFilters({ page: 0, orderBy: 'createdAt', orderType: 'DESC' });
+          fetchAffiliates({ page: 0, orderBy: 'createdAt', orderType: 'DESC' });
         }}
         onNextPage={() => {
           const newPage = (filters?.page ?? 0) + 1;
           setFilters({ ...filters, page: newPage });
+          fetchAffiliates({ ...filters, page: newPage });
         }}
       >
         <SimpleGrid
+          maxItemsPerRow={2}
           itemContainerStyle={{ justifyContent: 'flex-start' }}
           data={affiliates}
           renderItem={({ item }) => <AffiliateCard affiliate={item} />}

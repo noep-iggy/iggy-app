@@ -1,6 +1,7 @@
 import i18n from '@/locales/localization';
 import { transformPathToKey } from '@/utils';
 import { usePathname } from 'expo-router';
+import { ImageBackground } from 'react-native';
 import { Appbar } from 'react-native-paper';
 
 interface CustomModalBarProps {
@@ -17,12 +18,22 @@ const CustomModalBar = ({
   back,
 }: CustomModalBarProps) => {
   const title = i18n.t('Router.' + transformPathToKey(usePathname()));
+  const background = require('@/assets/images/app/splash.png');
 
   return (
-    <Appbar.Header statusBarHeight={0}>
-      <Appbar.Content title={options.headerTitle ?? title} />
-      <Appbar.Action icon="close" onPress={navigation.goBack} />
-    </Appbar.Header>
+    <ImageBackground source={background}>
+      <Appbar.Header
+        style={{
+          backgroundColor: 'transparent',
+          elevation: 0,
+          shadowOpacity: 0,
+        }}
+        statusBarHeight={0}
+      >
+        <Appbar.Content color="white" title={options.headerTitle ?? title} />
+        <Appbar.Action color="white" icon="close" onPress={navigation.goBack} />
+      </Appbar.Header>
+    </ImageBackground>
   );
 };
 

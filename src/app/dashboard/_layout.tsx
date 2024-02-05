@@ -4,7 +4,12 @@ import { Slot, Stack } from 'expo-router';
 const DashboardLayout = () => {
   return (
     <AuthWall>
-      <Stack.Screen options={{ headerShown: false, animation: 'none' }} />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          animation: 'none',
+        }}
+      />
       <Slot />
     </AuthWall>
   );

@@ -19,6 +19,7 @@
     "settings_house": "Ma maison",
     "settings_family": "Ma famille",
     "settings_child-settings": "Paramètres",
+    "settings_cgu": "Conditions générales d'utilisation",
     "user_update": "Modifier un utilisateur",
     "user_detail": "Chargement",
     "house_update": "Modifier la maison"
@@ -39,7 +40,12 @@
     "filter": "Filtrer",
     "filterBy": "Filtrer par",
     "orderBy": "Trier par",
-    "yay": "Youpi !"
+    "yay": "Youpi !",
+    "takePicture": "Prendre une photo",
+    "month": "mois",
+    "try": "Essayer",
+    "adopt": "Adopter",
+    "late": "En retard"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -98,7 +104,7 @@
   },
   "shop": {
     "noProduct": "Aucun produits",
-    "totalProduct": "produits en stock",
+    "totalProduct": "produits",
     "subTitle": "Achetez vos produits du quotidien à prix réduits"
   },
   "LoginPage": {
@@ -116,7 +122,19 @@
       "subtitle": "Vous pourrez en ajouter d'autres plus tard",
       "submit": "Ajouter un animal"
     },
-    "createHouse": "Créer mon foyer"
+    "createHouse": "Créer mon foyer",
+    "payment": {
+      "title": "Choisissez votre formule de souscription :",
+      "try": "Essayez Iggy pour :",
+      "accept": {
+        "part1": "J’ai lu et accepte les ",
+        "part2": "conditions générales d’utilisation",
+        "part3": "et ai pris connaissance de la ",
+        "part4": "politique de confidentialité ",
+        "part5": "d’Iggy en lien avec le RGPD."
+      },
+      "submit": "S'abonner"
+    }
   },
   "animals": {
     "detail": {

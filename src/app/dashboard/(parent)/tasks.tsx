@@ -53,7 +53,7 @@ const TasksPage = () => {
           onValueChange={(value) => {
             setPeriod(value as TaskPeriodEnum);
           }}
-          placeholder="Period"
+          placeholder={'Séléctionner une période'}
           items={Object.values(TaskPeriodEnum).map((v, i) => ({
             key: `${i}-${v}-period`,
             label: i18n.t(`enums.period.${v}`),

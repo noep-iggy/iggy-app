@@ -1,7 +1,7 @@
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
-import { CreateHouseApi } from '@/types';
+import { BillingPlanTypeEnum, CreateHouseApi } from '@/types';
 import { houseValidation } from '@/validations';
 import { Image, View } from 'react-native';
 import { Text } from 'react-native-paper';
@@ -15,10 +15,11 @@ import { useEffect } from 'react';
 
 interface RegisterHouseProps {
   setCurrentStep: (step: number) => void;
+  purshaseType: BillingPlanTypeEnum;
 }
 
 export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
-  const { setCurrentStep } = props;
+  const { setCurrentStep, purshaseType } = props;
   const logo = require('@/assets/images/app/logo-color.png');
 
   const formApi = useForm<CreateHouseApi>({
@@ -35,12 +36,13 @@ export function RegisterHouse(props: RegisterHouseProps): JSX.Element {
   async function onSubmit(data: CreateHouseApi) {
     try {
       await ApiService.house.create(data);
+      await ApiService.house.update({ billingPlan: purshaseType });
 
       Toast.show({
         type: 'success',
         text1: i18n.t('success.api.house.create'),
       });
-      setCurrentStep(2);
+      setCurrentStep(3);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       formatValidationErrorMessage(e?.data?.errors, setError);

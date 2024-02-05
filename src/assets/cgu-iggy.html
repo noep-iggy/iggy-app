@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>RGPD / Mentions légales / CGU / CGV</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5cc55cd4-bb6f-4acd-9204-c43dce2ab828" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">⚖️</span></div><h1 class="page-title">RGPD / Mentions légales / CGU / CGV</h1><p class="page-description"></p></header><div class="page-body"><h1 id="9d8c8594-4d1d-485f-88c4-e367f357873e" class=""><strong>Mentions Légales</strong></h1><h2 id="67fed0cc-b7ce-4e02-9d82-caf82a0d9f7f" class=""><strong>Éditeur de l&#x27;Application</strong></h2><p id="225e94be-fee1-4a6a-a3fa-ef43e5e6f96a" class=""><strong>Nom de l&#x27;Entreprise</strong> : Iggy</p><p id="97c9b369-d49f-4d9a-8238-1f21b582cee9" class=""><strong>SIRET</strong> : [Numéro de SIRET]</p><p id="751a5011-e7a6-4c78-81d9-2085ca75965c" class=""><strong>Siège Social</strong> : MyDigitalSchool</p><p id="4408705c-df75-49a1-b62f-c754163e2e63" class=""><strong>Représentant Légal</strong> : Noé Laura Dorian Mickael</p><p id="0181502b-606e-4c15-8101-2420ca7937e6" class=""><strong>Contact</strong> : contact.iggy@gmail.com</p><h2 id="35345460-6cc8-4aa0-a326-6360bca37994" class=""><strong>Hébergement</strong></h2><p id="a9ccbf6b-8c43-489b-850f-04a0c8b1f91b" class="">L&#x27;application [Nom de l&#x27;Application] est disponible au téléchargement sur :</p><ul id="b9431556-9816-4318-b6d3-f234da0d4271" class="bulleted-list"><li style="list-style-type:disc"><strong>Apple App Store</strong> pour les utilisateurs d&#x27;iOS (iPhone, iPad).</li></ul><ul id="3ee0e0f0-4bcf-4500-9e9a-c1e00bce0118" class="bulleted-list"><li style="list-style-type:disc"><strong>Google Play Store</strong> pour les utilisateurs d&#x27;Android.</li></ul><p id="c872a63e-520a-4af2-888a-e75baefdfbb4" class="">Ces plateformes sont gérées respectivement par Apple Inc. et Google LLC, et ne sont pas affiliées à [Nom de l&#x27;Entreprise].</p><p id="96082419-e6dd-48e4-a236-131095b117dd" class="">
+</p><h1 id="7c23fc86-c232-49c0-a826-cba6b2b728bd" class=""><strong>Conditions Générales d&#x27;Utilisation (CGU)</strong></h1><h2 id="58a2ef17-aeab-46a2-8688-a75567408153" class=""><strong>Conditions d&#x27;Accès et de Création d&#x27;un Espace Personnel</strong></h2><ol type="1" id="30686b97-42d7-426c-86e0-6967ac3ce32e" class="numbered-list" start="1"><li>Téléchargement et accès</li></ol><p id="88e097fb-01ab-4832-b8a5-d5416dd96be6" class="">Le téléchargement de l’application est gratuit depuis les plateformes App Store et Google Play.</p><p id="d2f9bbde-54b3-4976-bbbe-929cc6728ce5" class="">Pour accéder et utiliser l’application, Vous devez posséder :</p><ul id="2eb8b0af-1b96-458a-bb58-832163796fc4" class="bulleted-list"><li style="list-style-type:disc">Un téléphone compatible ou un terminal mobile compatible ;</li></ul><ul id="13e75f05-19ef-4a45-a636-de683cc2db86" class="bulleted-list"><li style="list-style-type:disc">Un accès au réseau internet ;</li></ul><p id="deadff0f-a285-4031-9082-38c4633329d1" class="">
+</p><p id="85503960-9bc8-44fb-addd-8f0635e45929" class="">Les terminaux compatibles sont :</p><ul id="08b65aae-5f4a-46d5-b892-071bb70ab547" class="bulleted-list"><li style="list-style-type:disc">Téléphone mobile IPhone d’Apple disposant du système d’exploitation iOS sous iOS 10 ou toute autre version ultérieure qui viendrait à être développée ;</li></ul><ul id="7ec75689-d5ef-4963-98bf-1d2bd2badf2f" class="bulleted-list"><li style="list-style-type:disc">Téléphone mobile disposant du système d’exploitation Android OS 4.4 ou toute autre version ultérieure qui viendrait à être développée.</li></ul><p id="d0413293-0636-4901-ac2c-664923ef6868" class="">
+</p><ol type="1" id="24beee68-2139-41d0-a9df-7f45872b5672" class="numbered-list" start="2"><li>Création d’un espace personnel</li></ol><p id="a676fe46-eee5-461c-b1c4-94245b5b1a36" class="">La création d&#x27;un espace personnel est nécessaire pour accéder à toutes les fonctionnalités de l&#x27;application. Un compte admin peut être créé par les adultes, qui pourront ensuite ajouter des comptes enfants ainsi qu’un co-admin via un code d’accès unique valable 24H après génération.</p><h2 id="fa5ae5cd-3a93-4682-a506-13e8c61027de" class=""><strong>Description des Produits et/ou Services</strong></h2><p id="0981a096-84c5-46f0-97a1-cbe2a850c81a" class="">Notre application permet aux familles de gérer les tâches quotidiennes liées aux soins des animaux domestiques. Les tâches peuvent être assignées et validées via l&#x27;interface.</p><h2 id="34d579fa-46bb-44a6-a541-aa5d67d6b37a" class=""><strong>Contrat de Licence Utilisateur Final (CLUF)</strong></h2><p id="d0f08d07-9161-4c02-98b7-559c4e431fae" class="">Tous les contenus de l&#x27;application, y compris les textes, graphiques et codes, sont la propriété exclusive de notre entreprise. Toute reproduction ou utilisation sans autorisation est interdite.</p><p id="45880466-a4e9-456c-8ad9-87d2c1e241ee" class="">Nous vous concédons un droit d&#x27;utilisation personnel, non exclusif, révocable, non cessible et non transférable de notre Application, de son Contenu et de ses Services, uniquement pour vos besoins propres et dans le cadre de l&#x27;utilisation de l&#x27;Application et des Services. Cette licence est accordée à l&#x27;exclusion de toute autre finalité.</p><p id="4e7d46f1-98ab-4a62-99cc-cde4f5d6e86d" class="">Il vous est strictement interdit :</p><ul id="e318df07-d695-4743-a1aa-81fd39dd7370" class="bulleted-list"><li style="list-style-type:disc">D&#x27;adapter, modifier, traduire, transcrire, arranger, compiler, décompiler, assembler, désassembler ou appliquer la rétro-ingénierie (ou &quot;Reverse Engineering&quot;) sur tout ou partie de l&#x27;Application, des Services et/ou du Contenu ;</li></ul><ul id="f177c9d6-ce7b-41d3-b45a-2f402170267c" class="bulleted-list"><li style="list-style-type:disc">De créer des œuvres dérivées de l&#x27;Application ;</li></ul><ul id="3600dd0c-b59e-4835-aed9-6e90f04b8086" class="bulleted-list"><li style="list-style-type:disc">D&#x27;utiliser des logiciels ou des procédés destinés à copier le Contenu sans notre autorisation préalable ;</li></ul><ul id="29cda683-a9f0-4b3a-9a57-aa179adc61c2" class="bulleted-list"><li style="list-style-type:disc">D&#x27;exporter l&#x27;Application, ou de fusionner tout ou partie de celle-ci avec d&#x27;autres programmes informatiques ;</li></ul><ul id="1b1d8959-7bc3-4162-86e6-e0fe712ceb76" class="bulleted-list"><li style="list-style-type:disc">De reproduire, de manière permanente ou provisoire, l&#x27;Application en tout ou en partie, par quelque moyen et sous quelque forme que ce soit ;</li></ul><ul id="c08d31ee-43be-405e-a383-bb73aeb54f8c" class="bulleted-list"><li style="list-style-type:disc">D&#x27;extraire ou de réutiliser, y compris à des fins privées, une partie substantielle ou non du contenu des bases de données et archives constituées par l&#x27;Application sans notre autorisation écrite préalable ;</li></ul><ul id="7e60fffd-c229-4072-b7ae-8013efbc25a8" class="bulleted-list"><li style="list-style-type:disc">De mettre en place des systèmes susceptibles de pirater l&#x27;Application et/ou le Contenu en tout ou partie, ou de nature à violer les présentes Conditions Générales d&#x27;Utilisation.</li></ul><p id="fea9a86c-28cd-47e6-8b82-37ed31b935ca" class="">Si vous contrevenez à ces interdictions, vous pourrez faire l&#x27;objet de poursuites judiciaires et être tenu de payer des dommages et intérêts. Les termes de cette Licence régiront toutes les mises à jour fournies par nous qui remplacent et/ou complètent l&#x27;Application d&#x27;origine, à moins que cette mise à jour ne soit accompagnée d&#x27;une licence distincte, auquel cas les conditions de cette nouvelle Licence prévaudront.</p><p id="4df59f60-5970-44d8-9f62-8e87c49385fc" class="">
+</p><h2 id="a2c49eea-8bc4-4b5d-9cf5-014eef12cd65" class=""><strong>Dispositions pour les Mineurs</strong></h2><p id="87ba2b15-1275-463d-8723-0ce603537153" class="">Notre application vise à responsabiliser les enfants dans la gestion quotidienne des animaux domestiques. Bien que conçue pour une utilisation autonome par les mineurs, nous recommandons fortement que les comptes enfants soient créés et supervisés par un parent ou un tuteur légal.</p><p id="b845f378-476b-4e9b-b70b-da2628913e53" class="">Les parents ou tuteurs légaux doivent consentir explicitement à l&#x27;utilisation de l&#x27;application par les mineurs et restent responsables de les sensibiliser à une utilisation sûre et responsable de l&#x27;application. Cela inclut le respect des règles et des valeurs familiales, ainsi que des conditions d&#x27;utilisation acceptables énoncées dans nos CGU.</p><p id="4fbe8b2d-33f1-4f07-a583-f8dbeb7d09be" class="">
+</p><h2 id="c1dbd8fa-cb07-4fd1-a888-27e980fce7f7" class=""><strong>Surveillance et Responsabilité Parentale</strong></h2><p id="8bc7d10f-5031-4972-a593-1d6e92de1c5c" class="">Les parents ou tuteurs sont encouragés à discuter avec les mineurs des risques potentiels liés à l&#x27;utilisation d&#x27;internet et des applications mobiles, et à établir des règles claires sur l&#x27;utilisation acceptable de l&#x27;application. Nous recommandons de surveiller régulièrement l&#x27;activité des mineurs sur l&#x27;application pour s&#x27;assurer qu&#x27;ils l&#x27;utilisent de manière responsable et sûre.</p><h2 id="1ac4f2ad-808e-4bf9-b25d-64badc5627b0" class=""><strong>Droits, Obligations et Responsabilité de l’Utilisateur</strong></h2><p id="ab38775d-20ca-4873-b29e-7ab5b2eedbb5" class="">L&#x27;Utilisateur s&#x27;engage expressément :</p><ul id="9396012c-b0bf-4cf9-a4be-3edf34fc0865" class="bulleted-list"><li style="list-style-type:disc">À télécharger l&#x27;Application sur son équipement uniquement pour un usage personnel et non commercial ;</li></ul><ul id="9fbb34b3-5884-4c6b-9eff-7c307d07f439" class="bulleted-list"><li style="list-style-type:disc">À procéder à des courtes citations, analyses et reproductions destinées à des revues de presse ainsi qu&#x27;aux autres utilisations expressément autorisées par la loi, sous réserve de citer correctement le nom des auteurs et la source éditoriale ;</li></ul><ul id="f79acde8-a0b4-4b32-88fc-446d0d584151" class="bulleted-list"><li style="list-style-type:disc">À s&#x27;abstenir expressément d&#x27;utiliser des logiciels ou dispositifs susceptibles de perturber le bon fonctionnement de l&#x27;Application, ou d&#x27;engager une action susceptible d&#x27;imposer une charge disproportionnée pour nos infrastructures ;</li></ul><ul id="f8e2466b-0934-4d83-9fd1-8531337504fc" class="bulleted-list"><li style="list-style-type:disc">À nous informer dès qu&#x27;il a connaissance d&#x27;un acte de piratage et en particulier de toute utilisation illicite ou non contractuelle de l&#x27;Application et/ou du Contenu, quel que soit le mode de diffusion ;</li></ul><ul id="7e799508-a535-48f7-b763-d90245064d1e" class="bulleted-list"><li style="list-style-type:disc">À ne pas vendre, louer, sous-licencier ou distribuer de quelque manière que ce soit l&#x27;Application et/ou le Contenu à des tiers.</li></ul><h2 id="207dfd6d-0dca-44ca-bc25-adb42dc90b56" class=""><strong>Droits et Obligations de l&#x27;Éditeur</strong></h2><p id="32fdac04-d31d-4698-8e37-7987e812562b" class="">Nous nous réservons le droit de modifier, suspendre ou interrompre le service à tout moment, avec ou sans préavis.</p><h2 id="dddeb69e-3695-4f5e-9894-ddb839cef5cf" class=""><strong>Limitation et Exclusion de Responsabilité</strong></h2><p id="3204808c-a4e9-4f58-88ab-385a2dea7f45" class="">Nous ne sommes pas responsables des actions des utilisateurs ni de l&#x27;état de santé des animaux. Notre responsabilité est limitée à la fourniture du service décrit.</p><h2 id="f8b95083-cf4c-4c8a-81fe-a13ad12ba5e4" class=""><strong>Liens Hypertexte</strong></h2><p id="08327630-8cdf-4d3e-ac5a-ccd713c2e96f" class="">Des liens vers des sites tiers peuvent être inclus pour la commodité de l&#x27;utilisateur. Nous ne sommes pas responsables du contenu des sites tiers.</p><h2 id="cab16e8d-4ec3-45e0-93f8-69804089b73f" class=""><strong>Utilisation des Cookies</strong></h2><p id="893c8e9f-5c2c-4956-9f89-2dd8bf5e6b99" class="">Nous utilisons des cookies pour améliorer l&#x27;expérience utilisateur. En utilisant notre service, vous acceptez notre politique en matière de cookies.</p><h2 id="ce3e3e3e-39e7-4627-ba6e-0cecb14098b8" class=""><strong>Modification des CGU</strong></h2><p id="c962ab7e-d9ad-4cd3-b06d-2311a6a57742" class="">Nous nous réservons le droit de modifier les CGU à tout moment. Les modifications prendront effet dès leur publication sur le site ou l&#x27;application.</p><h2 id="b04d5a56-4439-4a8a-a29e-103d05ef274b" class=""><strong>Juridiction et Loi Applicable</strong></h2><p id="49186f0e-4d2f-4290-9846-416862dee0f2" class="">En cas de litige, les tribunaux de Rennes seront compétents et le droit français sera appliqué.</p><h2 id="4c7c5048-4b35-44f0-95e8-f1d8eaa0c69c" class=""><strong>Juridiction et Loi Applicable dans un Contexte International</strong></h2><p id="01085611-416c-4b0b-b0b9-7b9595d616a5" class="">Bien que basés en France et régis principalement par le droit français, nous reconnaissons que notre application peut être utilisée dans d&#x27;autres juridictions. En cas de litige avec un utilisateur résidant hors de France, les efforts seront faits pour résoudre le problème à l&#x27;amiable en premier lieu. Si une résolution n&#x27;est pas possible, le litige sera soumis aux tribunaux compétents de Rennes, France, sauf disposition contraire impérative de la législation locale applicable à l&#x27;utilisateur.</p><p id="b6bc1dcf-3b52-4387-92d8-31d4aa6abec2" class="">
+</p><h1 id="e30a306e-3211-4fcd-95e7-a8f344610531" class=""><strong>Conditions Générales de Vente</strong></h1><h2 id="cc49b596-ca26-44ee-9917-57c0c79b99fe" class=""><strong>Abonnement Mensuel</strong></h2><p id="4787de58-0365-4652-8ed5-4cbb6c50a857" class="">Nous proposons un abonnement mensuel à 0,99€ par mois donnant accès à l&#x27;intégralité des fonctionnalités de l&#x27;application.</p><p id="5def9fb8-37db-49bc-9197-db3f89071c37" class="">L&#x27;abonnement prend effet immédiatement au moment de l&#x27;achat et est valable pour une durée de 30 jours.</p><h2 id="e98bba7e-3365-404c-8fbe-978f4e09c698" class=""><strong>Abonnement à Vie</strong></h2><p id="9e1b9e12-b193-489a-b6f6-5a55426c9368" class="">Nous proposons un abonnement &quot;à vie&quot; au tarif de 10€, vous permettant de jouir de toutes les fonctionnalités de l&#x27;application sans limite temporelle.</p><h2 id="7251b0a3-2eaa-4eb9-abd6-c3c3faa7eecb" class=""><strong>Droit de Rétractation</strong></h2><p id="8e78f3f4-7e28-4f11-a869-025d01407d17" class="">Conformément à la législation française, vous disposez d&#x27;un droit de rétractation de 14 jours à compter de la date de votre abonnement pour annuler et obtenir un remboursement complet, qu&#x27;il s&#x27;agisse d&#x27;un abonnement mensuel ou d&#x27;un abonnement à vie. Pour exercer ce droit, veuillez nous contacter via les coordonnées fournies dans nos termes et conditions.</p><h2 id="8695bb05-0547-4d92-93eb-5f3168fb77c1" class=""><strong>Modifications des Tarifs</strong></h2><p id="fca17ae1-35d8-4c36-bd1c-895140d157c1" class="">Nous nous réservons le droit de modifier les tarifs de nos abonnements. Tout changement sera communiqué au moins 30 jours à l&#x27;avance et ne s&#x27;appliquera pas aux abonnements en cours.</p><h2 id="a4fc6982-3a0e-48c8-add4-e60950a1a0aa" class=""><strong>Suspension et Résiliation</strong></h2><p id="81f004e4-c8b5-4d82-9773-39da393cd7cb" class="">Nous nous réservons le droit de suspendre ou de résilier votre compte en cas de non-respect des CGU ou des CGV, avec effet immédiat et sans remboursement.</p><h2 id="6a2edefd-0e79-4d19-92b7-9976629fab08" class=""><strong>Responsabilité et Service Après-Vente</strong></h2><p id="ed9b90fd-dd0f-41fa-bbbc-a67c8018c02e" class="">Nous ne sommes pas responsables des achats effectués par l&#x27;intermédiaire de tiers ou de partenaires affiliés. Pour toute question ou réclamation, veuillez nous contacter directement.</p><p id="28084d5f-0d37-47f5-b58a-2e25ada977ef" class="">
+</p><h1 id="049a27dc-3f62-4a50-b456-1b30f26dda17" class=""><strong>Politique de Confidentialité</strong></h1><h2 id="9be61fd8-1f28-41f7-b6d4-9288cf43cc20" class=""><strong>Introduction</strong></h2><p id="c680bc4e-6b32-4938-9cb8-3a806bf996e4" class="">Cette politique de confidentialité a pour objectif de vous expliquer comment nous collectons, utilisons, stockons et protégeons vos informations lorsque vous utilisez notre service. En accédant à notre application, vous acceptez les pratiques décrites dans cette politique.</p><h2 id="54d45cee-bd14-4ca3-be74-0e079db3ea24" class=""><strong>Collecte des Données</strong></h2><p id="7692ebdf-9d8b-45e9-a3ee-8ea5a1316ca6" class="">Lorsque vous utilisez notre application, nous recueillons différentes catégories d&#x27;informations :</p><ul id="e12173e9-7368-4f94-bc32-02841c4a4f77" class="bulleted-list"><li style="list-style-type:disc"><strong>Informations Personnelles des Administrateurs</strong> : Nous collectons votre nom, prénom, adresse e-mail et mot de passe pour la création et la gestion de votre compte administrateur.</li></ul><ul id="2cc699a6-6eb9-4e03-b42b-6e8cf29dc09e" class="bulleted-list"><li style="list-style-type:disc"><strong>Informations des Enfants</strong> : Pour les comptes enfants, nous ne collectons que le prénom afin de personnaliser l&#x27;expérience utilisateur.</li></ul><ul id="0eb1882b-b0da-4c28-9d56-a8dc2266f114" class="bulleted-list"><li style="list-style-type:disc"><strong>Informations sur les Animaux</strong> : Nous enregistrons des détails tels que le nom, l&#x27;âge et le type de vos animaux domestiques pour vous aider à organiser et à suivre leurs soins.</li></ul><ul id="4691d7c2-9814-44a5-a7c6-acd32a83bfd1" class="bulleted-list"><li style="list-style-type:disc"><strong>Historique des Tâches</strong> : Nous conservons un historique des tâches effectuées au cours des 7 derniers jours pour vous permettre de suivre les activités liées à la gestion de vos animaux.</li></ul><ul id="4e34c37e-38c8-4f0d-b5bb-914ddeabb818" class="bulleted-list"><li style="list-style-type:disc"><strong>Photos</strong> : Les photos envoyées pour valider les tâches sont conservées pendant 24 heures pour vérification, après quoi elles sont automatiquement supprimées pour garantir votre vie privée.</li></ul><h2 id="40f069e4-9cb6-43f2-9d18-c8ff0b106aac" class=""><strong>Utilisation et Traitement des Données</strong></h2><p id="3934f075-f8aa-4cb0-88a0-241dc6ee35d8" class="">Nous utilisons ces informations pour fournir et améliorer notre service, vous permettre de gérer efficacement les soins des animaux et pour assurer une expérience personnalisée et sécurisée au sein de notre application.</p><h2 id="764d58ae-83c1-4e1a-9126-19d73e46ce9d" class=""><strong>Sécurité et Stockage des Données</strong></h2><p id="8401555a-6429-4b01-8fe1-57d21860af7c" class="">La sécurité de vos données est essentielle pour nous. C&#x27;est pourquoi toutes les informations sont cryptées et stockées en toute sécurité dans nos bases de données. Nos serveurs, situés au sein de l&#x27;Union Européenne, sont gérés par [Nom de l&#x27;Hébergeur], garantissant ainsi la conformité avec les normes européennes de protection des données.</p><h2 id="8f9ce05f-ca99-43f8-ac80-62fd0519ba66" class=""><strong>Suppression de Compte et Conservation des Données</strong></h2><p id="d83ba3d6-611d-4d06-87e4-28f80e692b95" class="">Si vous décidez de supprimer votre compte, nous conserverons vos données pendant 14 jours avant de les supprimer définitivement. Pour les utilisateurs ayant opté pour un abonnement à vie, si vous supprimez votre compte, vous avez la possibilité de le réactiver durant cette période de 14 jours.</p><h2 id="6df4f31b-a9f4-4024-8555-102b38cf2b1d" class=""><strong>Utilisation des Cookies</strong></h2><p id="df6bbe5f-0515-44be-8757-8a919584c569" class="">Notre application utilise des cookies pour améliorer l&#x27;expérience utilisateur, réaliser des statistiques d’audience, et proposer des publicités personnalisées. Les utilisateurs peuvent gérer leurs préférences de cookies via les paramètres de leur navigateur.</p><h2 id="428573c8-fbad-4d0a-a4c0-d0465cd01171" class=""><strong>Droits des Utilisateurs Concernant Leurs Données</strong></h2><p id="dec5fccb-0295-4f94-bd80-cf4dffd319c0" class="">Conformément au RGPD, les utilisateurs ont le droit d&#x27;accéder à leurs données personnelles, de les rectifier, de demander leur suppression, ou de s&#x27;opposer à leur traitement. Pour exercer ces droits, veuillez nous contacter.</p><h2 id="95a959a4-5e39-4668-803e-0dd5dcb68789" class=""><strong>Procédures de Sécurité en Cas de Violation de Données</strong></h2><p id="573273c3-da62-4ff8-a2a5-d4e5782a05a3" class="">En cas de violation de données, nous nous engageons à notifier les utilisateurs et les autorités compétentes dans les délais prescrits par la loi, et à prendre toutes les mesures nécessaires pour minimiser les impacts et prévenir de futures occurrences.</p><h2 id="aee27753-55f2-43b9-a7dc-79941db08d2c" class=""><strong>Collecte de Données pour les Mineurs</strong></h2><p id="48069a32-24cc-48ed-8b82-81dcf1b3f0f5" class="">Nous prenons des mesures supplémentaires pour protéger la vie privée et la sécurité des mineurs utilisant notre application, conformément à la législation en vigueur. Les comptes enfants doivent être créés et supervisés par un parent ou un tuteur légal.</p><h2 id="c8f86bc7-c37f-4646-b4a5-37684ddf12d9" class=""><strong>Changements dans Notre Politique de Confidentialité</strong></h2><p id="52cc418a-db78-40c1-84f9-ad0030d8349e" class="">Nous pouvons mettre à jour notre politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique sur notre application. Nous vous encourageons à consulter régulièrement cette politique pour vous tenir informé de la manière dont nous protégeons vos informations.</p><p id="0245e404-78d2-4715-a8ca-27dffe58cc75" class="">
+</p><p id="eb8e770f-807a-45bc-bf90-441c6c9067c9" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
