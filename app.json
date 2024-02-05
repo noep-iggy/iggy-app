@@ -12,15 +12,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#228752"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.noep.iggyapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/app/adaptive-icon.png",
         "backgroundColor": "#228752"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.noep.iggyapp"
     },
     "web": {
       "favicon": "./src/assets/images/app/favicon.png",
@@ -39,6 +46,14 @@
     "experiments": {
       "tsconfigPaths": true,
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "48fca654-5f93-4647-ba07-6d7a98ab5540"
+      }
     }
   }
 }

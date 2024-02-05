@@ -1,7 +1,7 @@
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { useAuthContext } from '@/contexts';
 import { ROUTES } from '@/router/routes';
-import { router, useFocusEffect } from 'expo-router';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -13,21 +13,12 @@ import {
   TouchableRipple,
   useTheme,
 } from 'react-native-paper';
-import LottieView from 'lottie-react-native';
-import { animalAnimationResolver } from '@/utils/animal';
-import {
-  AnimalDto,
-  AnimalTypeEnum,
-  TaskDto,
-  TaskPeriodEnum,
-  TaskStatusEnum,
-} from '@/types';
-import { useCallback, useEffect, useState } from 'react';
+import { AnimalDto, TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
+import { useEffect, useState } from 'react';
 import { ApiService } from '@/api';
 import ChildPetSlide from '@/components/Card/ChildPetSlide';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
 import i18n from '@/locales/localization';
-import { set } from 'react-hook-form';
 
 const ChildDashboard = () => {
   const splashImage = require('@/assets/images/app/splash.png');
@@ -177,16 +168,6 @@ const ChildDashboard = () => {
                   </Text>
                 </View>
               </View>
-              <PrimaryButton
-                onPress={() => {
-                  removeToken();
-                }}
-                title="Déconnexion"
-                style={{
-                  backgroundColor: theme.colors.primary,
-                  borderRadius: 8,
-                }}
-              />
               <View>
                 {!tasks.length && !isLoading ? (
                   <Text
