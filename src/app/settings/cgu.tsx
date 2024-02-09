@@ -1,9 +1,9 @@
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { useTheme } from 'react-native-paper';
 import WebView from 'react-native-webview';
+import { useAppTheme } from '../_layout';
 
 const CguSettings = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const cgu = require('@/assets/cgu-iggy.html');
 
   return (

@@ -11,13 +11,12 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useTheme, Text, Divider } from 'react-native-paper';
+import { Text, Divider } from 'react-native-paper';
 
 const ProfileSettings = () => {
   const { currentUser, removeToken } = useAuthContext();
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const params = useLocalSearchParams();
-  const theme = useTheme();
   const router = useRouter();
 
   async function removeUser() {

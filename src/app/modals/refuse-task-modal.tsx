@@ -8,13 +8,14 @@ import i18n from '@/locales/localization';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, View } from 'react-native';
-import { Text, useTheme } from 'react-native-paper';
+import { Text } from 'react-native-paper';
+import { useAppTheme } from '../_layout';
 
 const RefuseTaskModal = () => {
   const [value, setValue] = useState<string>('');
   const [isRefuseLoading, setIsRefuseLoading] = useState(false);
   const params = useLocalSearchParams();
-  const theme = useTheme();
+  const theme = useAppTheme();
   const [taskId, setTaskId] = useState<string>();
 
   async function refuseTask() {

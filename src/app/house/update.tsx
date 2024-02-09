@@ -5,7 +5,6 @@ import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import FormField from '@/components/Forms/FormField';
 import { Select } from '@/components/Selects';
 import { genericStyles } from '@/constants';
-import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { BillingPlanTypeEnum, UpdateHouseApi } from '@/types';
 import { formatValidationErrorMessage } from '@/utils/error';
@@ -15,13 +14,11 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { KeyboardAvoidingView, Platform, View } from 'react-native';
-import { useTheme, ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 
 const HouseUpdate = () => {
   const router = useRouter();
-  const theme = useTheme();
-  const { currentUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const formApi = useForm<UpdateHouseApi>({

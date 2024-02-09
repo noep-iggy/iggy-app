@@ -1,7 +1,8 @@
 import { TouchableOpacityProps, View, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
+import { useAppTheme } from '@/app/_layout';
 
 interface AddPictureCardProps {
   style?: TouchableOpacityProps['style'];
@@ -12,7 +13,7 @@ interface AddPictureCardProps {
 
 const AddPictureCard = (props: AddPictureCardProps) => {
   const { style, pictureUri, setPictureUri, size = 'large' } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   const selectImage = async (useLibrary: boolean) => {
     let result;

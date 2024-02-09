@@ -1,6 +1,6 @@
 import i18n from '@/locales/localization';
 import { Image, View } from 'react-native';
-import { Text, useTheme, ActivityIndicator } from 'react-native-paper';
+import { Text, ActivityIndicator } from 'react-native-paper';
 import { ApiService } from '@/api';
 import Toast from 'react-native-toast-message';
 import { formatValidationErrorMessage } from '@/utils/error';
@@ -14,6 +14,7 @@ import { JoinCodeDto } from '@/types';
 import { useEffect } from 'react';
 import * as Clipboard from 'expo-clipboard';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import { useAppTheme } from '@/app/_layout';
 
 interface AddJoinCodeProps {
   setCurrentStep: (step: number) => void;
@@ -39,7 +40,7 @@ export function AddJoinCode(props: AddJoinCodeProps): JSX.Element {
 
   const { handleSubmit, formState, setError, watch } = formApi;
   const { isSubmitting, isValid } = formState;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   async function onSubmit(data: { code: string }) {
     try {

@@ -1,10 +1,11 @@
 import { ROUTES } from '@/router/routes';
 import { Tabs } from 'expo-router';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import { Image } from 'react-native';
+import { useAppTheme } from '@/app/_layout';
 
 const ParentLayout = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const background = require('@/assets/images/app/splash.png');
 
   const commons = {

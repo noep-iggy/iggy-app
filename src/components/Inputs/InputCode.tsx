@@ -1,3 +1,4 @@
+import { useAppTheme } from '@/app/_layout';
 import { useState, useRef, useEffect } from 'react';
 import {
   TextInput,
@@ -6,7 +7,6 @@ import {
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
 
 interface InputCodeProps {
   error?: boolean;
@@ -17,7 +17,7 @@ export function InputCode(props: InputCodeProps): JSX.Element {
   const { onChangeText, error } = props;
   const [code, setCode] = useState<string[]>(Array(6).fill(''));
   const inputRefs = useRef<Array<TextInput | null>>(Array(6).fill(null));
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   useEffect(() => {
     inputRefs.current.forEach((ref, index) => {

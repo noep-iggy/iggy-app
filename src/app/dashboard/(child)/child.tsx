@@ -11,7 +11,6 @@ import {
   Surface,
   Text,
   TouchableRipple,
-  useTheme,
 } from 'react-native-paper';
 import { AnimalDto, TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
 import { useEffect, useState } from 'react';
@@ -20,11 +19,12 @@ import ChildPetSlide from '@/components/Card/ChildPetSlide';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
 import i18n from '@/locales/localization';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import { useAppTheme } from '@/app/_layout';
 
 const ChildDashboard = () => {
   const splashImage = require('@/assets/images/app/splash.png');
   const { removeToken, currentUser } = useAuthContext();
-  const theme = useTheme();
+  const theme = useAppTheme();
   const { width: windowWidth } = useWindowDimensions();
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
   const [tasks, setTasks] = useState<TaskDto[]>([]);

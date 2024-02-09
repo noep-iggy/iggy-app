@@ -1,15 +1,16 @@
+import { useAppTheme } from '@/app/_layout';
 import { ROUTES } from '@/router/routes';
 import { router } from 'expo-router';
 import { TouchableOpacityProps, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 
 interface AddPetCardProps {
   style?: TouchableOpacityProps['style'];
 }
 const AddPetCard = (props: AddPetCardProps) => {
   const { style } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <TouchableOpacity

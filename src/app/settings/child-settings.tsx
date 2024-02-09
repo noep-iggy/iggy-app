@@ -5,11 +5,11 @@ import { useAuthContext } from '@/contexts';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import i18n from '@/locales/localization';
-import { useTheme } from 'react-native-paper';
+import { useAppTheme } from '../_layout';
 
 const ChildSettings = () => {
   const { removeToken } = useAuthContext();
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <UniversalSafeArea
       asView

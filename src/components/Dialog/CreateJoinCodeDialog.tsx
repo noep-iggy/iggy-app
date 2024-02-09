@@ -1,8 +1,9 @@
 import i18n from '@/locales/localization';
-import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
+import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import * as Clipboard from 'expo-clipboard';
 import Toast from 'react-native-toast-message';
+import { useAppTheme } from '@/app/_layout';
 
 interface CreateJoinCodeDialogProps {
   onCancel: () => void;
@@ -14,7 +15,7 @@ export function CreateJoinCodeDialog(
   props: CreateJoinCodeDialogProps
 ): JSX.Element {
   const { onCancel, visible, code } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   async function copyToClipboard() {
     await Clipboard.setStringAsync(code);

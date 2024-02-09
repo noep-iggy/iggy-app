@@ -29,10 +29,11 @@ import { useEffect, useState } from 'react';
 import SecondaryButton from '@/components/Buttons/SecondaryButton';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
+import { useAppTheme } from '../_layout';
 
 const AnimalUpdate = () => {
   const router = useRouter();
-  const theme = useTheme();
+  const theme = useAppTheme();
   const params = useLocalSearchParams();
 
   const [isLoadingAnimal, setIsLoadingAnimal] = useState<boolean>(true);

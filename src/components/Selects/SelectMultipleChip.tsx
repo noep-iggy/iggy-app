@@ -1,13 +1,8 @@
+import { useAppTheme } from '@/app/_layout';
 import { ErrorMessage } from '@hookform/error-message';
 import { useFormContext, useFormState, Controller } from 'react-hook-form';
 import { View, ViewProps } from 'react-native';
-import {
-  ActivityIndicator,
-  Chip,
-  Divider,
-  Text,
-  useTheme,
-} from 'react-native-paper';
+import { ActivityIndicator, Chip, Divider, Text } from 'react-native-paper';
 
 interface SelectMultipleChipProps extends ViewProps {
   label?: string;
@@ -22,7 +17,7 @@ export function SelectMultipleChip(
   const { label, name, items, isLoading, ...rest } = props;
   const { control } = useFormContext();
   const { errors } = useFormState();
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <>

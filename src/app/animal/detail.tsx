@@ -13,7 +13,7 @@ import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { animalAnimationResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
-import { Text, useTheme, ActivityIndicator } from 'react-native-paper';
+import { Text, ActivityIndicator } from 'react-native-paper';
 import i18n from '@/locales/localization';
 import { RefreshScroll } from '@/components/Scroll';
 import { ROUTES } from '@/router/routes';
@@ -23,7 +23,6 @@ import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 
 const AnimalDetail = () => {
   const router = useRouter();
-  const theme = useTheme();
   const params = useLocalSearchParams();
   const [animal, setAnimal] = useState<AnimalDto>();
   const [tasks, setTasks] = useState<TaskDto[]>([]);

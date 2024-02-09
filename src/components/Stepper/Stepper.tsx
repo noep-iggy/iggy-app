@@ -1,6 +1,7 @@
+import { useAppTheme } from '@/app/_layout';
 import { genericStyles } from '@/constants';
 import { View } from 'react-native';
-import { Text, useTheme } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 
 interface StepperProps {
   currentStep: number;
@@ -9,7 +10,7 @@ interface StepperProps {
 
 export const Stepper = (props: StepperProps): JSX.Element => {
   const { currentStep, totalSteps } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <View

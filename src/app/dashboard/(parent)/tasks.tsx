@@ -1,4 +1,5 @@
 import { ApiService } from '@/api';
+import { useAppTheme } from '@/app/_layout';
 import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
@@ -11,10 +12,10 @@ import { TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
-import { useTheme, SegmentedButtons, Icon, Button } from 'react-native-paper';
+import { SegmentedButtons, Icon, Button } from 'react-native-paper';
 
 const TasksPage = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [tasks, setTasks] = useState<TaskDto[]>([]);
   const [page, setPage] = useState<TaskStatusEnum>(TaskStatusEnum.TO_VALIDATE);

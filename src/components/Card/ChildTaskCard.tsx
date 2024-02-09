@@ -1,16 +1,11 @@
 import { View } from 'react-native';
 import React from 'react';
-import { TaskDto, TaskStatusEnum } from '@/types';
-import {
-  Surface,
-  TouchableRipple,
-  useTheme,
-  Text,
-  Icon,
-} from 'react-native-paper';
+import { TaskDto } from '@/types';
+import { Surface, TouchableRipple, Text, Icon } from 'react-native-paper';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { formatDateTime } from '@/utils';
+import { useAppTheme } from '@/app/_layout';
 
 interface ChildTaskCardProps {
   task: TaskDto;
@@ -19,7 +14,7 @@ interface ChildTaskCardProps {
 
 const ChildTaskCard = (props: ChildTaskCardProps) => {
   const { task, isSecondary } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <TouchableRipple
       disabled={isSecondary}
@@ -44,7 +39,7 @@ const ChildTaskCard = (props: ChildTaskCardProps) => {
           maxHeight: 75,
           borderRadius: 8,
           backgroundColor: task?.isArchived
-            ? theme.colors.errorContainer
+            ? theme.colors.warningContainer
             : theme.colors.inversePrimary,
           flexDirection: 'row',
           alignItems: 'center',

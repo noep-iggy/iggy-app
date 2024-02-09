@@ -1,3 +1,4 @@
+import { useAppTheme } from '@/app/_layout';
 import React from 'react';
 import {
   Platform,
@@ -6,7 +7,6 @@ import {
   StyleSheet,
   ViewStyle,
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import {
   SafeAreaView,
   SafeAreaViewProps,
@@ -23,7 +23,7 @@ const UniversalSafeArea = ({
   edges = ['top', 'bottom', 'left', 'right'],
   ...props
 }: props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <SafeAreaView
       style={[

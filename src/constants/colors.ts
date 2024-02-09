@@ -40,6 +40,10 @@ export const IggyLightTheme = {
     surfaceDisabled: 'rgba(25, 28, 26, 0.12)',
     onSurfaceDisabled: 'rgba(25, 28, 26, 0.38)',
     backdrop: 'rgba(43, 50, 44, 0.4)',
+    warning: 'rgb(135, 82, 0)',
+    onWarning: 'rgb(255, 255, 255)',
+    warningContainer: 'rgb(255, 221, 186)',
+    onWarningContainer: 'rgb(43, 23, 0)',
   },
 };
 
@@ -85,5 +89,9 @@ export const IggyDarkTheme = {
     surfaceDisabled: 'rgba(225, 227, 222, 0.12)',
     onSurfaceDisabled: 'rgba(225, 227, 222, 0.38)',
     backdrop: 'rgba(42, 50, 44, 0.4)',
+    warning: 'rgb(255, 184, 101)',
+    onWarning: 'rgb(72, 42, 0)',
+    warningContainer: 'rgb(102, 61, 0)',
+    onWarningContainer: 'rgb(255, 221, 186)',
   },
 };

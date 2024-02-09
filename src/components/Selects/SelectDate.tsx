@@ -1,10 +1,11 @@
+import { useAppTheme } from '@/app/_layout';
 import { formatDate, formatDateTime } from '@/utils';
 import { ErrorMessage } from '@hookform/error-message';
 import { useState } from 'react';
 import { Controller, useFormContext, useFormState } from 'react-hook-form';
 import { Pressable, ViewProps, StyleSheet } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { Icon, Text, useTheme } from 'react-native-paper';
+import { Icon, Text } from 'react-native-paper';
 
 interface SelectDateProps extends ViewProps {
   placeholder?: string;
@@ -17,7 +18,7 @@ export function SelectDate(props: SelectDateProps): JSX.Element {
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const { control } = useFormContext();
   const { errors } = useFormState();
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <>
       <Controller

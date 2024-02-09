@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { genericStyles } from '@/constants';
-import { Icon, MD3Colors, useTheme } from 'react-native-paper';
+import { Icon, MD3Colors } from 'react-native-paper';
 import FormField from '@/components/Forms/FormField';
 import i18n from '@/locales/localization';
 import { AnimalGenderEnum, AnimalTypeEnum, CreateAnimalApi } from '@/types';
@@ -18,9 +18,10 @@ import { ApiService } from '@/api';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useAppTheme } from '../_layout';
 
 const AnimalCreate = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const formApi = useForm<CreateAnimalApi>({
     resolver: yupResolver(animalValidation.create),
     defaultValues: {

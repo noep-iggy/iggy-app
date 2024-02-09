@@ -1,10 +1,11 @@
 import { AuthProvider } from '@/contexts';
 import { Stack } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import { Appearance, useColorScheme } from 'react-native';
 import {
   MD3DarkTheme as DarkTheme,
   MD3LightTheme as LightTheme,
   PaperProvider,
+  useTheme,
 } from 'react-native-paper';
 import {
   SafeAreaProvider,
@@ -17,16 +18,20 @@ import { ROUTES } from '@/router/routes';
 import CustomModalBar from '@/components/Commons/CustomModalBar';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
+const colorScheme = Appearance.getColorScheme();
+const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
+
+const theme = {
+  ...defaultTheme,
+  colors: colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,
+};
+
+export type AppTheme = typeof theme;
+export const useAppTheme = () => useTheme<AppTheme>();
+
 const Layout = () => {
-  const colorScheme = useColorScheme();
-  const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
   const insets = useSafeAreaInsets();
 
-  const theme = {
-    ...defaultTheme,
-    colors:
-      colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,
-  };
   return (
     <PaperProvider theme={theme}>
       <AuthProvider>

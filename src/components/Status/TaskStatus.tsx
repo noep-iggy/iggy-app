@@ -1,9 +1,10 @@
+import { useAppTheme } from '@/app/_layout';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { TaskStatusEnum } from '@/types';
 import { renderTaskColor, renderTaskIcon } from '@/utils/task';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { Icon, Text, useTheme } from 'react-native-paper';
+import { Icon, Text } from 'react-native-paper';
 
 interface TaskStatusProps {
   taskStatus: TaskStatusEnum;
@@ -12,7 +13,7 @@ interface TaskStatusProps {
 
 export function TaskStatus(props: TaskStatusProps): JSX.Element {
   const { taskStatus, style } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <View

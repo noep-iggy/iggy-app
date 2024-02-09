@@ -5,10 +5,11 @@ import { animalResolver } from '@/utils/animal';
 import { router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Avatar, Icon, Text, useTheme } from 'react-native-paper';
+import { Avatar, Icon, Text } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
 import { formatDateTime } from '@/utils';
 import i18n from '@/locales/localization';
+import { useAppTheme } from '@/app/_layout';
 
 interface TaskAnimalCardProps {
   task: TaskDto;
@@ -18,7 +19,7 @@ interface TaskAnimalCardProps {
 
 const TaskAnimalCard = (props: TaskAnimalCardProps) => {
   const { task, isAnimalVisible, style } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <TouchableOpacity

@@ -6,7 +6,7 @@ import { taskValidation } from '@/validations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTheme, Text, ActivityIndicator } from 'react-native-paper';
+import { Text, ActivityIndicator } from 'react-native-paper';
 import { ApiService } from '@/api';
 import i18n from '@/locales/localization';
 import { formatValidationErrorMessage } from '@/utils/error';
@@ -19,7 +19,6 @@ import { ROUTES } from '@/router/routes';
 
 const TaskUpdate = () => {
   const router = useRouter();
-  const theme = useTheme();
   const params = useLocalSearchParams();
 
   const [users, setUsers] = useState<UserDto[]>([]);

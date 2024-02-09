@@ -7,7 +7,7 @@ import {
 import { ApiService } from '@/api';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState, useEffect } from 'react';
-import { useTheme, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import { RefreshScroll } from '@/components/Scroll';
 import { AffiliateCard } from '@/components/Card/AffiliateCard';
 import i18n from '@/locales/localization';
@@ -18,7 +18,6 @@ import { genericStyles } from '@/constants';
 import { SimpleGrid } from 'react-native-super-grid';
 
 const Shop = () => {
-  const theme = useTheme();
   const params = useLocalSearchParams();
 
   const [isLoading, setIsLoading] = useState(true);

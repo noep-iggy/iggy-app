@@ -1,12 +1,12 @@
-import { useTheme } from 'react-native-paper';
 import BaseButton from './BaseButton';
+import { useAppTheme } from '@/app/_layout';
 
 export type PrimaryButtonProps = {
   // Primary button props
 } & React.ComponentProps<typeof BaseButton>;
 
 const PrimaryButton = (props: PrimaryButtonProps) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <BaseButton
       mode="contained"

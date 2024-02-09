@@ -2,14 +2,14 @@ import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { TaskDto } from '@/types';
 import { View } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { ApiService } from '@/api';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Image } from 'react-native';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { ROUTES } from '@/router/routes';
+import { useAppTheme } from '@/app/_layout';
 
 interface TaskValidateDetailProps {
   task: TaskDto;
@@ -20,7 +20,7 @@ export function TaskValidateDetail(
   props: TaskValidateDetailProps
 ): JSX.Element {
   const { task, setTask } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
   const [isValidateLoading, setIsValidateLoading] = useState(false);
   const router = useRouter();
 

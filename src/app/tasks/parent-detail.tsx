@@ -4,7 +4,6 @@ import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { TaskDto, TaskStatusEnum } from '@/types';
 import { ApiService } from '@/api';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { useTheme } from 'react-native-paper';
 import { TaskTodoDetail } from '@/components/Tasks/TaskTodoDetail';
 import { TaskValidateDetail } from '@/components/Tasks/TaskValidateDetail';
 import { TaskDoneDetail } from '@/components/Tasks/TaskDoneDetail';
@@ -16,7 +15,6 @@ import { ButtonsAction } from '@/components/Actions/ButtonsAction';
 
 const TaskDetail = () => {
   const params = useLocalSearchParams();
-  const theme = useTheme();
   const [task, setTask] = useState<TaskDto>();
   const [isLoading, setIsLoading] = useState(true);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);

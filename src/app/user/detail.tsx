@@ -16,13 +16,12 @@ import {
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useTheme, Text, Divider } from 'react-native-paper';
+import { Text, Divider } from 'react-native-paper';
 
 const UserDetail = () => {
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const [user, setUser] = useState<UserDto>();
   const params = useLocalSearchParams();
-  const theme = useTheme();
   const router = useRouter();
 
   async function removeUser() {

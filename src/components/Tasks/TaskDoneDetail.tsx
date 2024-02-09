@@ -1,7 +1,7 @@
 import { TaskDto } from '@/types';
 import { View, Image } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import { TaskHeaderDetail } from './TaskHeaderDetail';
+import { useAppTheme } from '@/app/_layout';
 
 interface TaskDoneDetailProps {
   task: TaskDto;
@@ -9,7 +9,7 @@ interface TaskDoneDetailProps {
 
 export function TaskDoneDetail(props: TaskDoneDetailProps): JSX.Element {
   const { task } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <View

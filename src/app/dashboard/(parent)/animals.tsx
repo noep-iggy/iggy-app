@@ -5,14 +5,15 @@ import { ApiService } from '@/api';
 import { genericStyles } from '@/constants';
 import { animalResolver } from '@/utils/animal';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { useTheme, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { RefreshScroll } from '@/components/Scroll';
 import { ButtonsAction } from '@/components/Actions/ButtonsAction';
+import { useAppTheme } from '@/app/_layout';
 
 const Pets = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const [isLoading, setIsLoading] = useState(false);
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
 

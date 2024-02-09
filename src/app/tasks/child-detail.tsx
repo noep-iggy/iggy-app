@@ -4,12 +4,11 @@ import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { TaskDto } from '@/types';
 import { ApiService } from '@/api';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { useTheme, ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
 import { TaskTodoDetail } from '@/components/Tasks/TaskTodoDetail';
 
 const TaskDetail = () => {
   const params = useLocalSearchParams();
-  const theme = useTheme();
   const [task, setTask] = useState<TaskDto>();
   const [isLoading, setIsLoading] = useState(true);
 

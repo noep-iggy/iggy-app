@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FABGroupProps, FAB as Fab, useTheme } from 'react-native-paper';
+import { FABGroupProps, FAB as Fab } from 'react-native-paper';
 
 interface ButtonsActionProps {
   items?: { icon: string; label: string; onPress: () => void }[];
@@ -11,7 +11,6 @@ interface ButtonsActionProps {
 export function ButtonsAction(props: ButtonsActionProps): JSX.Element {
   const { items, onPress, icon = 'plus', style } = props;
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
 
   return (
     <Fab.Group

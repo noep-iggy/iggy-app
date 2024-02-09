@@ -7,10 +7,11 @@ import { AffiliateSearchParams, AnimalTypeEnum } from '@/types';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { Checkbox, List, useTheme } from 'react-native-paper';
+import { Checkbox, List } from 'react-native-paper';
+import { useAppTheme } from '../_layout';
 
 const FilterShopModal = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const router = useRouter();
   const params = useLocalSearchParams();
 

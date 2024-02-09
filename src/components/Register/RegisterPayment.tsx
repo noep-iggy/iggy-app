@@ -4,17 +4,12 @@ import { ROUTES } from '@/router/routes';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image, View } from 'react-native';
-import {
-  Checkbox,
-  Switch,
-  Text,
-  useTheme,
-  ActivityIndicator,
-} from 'react-native-paper';
+import { Checkbox, Switch, Text, ActivityIndicator } from 'react-native-paper';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { BillingPlanDto, BillingPlanTypeEnum } from '@/types';
 import { ApiService } from '@/api';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useAppTheme } from '@/app/_layout';
 
 export interface RegisterPaymentProps {
   setCurrentStep: (step: number) => void;
@@ -24,7 +19,7 @@ export interface RegisterPaymentProps {
 
 export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
   const { setCurrentStep, purshaseType, setPurshaseType } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
   const router = useRouter();
   const logo = require('@/assets/images/app/logo.png');
   const [isCguChecked, setIsCguChecked] = useState<boolean>(false);

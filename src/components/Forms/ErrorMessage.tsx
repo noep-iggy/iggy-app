@@ -1,9 +1,10 @@
 import { FieldErrors } from 'react-hook-form';
 import { ErrorMessage as HookFormErrorMessage } from '@hookform/error-message';
 import { View } from 'react-native';
-import { Icon, Text, useTheme } from 'react-native-paper';
+import { Icon, Text } from 'react-native-paper';
 import i18n from '@/locales/localization';
 import { genericStyles } from '@/constants';
+import { useAppTheme } from '@/app/_layout';
 
 interface ErrorMessageProps {
   icon?: boolean;
@@ -13,7 +14,7 @@ interface ErrorMessageProps {
 
 export function ErrorMessage(props: ErrorMessageProps): JSX.Element {
   const { icon = true, errors, name } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <HookFormErrorMessage

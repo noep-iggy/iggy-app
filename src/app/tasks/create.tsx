@@ -6,7 +6,7 @@ import { taskValidation } from '@/validations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTheme, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import { ApiService } from '@/api';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
@@ -19,7 +19,6 @@ import { useEffect, useState } from 'react';
 
 const TaskCreate = () => {
   const router = useRouter();
-  const theme = useTheme();
   const [users, setUsers] = useState<UserDto[]>([]);
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
   const [isLoadingUsers, setIsLoadingUsers] = useState<boolean>(true);

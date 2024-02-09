@@ -3,10 +3,11 @@ import { TaskDto } from '@/types';
 import { formatDateTime } from '@/utils';
 import { renderTaskColor } from '@/utils/task';
 import { ScrollView, View } from 'react-native';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
 import { Text } from 'react-native-paper';
 import i18n from '@/locales/localization';
+import { useAppTheme } from '@/app/_layout';
 
 interface TaskHeaderDetailProps {
   task: TaskDto;
@@ -14,7 +15,7 @@ interface TaskHeaderDetailProps {
 
 export function TaskHeaderDetail(props: TaskHeaderDetailProps): JSX.Element {
   const { task } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{ height: '38%' }}>

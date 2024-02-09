@@ -8,7 +8,6 @@ import {
   Icon,
   IconButton,
   Text,
-  useTheme,
   ActivityIndicator,
 } from 'react-native-paper';
 import { useAuthContext } from '@/contexts';
@@ -19,6 +18,7 @@ import { useEffect, useState } from 'react';
 import { ApiService } from '@/api';
 import { animalResolver } from '@/utils/animal';
 import { clearHistoryAndRedirect } from '@/utils';
+import { useAppTheme } from '@/app/_layout';
 
 export function RegisterAddAnimal(): JSX.Element {
   const logo = require('@/assets/images/app/logo-color.png');
@@ -26,7 +26,7 @@ export function RegisterAddAnimal(): JSX.Element {
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
   const [isDelLoading, setIsDelLoading] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const theme = useTheme();
+  const theme = useAppTheme();
   const params = useLocalSearchParams();
   const navigation = useNavigation();
 

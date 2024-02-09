@@ -7,14 +7,11 @@ import { useAuthContext } from '@/contexts';
 import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { UserDto } from '@/types';
-import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
-import { useTheme } from 'react-native-paper';
 
 const FamilySettings = () => {
-  const params = useLocalSearchParams();
-  const theme = useTheme();
   const { currentUser } = useAuthContext();
   const [users, setUsers] = useState<UserDto[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);

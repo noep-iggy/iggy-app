@@ -17,11 +17,10 @@ import {
 } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { useTheme, Text, Divider, ActivityIndicator } from 'react-native-paper';
+import { Text, Divider, ActivityIndicator } from 'react-native-paper';
 
 const HouseSettings = () => {
   const params = useLocalSearchParams();
-  const theme = useTheme();
   const router = useRouter();
   const { currentUser, removeToken } = useAuthContext();
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);

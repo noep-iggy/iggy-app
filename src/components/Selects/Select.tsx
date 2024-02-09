@@ -1,9 +1,10 @@
 import { PickerSelectProps } from 'react-native-picker-select';
 import RNPickerSelect from 'react-native-picker-select';
 import { ViewStyle, StyleSheet, View } from 'react-native';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import { ErrorMessage } from '@hookform/error-message';
 import { Controller, useFormContext, useFormState } from 'react-hook-form';
+import { useAppTheme } from '@/app/_layout';
 
 export interface SelectProps
   extends Omit<PickerSelectProps, 'style' | 'onValueChange'> {
@@ -16,7 +17,7 @@ export function Select(props: SelectProps): JSX.Element {
   const { style, name, placeholder, ...rest } = props;
   const { control } = useFormContext();
   const { errors } = useFormState();
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <>
       <Controller

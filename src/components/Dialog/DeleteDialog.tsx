@@ -1,5 +1,6 @@
+import { useAppTheme } from '@/app/_layout';
 import i18n from '@/locales/localization';
-import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
+import { Button, Dialog, Portal, Text } from 'react-native-paper';
 
 interface DeleteDialogProps {
   icon?: string;
@@ -19,7 +20,7 @@ export function DeleteDialog(props: DeleteDialogProps): JSX.Element {
     onCancel,
     visible,
   } = props;
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <Portal>

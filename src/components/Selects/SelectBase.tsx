@@ -1,7 +1,8 @@
 import { PickerSelectProps } from 'react-native-picker-select';
 import RNPickerSelect from 'react-native-picker-select';
 import { ViewStyle, StyleSheet, View } from 'react-native';
-import { Icon, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
+import { useAppTheme } from '@/app/_layout';
 
 export interface SelectBaseProps extends Omit<PickerSelectProps, 'style'> {
   style?: ViewStyle;
@@ -11,7 +12,7 @@ export interface SelectBaseProps extends Omit<PickerSelectProps, 'style'> {
 export function SelectBase(props: SelectBaseProps): JSX.Element {
   const { style, placeholder, ...rest } = props;
 
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <View
       style={[
