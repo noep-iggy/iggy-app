@@ -7,18 +7,18 @@ interface HappinessIndicatorProps {
 }
 
 const HappinessIndicator = (props: HappinessIndicatorProps) => {
+  const { status } = props;
   return (
     <View
       style={{
         position: 'absolute',
         top: '10%',
         left: '15%',
-        backgroundColor: 'red',
         width: 50,
         height: 50,
       }}
     >
-      <Text>HappinessIndicator</Text>
+      <Text>{status}</Text>
     </View>
   );
 };
