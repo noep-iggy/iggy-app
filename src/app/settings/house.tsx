@@ -16,8 +16,8 @@ import {
   useRouter,
 } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { ScrollView, View, ActivityIndicator } from 'react-native';
-import { useTheme, Text, Divider } from 'react-native-paper';
+import { ScrollView, View } from 'react-native';
+import { useTheme, Text, Divider, ActivityIndicator } from 'react-native-paper';
 
 const HouseSettings = () => {
   const params = useLocalSearchParams();

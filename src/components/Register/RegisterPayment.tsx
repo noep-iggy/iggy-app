@@ -3,8 +3,14 @@ import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, View } from 'react-native';
-import { Checkbox, Switch, Text, useTheme } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import {
+  Checkbox,
+  Switch,
+  Text,
+  useTheme,
+  ActivityIndicator,
+} from 'react-native-paper';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { BillingPlanDto, BillingPlanTypeEnum } from '@/types';
 import { ApiService } from '@/api';

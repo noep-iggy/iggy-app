@@ -2,8 +2,15 @@ import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { AnimalDto } from '@/types';
-import { ActivityIndicator, Image, View } from 'react-native';
-import { Button, Icon, IconButton, Text, useTheme } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import {
+  Button,
+  Icon,
+  IconButton,
+  Text,
+  useTheme,
+  ActivityIndicator,
+} from 'react-native-paper';
 import { useAuthContext } from '@/contexts';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { ROUTES } from '@/router/routes';

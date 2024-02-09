@@ -1,9 +1,4 @@
-import {
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { genericStyles } from '@/constants';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { AnimalDto, TaskRecurrenceEnum, UpdateTaskApi, UserDto } from '@/types';
@@ -11,7 +6,7 @@ import { taskValidation } from '@/validations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTheme, Text } from 'react-native-paper';
+import { useTheme, Text, ActivityIndicator } from 'react-native-paper';
 import { ApiService } from '@/api';
 import i18n from '@/locales/localization';
 import { formatValidationErrorMessage } from '@/utils/error';

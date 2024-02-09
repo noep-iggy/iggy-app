@@ -1,6 +1,6 @@
 import i18n from '@/locales/localization';
-import { ActivityIndicator, Image, View } from 'react-native';
-import { Text, useTheme } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import { Text, useTheme, ActivityIndicator } from 'react-native-paper';
 import { ApiService } from '@/api';
 import Toast from 'react-native-toast-message';
 import { formatValidationErrorMessage } from '@/utils/error';

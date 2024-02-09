@@ -1,8 +1,8 @@
-import { Text } from 'react-native-paper';
+import { Text, ActivityIndicator } from 'react-native-paper';
 import { useCallback, useState } from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { ScrollView } from 'react-native-gesture-handler';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { AnimalDto, TaskDto, TaskPeriodEnum } from '@/types';
 import { ApiService } from '@/api';

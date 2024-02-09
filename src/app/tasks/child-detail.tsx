@@ -1,10 +1,10 @@
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 import { useState, useCallback } from 'react';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { TaskDto } from '@/types';
 import { ApiService } from '@/api';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { useTheme } from 'react-native-paper';
+import { useTheme, ActivityIndicator } from 'react-native-paper';
 import { TaskTodoDetail } from '@/components/Tasks/TaskTodoDetail';
 
 const TaskDetail = () => {

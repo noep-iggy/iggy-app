@@ -1,4 +1,4 @@
-import { View, ActivityIndicator } from 'react-native';
+import { View } from 'react-native';
 import { useState, useCallback } from 'react';
 import {
   Stack,
@@ -13,7 +13,7 @@ import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { animalAnimationResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
-import { Text, useTheme } from 'react-native-paper';
+import { Text, useTheme, ActivityIndicator } from 'react-native-paper';
 import i18n from '@/locales/localization';
 import { RefreshScroll } from '@/components/Scroll';
 import { ROUTES } from '@/router/routes';

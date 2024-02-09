@@ -13,13 +13,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import {
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  View,
-} from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
+import { useTheme, ActivityIndicator } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 
 const ProfileUpdate = () => {

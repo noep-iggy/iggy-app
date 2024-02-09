@@ -3,7 +3,6 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
-  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import { genericStyles } from '@/constants';
@@ -13,7 +12,12 @@ import { animalValidation } from '@/validations';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTheme, Icon, MD3Colors } from 'react-native-paper';
+import {
+  useTheme,
+  Icon,
+  MD3Colors,
+  ActivityIndicator,
+} from 'react-native-paper';
 import { ApiService } from '@/api';
 import i18n from '@/locales/localization';
 import { formatValidationErrorMessage } from '@/utils/error';

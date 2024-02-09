@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useAuthContext } from '@/contexts';
 import { useNavigation } from 'expo-router';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 import { clearHistoryAndRedirect } from '@/utils';
 
 interface AuthWallProps {
