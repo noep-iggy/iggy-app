@@ -5,7 +5,7 @@ import { ApiService } from '@/api';
 import { genericStyles } from '@/constants';
 import { animalResolver } from '@/utils/animal';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { Text } from 'react-native-paper';
+import { Text, TouchableRipple } from 'react-native-paper';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
 import { RefreshScroll } from '@/components/Scroll';
@@ -35,9 +35,9 @@ const Pets = () => {
         isLoading={isLoading}
         onRefresh={() => fetchAnimals()}
       >
-        <View style={{ marginHorizontal: 16, marginTop: 32 }}>
+        <View style={{ margin: 16, gap: 8 }}>
           {animals.map((animal) => (
-            <TouchableOpacity
+            <TouchableRipple
               key={animal.id}
               onPress={() => {
                 router.push(ROUTES.animal.detail);
@@ -47,48 +47,45 @@ const Pets = () => {
                 genericStyles.flexRow,
                 {
                   width: '100%',
-                  marginBottom: 16,
                   borderRadius: 8,
                   padding: 10,
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 5 },
-                  shadowOpacity: 0.3,
-                  shadowRadius: 6,
                   backgroundColor: theme.colors.surfaceVariant,
                 },
               ]}
             >
-              <Image
-                style={{
-                  width: 50,
-                  height: 50,
-                }}
-                source={animalResolver(animal.type)}
-              />
-              <View
-                style={[
-                  genericStyles.flexColumn,
-                  {
-                    marginLeft: 15,
-                    flex: 1,
-                    justifyContent: 'center',
-                  },
-                ]}
-              >
-                <Text
-                  variant="headlineSmall"
+              <>
+                <Image
                   style={{
-                    fontWeight: 'bold',
-                    color: theme.colors.primary,
+                    width: 50,
+                    height: 50,
                   }}
+                  source={animalResolver(animal.type)}
+                />
+                <View
+                  style={[
+                    genericStyles.flexColumn,
+                    {
+                      marginLeft: 15,
+                      flex: 1,
+                      justifyContent: 'center',
+                    },
+                  ]}
                 >
-                  {animal.name}
-                </Text>
-                <Text variant="bodyMedium" style={{ marginTop: 5 }}>
-                  Tâche(s) en attente : {animal?.tasks?.length ?? 0}
-                </Text>
-              </View>
-            </TouchableOpacity>
+                  <Text
+                    variant="headlineSmall"
+                    style={{
+                      fontWeight: 'bold',
+                      color: theme.colors.primary,
+                    }}
+                  >
+                    {animal.name}
+                  </Text>
+                  <Text variant="bodyMedium" style={{ marginTop: 5 }}>
+                    Tâche(s) en attente : {animal?.tasks?.length ?? 0}
+                  </Text>
+                </View>
+              </>
+            </TouchableRipple>
           ))}
         </View>
       </RefreshScroll>

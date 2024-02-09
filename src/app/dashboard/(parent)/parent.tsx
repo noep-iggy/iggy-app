@@ -67,7 +67,7 @@ const ParentDashboard = () => {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ gap: 8 }}
+            contentContainerStyle={{ gap: 8, alignItems: 'center' }}
             style={{ overflow: 'visible' }}
           >
             {animals.map((animal) => (

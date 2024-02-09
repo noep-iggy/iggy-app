@@ -1,8 +1,7 @@
-import { Card, Text } from 'react-native-paper';
+import { Card, Text, TouchableRipple } from 'react-native-paper';
 import { AnimalTypeEnum, BasicAnimalDto } from '@/types';
 import { router } from 'expo-router';
 import { ROUTES } from '@/router/routes';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
 export interface PetCardProps {
@@ -11,7 +10,7 @@ export interface PetCardProps {
 
 const PetCard = ({ animal }: PetCardProps) => {
   return (
-    <TouchableOpacity
+    <TouchableRipple
       onPress={() => {
         router.push(ROUTES.animal.detail);
         router.setParams({ id: animal?.id ?? '0' });
@@ -19,11 +18,12 @@ const PetCard = ({ animal }: PetCardProps) => {
     >
       <Card
         mode="contained"
-        contentStyle={{ alignItems: 'center', width: 175 }}
+        contentStyle={{ alignItems: 'center', width: 160, paddingVertical: 12 }}
       >
         <Text
-          variant="headlineSmall"
-          style={{ textAlign: 'center', marginTop: 5 }}
+          variant="titleMedium"
+          style={{ textAlign: 'center', paddingHorizontal: 12 }}
+          numberOfLines={1}
         >
           {animal?.name ?? 'Animal'}
         </Text>
@@ -33,7 +33,7 @@ const PetCard = ({ animal }: PetCardProps) => {
           style={{ width: 150, height: 150 }}
         />
       </Card>
-    </TouchableOpacity>
+    </TouchableRipple>
   );
 };
 
