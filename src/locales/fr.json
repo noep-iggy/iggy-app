@@ -13,6 +13,7 @@
     "tasks_detail": "Chargement de la tâche",
     "tasks_child-detail": "Tâche",
     "tasks_parent-detail": "Détail de la tâche",
+    "tasks_all-tasks-child": "Toutes les tâches",
     "modals_refuse-task-modal": "Refuser la tâche",
     "modals_filters-shop-modal": "Filtres de la boutique",
     "settings_profile": "Mon profil",
@@ -45,7 +46,8 @@
     "month": "mois",
     "try": "Essayer",
     "adopt": "Adopter",
-    "late": "En retard"
+    "late": "En retard",
+    "seeAll": "Voir tout"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"

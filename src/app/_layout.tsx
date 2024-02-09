@@ -34,6 +34,9 @@ const Layout = () => {
           <SafeAreaProvider>
             <Stack
               screenOptions={{
+                contentStyle: {
+                  backgroundColor: theme.colors.background,
+                },
                 header: (props) => <CustomAppBar {...props} />,
               }}
             >
@@ -155,8 +158,15 @@ const Layout = () => {
                   header: (props) => <CustomModalBar {...props} />,
                 }}
               />
+              <Stack.Screen
+                name={ROUTES.task.allTasksChildren}
+                options={{
+                  presentation: 'modal',
+                  header: (props) => <CustomModalBar {...props} />,
+                }}
+              />
             </Stack>
-            <Toast topOffset={insets.top} />
+            <Toast topOffset={insets.top + 20} />
           </SafeAreaProvider>
         </ActionSheetProvider>
       </AuthProvider>

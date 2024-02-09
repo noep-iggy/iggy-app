@@ -4,6 +4,7 @@ import React from 'react';
 import { AnimalDto } from '@/types';
 import LottieView from 'lottie-react-native';
 import { animalAnimationResolver } from '@/utils/animal';
+import HappinessIndicator from '../Status/HappinessIndicator';
 
 interface ChildPetSlideProps {
   animal: AnimalDto;
@@ -39,6 +40,7 @@ const ChildPetSlide = (props: ChildPetSlideProps) => {
             height: 'auto',
           }}
         />
+        <HappinessIndicator status={animal.status} />
       </View>
     </View>
   );

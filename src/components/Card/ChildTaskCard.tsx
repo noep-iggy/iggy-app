@@ -14,7 +14,7 @@ import { formatDateTime } from '@/utils';
 
 interface ChildTaskCardProps {
   task: TaskDto;
-  isSecondary: boolean;
+  isSecondary?: boolean;
 }
 
 const ChildTaskCard = (props: ChildTaskCardProps) => {
@@ -30,8 +30,9 @@ const ChildTaskCard = (props: ChildTaskCardProps) => {
               width: '100%',
               transform: [{ translateY: 15 }, { scale: 0.9 }],
               zIndex: -1,
+              opacity: 0.5,
             }
-          : {}
+          : null
       }
       onPress={() => {
         router.push(ROUTES.task?.childDetail);

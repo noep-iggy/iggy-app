@@ -28,6 +28,7 @@ export const ROUTES = {
     parentDetail: 'tasks/parent-detail' as never,
     childDetail: 'tasks/child-detail' as never,
     update: 'tasks/update' as never,
+    allTasksChildren: 'tasks/all-tasks-child' as never,
   },
   modals: {
     refuseTaskModal: 'modals/refuse-task-modal' as never,

@@ -26,8 +26,7 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ],
-      "package": "com.noep.iggyapp"
+      ]
     },
     "web": {
       "favicon": "./src/assets/images/app/favicon.png",
@@ -50,9 +49,6 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "48fca654-5f93-4647-ba07-6d7a98ab5540"
       }
     }
   }

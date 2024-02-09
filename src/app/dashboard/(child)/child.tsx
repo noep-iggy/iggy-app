@@ -19,6 +19,7 @@ import { ApiService } from '@/api';
 import ChildPetSlide from '@/components/Card/ChildPetSlide';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
 import i18n from '@/locales/localization';
+import PrimaryButton from '@/components/Buttons/PrimaryButton';
 
 const ChildDashboard = () => {
   const splashImage = require('@/assets/images/app/splash.png');
@@ -122,11 +123,9 @@ const ChildDashboard = () => {
               style={{
                 backgroundColor: theme.colors.surface,
                 padding: 16,
-                paddingBottom: 38,
                 borderRadius: 8,
-                maxHeight: 175,
                 marginHorizontal: 16,
-                gap: 12,
+                gap: 8,
               }}
             >
               <View
@@ -192,6 +191,15 @@ const ChildDashboard = () => {
                 )}
                 {isLoading && <ActivityIndicator size="small" />}
               </View>
+              <PrimaryButton
+                disabled={tasks.length === 0 || isLoading}
+                title={i18n.t('generics.seeAll')}
+                onPress={() => {
+                  router.push(ROUTES.task.allTasksChildren);
+                  router.setParams({ animalId: currentAnimal!.id as string });
+                }}
+                style={{ marginTop: 16 }}
+              />
             </Surface>
           </View>
         </UniversalSafeArea>

@@ -1,10 +1,5 @@
-import {
-  ScrollView,
-  RefreshControl,
-  ScrollViewProps,
-  ActivityIndicator,
-} from 'react-native';
-import { Text } from 'react-native-paper';
+import { ScrollView, RefreshControl, ScrollViewProps } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native-paper';
 
 interface RefreshScrollProps extends ScrollViewProps {
   isLoading: boolean;
