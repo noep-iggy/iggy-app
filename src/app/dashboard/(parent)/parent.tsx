@@ -51,25 +51,15 @@ const ParentDashboard = () => {
 
   return (
     <UniversalSafeArea asView style={{ paddingHorizontal: 16 }}>
-      <View style={{ marginTop: 16 }}>
+      <View style={{ marginVertical: 16 }}>
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
             marginBottom: 16,
-            justifyContent: 'space-between',
           }}
         >
-          <Text variant="headlineMedium" style={{ fontWeight: 'bold' }}>
+          <Text variant="titleLarge" style={{ fontWeight: 'bold' }}>
             Animaux
           </Text>
-          <PrimaryButton
-            title="Ajouter"
-            icon="plus"
-            onPress={() => {
-              router.push(ROUTES.animal.create);
-            }}
-          />
         </View>
         {isLoadingAnimals ? (
           <ActivityIndicator animating={isLoadingAnimals} />
@@ -78,6 +68,7 @@ const ParentDashboard = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ gap: 8 }}
+            style={{ overflow: 'visible' }}
           >
             {animals.map((animal) => (
               <PetCard key={animal.id} animal={animal} />
@@ -95,7 +86,7 @@ const ParentDashboard = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Text variant="headlineMedium" style={{ fontWeight: 'bold' }}>
+        <Text variant="titleLarge" style={{ fontWeight: 'bold' }}>
           Tâches du jour
         </Text>
         <PrimaryButton

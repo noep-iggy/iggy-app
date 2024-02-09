@@ -14,6 +14,7 @@ export function ButtonsAction(props: ButtonsActionProps): JSX.Element {
 
   return (
     <Fab.Group
+      variant="surface"
       open={open}
       visible
       style={[

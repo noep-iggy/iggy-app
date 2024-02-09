@@ -1,7 +1,7 @@
 import { genericStyles } from '@/constants';
-import { TaskDto } from '@/types';
+import { TaskDto, TaskStatusEnum } from '@/types';
 import { formatDateTime } from '@/utils';
-import { renderTaskColor } from '@/utils/task';
+import { renderTaskColor, renderTextTaskColor } from '@/utils/task';
 import { ScrollView, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
@@ -29,18 +29,22 @@ export function TaskHeaderDetail(props: TaskHeaderDetailProps): JSX.Element {
         <Icon
           source="calendar"
           size={24}
-          color={renderTaskColor(task.status, theme)}
+          color={renderTextTaskColor(task.status)}
         />
         <Text
           variant="bodyMedium"
           style={{
             marginLeft: 5,
-            color: renderTaskColor(task.status, theme),
+            marginRight: 10,
+            color: renderTextTaskColor(task.status),
           }}
         >
           {formatDateTime(task.date)}
         </Text>
-        <TaskStatus style={{ marginLeft: 15 }} taskStatus={task.status} />
+        <TaskStatus taskStatus={task.status} style={{ marginRight: 8 }} />
+        {task.isArchived && task.status !== TaskStatusEnum.DONE && (
+          <Icon source="clock" size={18} color={theme.colors.warning} />
+        )}
       </View>
       <View style={[genericStyles.flexRow, { width: '100%', marginBottom: 2 }]}>
         <Icon source="account" size={24} />

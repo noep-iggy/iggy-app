@@ -20,7 +20,6 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 const colorScheme = Appearance.getColorScheme();
 const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
-
 const theme = {
   ...defaultTheme,
   colors: colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,

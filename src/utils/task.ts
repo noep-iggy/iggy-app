@@ -1,20 +1,32 @@
+import { useAppTheme } from '@/app/_layout';
 import { TaskStatusEnum } from '@/types';
-import { MD3Theme, useTheme } from 'react-native-paper';
 
-export function renderTaskColor(
-  status: TaskStatusEnum,
-  theme: MD3Theme
-): string {
+export function renderTaskColor(status: TaskStatusEnum): string {
+  const theme = useAppTheme();
   switch (status) {
     case TaskStatusEnum.TODO:
-      return '#52CAE2';
+      return theme.colors.tertiaryContainer;
     case TaskStatusEnum.TO_VALIDATE:
-      return 'orange';
+      return theme.colors.warningContainer;
     case TaskStatusEnum.DONE:
-      return theme.colors.primary;
+      return theme.colors.secondaryContainer;
 
     default:
-      return theme.colors.error;
+      return theme.colors.errorContainer;
+  }
+}
+
+export function renderTextTaskColor(status: TaskStatusEnum): string {
+  const theme = useAppTheme();
+  switch (status) {
+    case TaskStatusEnum.TODO:
+      return theme.colors.onTertiaryContainer;
+    case TaskStatusEnum.TO_VALIDATE:
+      return theme.colors.onWarningContainer;
+    case TaskStatusEnum.DONE:
+      return theme.colors.onSecondaryContainer;
+    default:
+      return 'black';
   }
 }
 

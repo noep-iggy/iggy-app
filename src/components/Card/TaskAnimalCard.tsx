@@ -1,14 +1,13 @@
 import { genericStyles } from '@/constants';
 import { ROUTES } from '@/router/routes';
-import { TaskDto } from '@/types';
+import { TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
 import { animalResolver } from '@/utils/animal';
 import { router } from 'expo-router';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Avatar, Icon, Text } from 'react-native-paper';
+import { Avatar, Chip, Icon, Text } from 'react-native-paper';
 import { TaskStatus } from '../Status/TaskStatus';
 import { formatDateTime } from '@/utils';
-import i18n from '@/locales/localization';
 import { useAppTheme } from '@/app/_layout';
 
 interface TaskAnimalCardProps {
@@ -27,18 +26,13 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
         {
           width: '100%',
           borderRadius: 8,
-          padding: 16,
+          paddingHorizontal: 16,
+          paddingVertical: 14,
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: 4,
-          backgroundColor: task.isArchived
-            ? theme.colors.errorContainer
-            : theme.colors.surfaceVariant,
-          borderWidth: 1,
-          borderColor: task.isArchived
-            ? theme.colors.error
-            : theme.colors.primary,
+          backgroundColor: theme.colors.surfaceVariant,
         },
         style,
       ]}
@@ -47,7 +41,12 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
         router.setParams({ id: task?.id ?? '0' });
       }}
     >
-      <View style={[genericStyles.flexColumn, { minWidth: '70%' }]}>
+      <View
+        style={[
+          genericStyles.flexColumn,
+          { minWidth: '70%', alignItems: 'flex-start' },
+        ]}
+      >
         <Text
           variant="bodyLarge"
           style={{ fontWeight: 'bold', marginBottom: 1 }}
@@ -78,7 +77,19 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
             {formatDateTime(task.date)}
           </Text>
         </View>
-        <TaskStatus taskStatus={task.status} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <TaskStatus taskStatus={task.status} />
+          {task.recurrence && (
+            <Icon
+              source="calendar"
+              size={18}
+              color={theme.colors.onSurfaceVariant}
+            />
+          )}
+          {task.isArchived && task.status !== TaskStatusEnum.DONE && (
+            <Icon source="clock" size={18} color={theme.colors.warning}></Icon>
+          )}
+        </View>
       </View>
       <View style={[genericStyles.flexRow, { position: 'relative' }]}>
         {isAnimalVisible &&
@@ -89,13 +100,9 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
               source={animalResolver(animal.type)}
               style={{
                 position: 'absolute',
-                left: index * -20 - 35, // Ajustez la position horizontale en fonction de l'index
-                shadowColor: theme.colors.shadow,
-                shadowOffset: { width: 0, height: 5 },
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
+                left: index * -15 - 40,
                 backgroundColor: theme.colors.surfaceVariant,
-                borderWidth: 1,
+                borderWidth: 2,
                 borderColor: theme.colors.secondary,
                 width: 45,
                 height: 45,
@@ -106,39 +113,6 @@ const TaskAnimalCard = (props: TaskAnimalCardProps) => {
               }}
             />
           ))}
-      </View>
-
-      <View
-        style={[
-          genericStyles.flexRow,
-          { position: 'absolute', top: 5, right: 5 },
-        ]}
-      >
-        {task.isArchived && (
-          <View
-            style={[
-              genericStyles.flexRow,
-              {
-                alignItems: 'center',
-                borderWidth: 1,
-                borderColor: theme.colors.error,
-                padding: 4,
-                backgroundColor: theme.colors.surfaceVariant,
-                borderRadius: 4,
-                marginRight: task.recurrence ? 5 : 0,
-              },
-            ]}
-          >
-            <Icon source="alert" size={15} color={theme.colors.error} />
-            <Text
-              variant="bodySmall"
-              style={{ marginLeft: 4, color: theme.colors.error }}
-            >
-              {i18n.t('generics.late')}
-            </Text>
-          </View>
-        )}
-        {task.recurrence && <Icon source="clock-time-eight" size={17} />}
       </View>
     </TouchableOpacity>
   );

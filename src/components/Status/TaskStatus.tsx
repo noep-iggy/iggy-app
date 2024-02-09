@@ -1,10 +1,12 @@
-import { useAppTheme } from '@/app/_layout';
-import { genericStyles } from '@/constants';
 import i18n from '@/locales/localization';
 import { TaskStatusEnum } from '@/types';
-import { renderTaskColor, renderTaskIcon } from '@/utils/task';
-import { StyleProp, View, ViewStyle } from 'react-native';
-import { Icon, Text } from 'react-native-paper';
+import {
+  renderTaskColor,
+  renderTaskIcon,
+  renderTextTaskColor,
+} from '@/utils/task';
+import { StyleProp, ViewStyle } from 'react-native';
+import { Chip, Icon } from 'react-native-paper';
 
 interface TaskStatusProps {
   taskStatus: TaskStatusEnum;
@@ -12,28 +14,23 @@ interface TaskStatusProps {
 }
 
 export function TaskStatus(props: TaskStatusProps): JSX.Element {
-  const { taskStatus, style } = props;
-  const theme = useAppTheme();
+  const { style, taskStatus } = props;
 
   return (
-    <View
-      style={[
-        genericStyles.flexRow,
-        {
-          backgroundColor: renderTaskColor(taskStatus, theme),
-          borderRadius: 50,
-          paddingHorizontal: 8,
-          paddingVertical: 4,
-          alignItems: 'center',
-          alignSelf: 'flex-start',
-        },
-        style,
-      ]}
+    <Chip
+      icon={() => {
+        return (
+          <Icon
+            source={renderTaskIcon(taskStatus)}
+            color={renderTextTaskColor(taskStatus)}
+            size={16}
+          />
+        );
+      }}
+      textStyle={{ color: renderTextTaskColor(taskStatus) }}
+      style={[{ backgroundColor: renderTaskColor(taskStatus) }, style]}
     >
-      <Icon source={renderTaskIcon(taskStatus)} color={'white'} size={15} />
-      <Text variant="bodySmall" style={{ marginLeft: 4, color: 'white' }}>
-        {i18n.t(`enums.status.${taskStatus}`)}
-      </Text>
-    </View>
+      {i18n.t(`enums.status.${taskStatus}`)}
+    </Chip>
   );
 }
