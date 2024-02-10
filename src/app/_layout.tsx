@@ -18,18 +18,27 @@ import { ROUTES } from '@/router/routes';
 import CustomModalBar from '@/components/Commons/CustomModalBar';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
-const colorScheme = Appearance.getColorScheme();
-const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
-const theme = {
-  ...defaultTheme,
-  colors: colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,
-};
+export const useAppTheme = () => {
+  const colorScheme = useColorScheme();
+  const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
+  const theme = {
+    ...defaultTheme,
+    colors:
+      colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,
+  };
 
-export type AppTheme = typeof theme;
-export const useAppTheme = () => useTheme<AppTheme>();
+  return useTheme<typeof theme>();
+};
 
 const Layout = () => {
   const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  const defaultTheme = colorScheme === 'dark' ? DarkTheme : LightTheme;
+  const theme = {
+    ...defaultTheme,
+    colors:
+      colorScheme === 'dark' ? IggyDarkTheme.colors : IggyLightTheme.colors,
+  };
 
   return (
     <PaperProvider theme={theme}>
