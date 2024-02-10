@@ -51,22 +51,7 @@ const FilterShopModal = () => {
         ]}
         asView
       >
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <SecondaryButton
-            style={{ alignSelf: 'flex-end', marginTop: 10 }}
-            title="Réinitialiser"
-            onPress={() => {
-              router.back();
-              router.setParams({
-                filters: JSON.stringify({
-                  page: 0,
-                  orderBy: 'createdAt',
-                  orderType: 'DESC',
-                  pageSize: 10,
-                }),
-              });
-            }}
-          />
+        <ScrollView style={{ marginVertical: 16 }}>
           <List.Section
             titleStyle={{
               fontSize: 25,
@@ -311,8 +296,24 @@ const FilterShopModal = () => {
             </List.Accordion>
           </List.Section>
         </ScrollView>
+        <SecondaryButton
+          style={{ marginBottom: 16 }}
+          title="Réinitialiser"
+          onPress={() => {
+            router.back();
+            router.setParams({
+              filters: JSON.stringify({
+                page: 0,
+                orderBy: 'createdAt',
+                orderType: 'DESC',
+                pageSize: 10,
+              }),
+            });
+          }}
+        />
         <PrimaryButton
           title="Appliquer"
+          big
           onPress={() => {
             router.back();
             router.setParams({

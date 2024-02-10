@@ -5,6 +5,7 @@ import {
   MD3DarkTheme as DarkTheme,
   MD3LightTheme as LightTheme,
   PaperProvider,
+  configureFonts,
   useTheme,
 } from 'react-native-paper';
 import {

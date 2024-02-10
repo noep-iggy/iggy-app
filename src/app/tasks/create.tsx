@@ -91,7 +91,7 @@ const TaskCreate = () => {
         <View>
           <Text
             variant="titleMedium"
-            style={{ textAlign: 'center', marginVertical: 15 }}
+            style={{ marginTop: 16, marginBottom: 8 }}
           >
             {i18n.t('tasks.create.subtitle')}
           </Text>

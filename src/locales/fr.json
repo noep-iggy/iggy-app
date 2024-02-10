@@ -47,7 +47,8 @@
     "try": "Essayer",
     "adopt": "Adopter",
     "late": "En retard",
-    "seeAll": "Voir tout"
+    "seeAll": "Voir tout",
+    "animals": "Animaux"
   },
   "camera": {
     "noAccess": "Vous n'avez pas autorisé l'accès à la caméra"
@@ -140,7 +141,7 @@
   },
   "animals": {
     "detail": {
-      "tasks": "Tâches du jour :"
+      "tasks": "Tâches du jour"
     },
     "confirmDelete": {
       "title": "Supprimer l'animal",

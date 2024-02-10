@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { genericStyles } from '@/constants';
-import { Icon, MD3Colors } from 'react-native-paper';
+import { Icon, MD3Colors, Tooltip } from 'react-native-paper';
 import FormField from '@/components/Forms/FormField';
 import i18n from '@/locales/localization';
 import { AnimalGenderEnum, AnimalTypeEnum, CreateAnimalApi } from '@/types';
@@ -141,7 +141,7 @@ const AnimalCreate = () => {
                     padding: 5,
                     backgroundColor:
                       animalSelected === animal
-                        ? theme.colors.primary
+                        ? theme.colors.secondaryContainer
                         : 'transparent',
                   }}
                 >
@@ -171,7 +171,7 @@ const AnimalCreate = () => {
                   >
                     <Icon
                       source="close-octagon"
-                      color={MD3Colors.error50}
+                      color={theme.colors.warning}
                       size={20}
                     />
                   </View>

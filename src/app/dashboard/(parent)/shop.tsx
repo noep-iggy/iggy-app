@@ -35,7 +35,6 @@ const Shop = () => {
 
   async function fetchAffiliates(newFilters: AffiliateSearchParams) {
     setIsLoading(true);
-    console.log('[D] shop', newFilters);
     const affiliatesFetched = await ApiService.affiliates.getAll(newFilters);
     setAffiliatesFetched(affiliatesFetched);
     setAffiliates((prevAffiliates) => [
@@ -61,7 +60,7 @@ const Shop = () => {
 
   return (
     <UniversalSafeArea asView>
-      <View style={{ marginTop: 32, marginBottom: 16, paddingHorizontal: 16 }}>
+      <View style={{ marginVertical: 16, paddingHorizontal: 16 }}>
         <View
           style={[
             genericStyles.flexRow,

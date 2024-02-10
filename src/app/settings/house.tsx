@@ -15,6 +15,7 @@ import {
   useLocalSearchParams,
   useRouter,
 } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Text, Divider, ActivityIndicator } from 'react-native-paper';
@@ -74,6 +75,7 @@ const HouseSettings = () => {
 
   return (
     <>
+      <StatusBar style="auto" />
       <UniversalSafeArea
         style={{
           padding: 16,

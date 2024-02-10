@@ -58,7 +58,7 @@ const ParentDashboard = () => {
           }}
         >
           <Text variant="titleLarge" style={{ fontWeight: 'bold' }}>
-            Animaux
+            {i18n.t('generics.animals')}
           </Text>
         </View>
         {isLoadingAnimals ? (
@@ -87,7 +87,7 @@ const ParentDashboard = () => {
         }}
       >
         <Text variant="titleLarge" style={{ fontWeight: 'bold' }}>
-          Tâches du jour
+          {i18n.t('animals.detail.tasks')}
         </Text>
         <PrimaryButton
           title="Ajouter"

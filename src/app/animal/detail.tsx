@@ -20,6 +20,7 @@ import { ROUTES } from '@/router/routes';
 import Toast from 'react-native-toast-message';
 import { DeleteDialog } from '@/components/Dialog/DeleteDialog';
 import { ButtonsAction } from '@/components/Actions/ButtonsAction';
+import { StatusBar } from 'expo-status-bar';
 
 const AnimalDetail = () => {
   const router = useRouter();
@@ -85,6 +86,7 @@ const AnimalDetail = () => {
 
   return (
     <>
+      <StatusBar style="auto" />
       <UniversalSafeArea
         style={[
           {

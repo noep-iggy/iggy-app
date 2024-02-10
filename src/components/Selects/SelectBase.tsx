@@ -41,6 +41,7 @@ export function SelectBase(props: SelectBaseProps): JSX.Element {
           color: theme.colors.scrim,
         }}
         doneText="OK"
+        darkTheme={theme.dark}
         {...rest}
       />
       <View

@@ -3,6 +3,7 @@ import { Tabs } from 'expo-router';
 import { Icon } from 'react-native-paper';
 import { Image } from 'react-native';
 import { useAppTheme } from '@/app/_layout';
+import { StatusBar } from 'expo-status-bar';
 
 const ParentLayout = () => {
   const theme = useAppTheme();
@@ -17,7 +18,8 @@ const ParentLayout = () => {
     },
   };
 
-  return (
+  return (<>
+    <StatusBar style="light" />
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: theme.colors.primary,
@@ -90,6 +92,7 @@ const ParentLayout = () => {
         }}
       />
     </Tabs>
+    </>
   );
 };
 

@@ -48,7 +48,8 @@ const Pets = () => {
                 {
                   width: '100%',
                   borderRadius: 8,
-                  padding: 10,
+                  paddingHorizontal: 12,
+                  paddingVertical: 24,
                   backgroundColor: theme.colors.surfaceVariant,
                 },
               ]}
@@ -72,15 +73,16 @@ const Pets = () => {
                   ]}
                 >
                   <Text
-                    variant="headlineSmall"
+                    variant="titleLarge"
                     style={{
-                      fontWeight: 'bold',
                       color: theme.colors.primary,
+                      fontWeight: 'bold',
                     }}
+                    numberOfLines={1}
                   >
                     {animal.name}
                   </Text>
-                  <Text variant="bodyMedium" style={{ marginTop: 5 }}>
+                  <Text variant="bodyMedium">
                     Tâche(s) en attente : {animal?.tasks?.length ?? 0}
                   </Text>
                 </View>

@@ -54,6 +54,7 @@ export function Select(props: SelectProps): JSX.Element {
               }}
               value={value}
               doneText="OK"
+              darkTheme={theme.dark}
               {...rest}
             />
             <View

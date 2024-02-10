@@ -8,6 +8,7 @@ import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { UserDto } from '@/types';
 import { router, useFocusEffect } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
@@ -30,37 +31,40 @@ const FamilySettings = () => {
   );
 
   return (
-    <UniversalSafeArea
-      style={{
-        padding: 16,
-      }}
-      asView
-    >
-      <RefreshScroll
-        emptyText={i18n.t('users.empty')}
-        isEmpty={users.length === 1}
-        isLoading={isLoading}
-        onRefresh={() => getUsers()}
+    <>
+      <StatusBar style="auto" />
+      <UniversalSafeArea
+        style={{
+          padding: 16,
+        }}
+        asView
       >
-        <View style={[genericStyles.colCenter, { gap: 10 }]}>
-          {users
-            .filter((user) => currentUser?.id !== user.id)
-            .map((user) => (
-              <SettingCard
-                onPress={() => {
-                  router.push(ROUTES.user.detail);
-                  router.setParams({ id: user?.id ?? '0' });
-                }}
-                key={user.id}
-                title={`${user.firstName} ${
-                  user.lastName ? user.lastName : ''
-                }`}
-                description={i18n.t(`enums.role.${user.role}`)}
-              />
-            ))}
-        </View>
-      </RefreshScroll>
-    </UniversalSafeArea>
+        <RefreshScroll
+          emptyText={i18n.t('users.empty')}
+          isEmpty={users.length === 1}
+          isLoading={isLoading}
+          onRefresh={() => getUsers()}
+        >
+          <View style={[genericStyles.colCenter, { gap: 10 }]}>
+            {users
+              .filter((user) => currentUser?.id !== user.id)
+              .map((user) => (
+                <SettingCard
+                  onPress={() => {
+                    router.push(ROUTES.user.detail);
+                    router.setParams({ id: user?.id ?? '0' });
+                  }}
+                  key={user.id}
+                  title={`${user.firstName} ${
+                    user.lastName ? user.lastName : ''
+                  }`}
+                  description={i18n.t(`enums.role.${user.role}`)}
+                />
+              ))}
+          </View>
+        </RefreshScroll>
+      </UniversalSafeArea>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import i18n from '@/locales/localization';
 import { ROUTES } from '@/router/routes';
 import { formatDateTime } from '@/utils';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -60,6 +61,7 @@ const ProfileSettings = () => {
 
   return (
     <>
+      <StatusBar style="auto" />
       <UniversalSafeArea
         style={{
           padding: 16,

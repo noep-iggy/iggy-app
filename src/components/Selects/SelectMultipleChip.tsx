@@ -1,4 +1,3 @@
-import { useAppTheme } from '@/app/_layout';
 import { ErrorMessage } from '@hookform/error-message';
 import { useFormContext, useFormState, Controller } from 'react-hook-form';
 import { View, ViewProps } from 'react-native';
@@ -17,7 +16,6 @@ export function SelectMultipleChip(
   const { label, name, items, isLoading, ...rest } = props;
   const { control } = useFormContext();
   const { errors } = useFormState();
-  const theme = useAppTheme();
 
   return (
     <>
@@ -47,6 +45,8 @@ export function SelectMultipleChip(
                 items.map((item) => (
                   <Chip
                     key={item.value}
+                    showSelectedOverlay={true}
+                    icon={value?.includes(item.value) ? 'check' : 'plus'}
                     selected={value?.includes(item.value)}
                     onPress={() => {
                       if (value?.includes(item.value)) {
