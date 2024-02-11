@@ -1,7 +1,7 @@
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { useAuthContext } from '@/contexts';
 import { ROUTES } from '@/router/routes';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -13,7 +13,7 @@ import {
   TouchableRipple,
 } from 'react-native-paper';
 import { AnimalDto, TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ApiService } from '@/api';
 import ChildPetSlide from '@/components/Card/ChildPetSlide';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
@@ -55,11 +55,13 @@ const ChildDashboard = () => {
     fetchAnimals();
   }, []);
 
-  useEffect(() => {
-    if (animals.length > 0) {
-      fetchTasks();
-    }
-  }, [animals]);
+  useFocusEffect(
+    useCallback(() => {
+      if (animals.length > 0) {
+        fetchTasks();
+      }
+    }, [animals])
+  );
 
   return (
     <>

@@ -1,12 +1,12 @@
 import { View, Text, Task } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
 import { RefreshScroll } from '@/components/Scroll';
 import { TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
 import ChildTaskCard from '@/components/Card/ChildTaskCard';
 import { ApiService } from '@/api';
 import { useAuthContext } from '@/contexts';
-import { useLocalSearchParams } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 
 const AllTasksChild = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
@@ -29,9 +29,11 @@ const AllTasksChild = () => {
     setIsLoading(false);
   }
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchTasks();
+    }, [])
+  );
 
   return (
     <UniversalSafeArea asView>
