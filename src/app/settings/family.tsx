@@ -45,7 +45,7 @@ const FamilySettings = () => {
           isLoading={isLoading}
           onRefresh={() => getUsers()}
         >
-          <View style={[genericStyles.colCenter, { gap: 10 }]}>
+          <View style={[genericStyles.colCenter]}>
             {users
               .filter((user) => currentUser?.id !== user.id)
               .map((user) => (
@@ -58,7 +58,6 @@ const FamilySettings = () => {
                   title={`${user.firstName} ${
                     user.lastName ? user.lastName : ''
                   }`}
-                  description={i18n.t(`enums.role.${user.role}`)}
                 />
               ))}
           </View>

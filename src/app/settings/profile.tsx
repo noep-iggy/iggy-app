@@ -107,13 +107,6 @@ const ProfileSettings = () => {
             },
           },
           {
-            icon: 'logout',
-            label: i18n.t('generics.logout'),
-            onPress: () => {
-              removeToken();
-            },
-          },
-          {
             icon: 'trash-can',
             label: i18n.t('generics.delete'),
             onPress: () => {
