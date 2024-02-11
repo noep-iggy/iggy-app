@@ -127,8 +127,7 @@
     },
     "createHouse": "Créer mon foyer",
     "payment": {
-      "title": "Choisissez votre formule de souscription :",
-      "try": "Essayez Iggy pour :",
+      "title": "Votre formule de souscription :",
       "accept": {
         "part1": "J’ai lu et accepte les ",
         "part2": "conditions générales d’utilisation",

@@ -125,6 +125,7 @@ const ChildDashboard = () => {
                 padding: 16,
                 borderRadius: 8,
                 marginHorizontal: 16,
+                minHeight: 220,
                 gap: 8,
               }}
             >
@@ -167,7 +168,7 @@ const ChildDashboard = () => {
                   </Text>
                 </View>
               </View>
-              <View>
+              <View style={{ flexGrow: 1, justifyContent: 'center' }}>
                 {!tasks.length && !isLoading ? (
                   <Text
                     variant="bodyLarge"

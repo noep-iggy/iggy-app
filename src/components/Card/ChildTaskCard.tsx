@@ -56,7 +56,7 @@ const ChildTaskCard = (props: ChildTaskCardProps) => {
           <Icon
             size={32}
             source="alarm"
-            color={theme.colors.onErrorContainer}
+            color={theme.colors.onWarningContainer}
           />
         )}
       </Surface>

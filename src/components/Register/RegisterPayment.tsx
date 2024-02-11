@@ -21,7 +21,7 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
   const { setCurrentStep, purshaseType, setPurshaseType } = props;
   const theme = useAppTheme();
   const router = useRouter();
-  const logo = require('@/assets/images/app/logo.png');
+  const logo = require('@/assets/images/app/logo-color.png');
   const [isCguChecked, setIsCguChecked] = useState<boolean>(false);
   const [billingPlan, setBillingPlan] = useState<BillingPlanDto[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -38,64 +38,68 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
   }, []);
 
   return (
-    <ScrollView>
+    <>
       <View
         style={[
           genericStyles.flexColumn,
-          { alignItems: 'center', padding: 16 },
+          {
+            alignItems: 'center',
+            padding: 16,
+          },
         ]}
       >
         <Image source={logo} style={{ height: 50 }} resizeMode="contain" />
-        <Text
-          variant="bodyMedium"
-          style={{ color: 'white', marginVertical: 20 }}
-        >
-          {i18n.t('registerPage.payment.title')}
-        </Text>
         <View
           style={{
             width: '100%',
-            backgroundColor: 'white',
             borderRadius: 8,
             paddingHorizontal: 8,
             paddingVertical: 16,
             justifyContent: 'center',
+            gap: 32,
           }}
         >
-          <Text variant="bodyMedium" style={{ fontWeight: 'bold', padding: 8 }}>
-            {i18n.t('registerPage.payment.try')}
-          </Text>
-          {isLoading ? (
-            <ActivityIndicator />
-          ) : (
+          <View style={{ gap: 16 }}>
             <Text
-              variant="displayMedium"
+              variant="bodyMedium"
               style={{
-                color: theme.colors.primary,
                 textAlign: 'center',
                 fontWeight: 'bold',
               }}
             >
-              {purshaseType === BillingPlanTypeEnum.MONTHLY
-                ? `${
-                    billingPlan?.find(
-                      (b) => b.type === BillingPlanTypeEnum.MONTHLY
-                    )?.price ?? 0
-                  }€ / ${i18n.t('generics.month')}`
-                : `${
-                    billingPlan?.find(
-                      (b) => b.type === BillingPlanTypeEnum.FOR_LIFE
-                    )?.price ?? 0
-                  }€`}
+              {i18n.t('registerPage.payment.title')}
             </Text>
-          )}
+            {isLoading ? (
+              <ActivityIndicator />
+            ) : (
+              <Text
+                variant="displayMedium"
+                style={{
+                  color: theme.colors.primary,
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                }}
+              >
+                {purshaseType === BillingPlanTypeEnum.MONTHLY
+                  ? `${
+                      billingPlan?.find(
+                        (b) => b.type === BillingPlanTypeEnum.MONTHLY
+                      )?.price ?? 0
+                    }€ / ${i18n.t('generics.month')}`
+                  : `${
+                      billingPlan?.find(
+                        (b) => b.type === BillingPlanTypeEnum.FOR_LIFE
+                      )?.price ?? 0
+                    }€`}
+              </Text>
+            )}
+          </View>
           <View
             style={[
               genericStyles.flexRow,
               {
                 justifyContent: 'center',
                 gap: 10,
-                marginTop: 20,
               },
             ]}
           >
@@ -104,7 +108,7 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
               style={{
                 color:
                   purshaseType === BillingPlanTypeEnum.MONTHLY
-                    ? theme.colors.primary
+                    ? theme.colors.secondary
                     : theme.colors.outline,
                 fontWeight: 'bold',
               }}
@@ -120,14 +124,14 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
                     : BillingPlanTypeEnum.FOR_LIFE
                 )
               }
-              color={theme.colors.primary}
+              color={theme.colors.secondary}
             />
             <Text
               variant="bodyLarge"
               style={{
                 color:
                   purshaseType === BillingPlanTypeEnum.FOR_LIFE
-                    ? theme.colors.primary
+                    ? theme.colors.onSurfaceVariant
                     : theme.colors.outline,
                 fontWeight: 'bold',
               }}
@@ -138,7 +142,7 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
           <View
             style={[
               genericStyles.flexRow,
-              { justifyContent: 'center', alignItems: 'center', marginTop: 40 },
+              { justifyContent: 'center', alignItems: 'center', gap: 16 },
             ]}
           >
             <Checkbox.Android
@@ -146,7 +150,7 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
               color={theme.colors.primary}
               onPress={() => setIsCguChecked(!isCguChecked)}
             />
-            <View style={{ alignItems: 'flex-start', marginLeft: 10 }}>
+            <View style={{ alignItems: 'flex-start' }}>
               <Text variant="bodyMedium">
                 {i18n.t('registerPage.payment.accept.part1')}
               </Text>
@@ -172,17 +176,15 @@ export function RegisterPayment(props: RegisterPaymentProps): JSX.Element {
               </Text>
             </View>
           </View>
-          <PrimaryButton
-            title={i18n.t('registerPage.payment.submit')}
-            buttonColor={theme.colors.primary}
-            textColor="white"
-            style={{ alignSelf: 'center', marginVertical: 50 }}
-            onPress={() => setCurrentStep(1)}
-            disabled={!isCguChecked}
-            big
-          />
         </View>
       </View>
-    </ScrollView>
+      <PrimaryButton
+        title={i18n.t('registerPage.payment.submit')}
+        style={{ marginTop: 'auto' }}
+        onPress={() => setCurrentStep(1)}
+        disabled={!isCguChecked}
+        big
+      />
+    </>
   );
 }

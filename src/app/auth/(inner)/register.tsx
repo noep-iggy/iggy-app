@@ -41,30 +41,15 @@ export default function Register() {
   }
 
   return (
-    <UniversalSafeArea
-      style={[{ height: '100%' }]}
-      asView
-      edges={['right', 'left', 'bottom', 'top']}
-    >
-      {currentStep === 0 ? (
-        <ImageBackground style={{ height: '100%' }} source={splashImage}>
-          <Stepper currentStep={currentStep} totalSteps={4} />
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          >
-            {renderStep()}
-          </KeyboardAvoidingView>
-        </ImageBackground>
-      ) : (
-        <ScrollView style={{ paddingHorizontal: 16 }}>
-          <Stepper currentStep={currentStep} totalSteps={4} />
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          >
-            {renderStep()}
-          </KeyboardAvoidingView>
-        </ScrollView>
-      )}
+    <UniversalSafeArea asView>
+      <ScrollView style={{ paddingHorizontal: 16 }}>
+        <Stepper currentStep={currentStep} totalSteps={4} />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          {renderStep()}
+        </KeyboardAvoidingView>
+      </ScrollView>
     </UniversalSafeArea>
   );
 }
