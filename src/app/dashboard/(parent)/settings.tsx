@@ -17,32 +17,32 @@ const Settings = () => {
   const SETTINGS = [
     {
       icon: 'account-circle',
-      title: 'Profil',
+      title: i18n.t('Router.settings_profile'),
       onPress: () => router.push(ROUTES.settings.profile),
     },
     {
       icon: 'account-multiple',
-      title: 'Famille',
+      title: i18n.t('Router.settings_family'),
       onPress: () => router.push(ROUTES.settings.family),
     },
     {
       icon: 'home',
-      title: 'Maison',
+      title: i18n.t('Router.settings_house'),
       onPress: () => router.push(ROUTES.settings.house),
     },
-    {
-      icon: 'bell',
-      title: 'Notifications',
-    },
+    // {
+    //   icon: 'bell',
+    //   title: 'Notifications',
+    // },
     {
       icon: 'lock',
-      title: 'Vie Privée',
+      title: i18n.t('Router.settings_cgu'),
       onPress: () => router.push(ROUTES.settings.cgu),
     },
-    {
-      icon: 'help-circle',
-      title: 'Help',
-    },
+    // {
+    //   icon: 'help-circle',
+    //   title: 'Help',
+    // },
   ];
 
   return (
