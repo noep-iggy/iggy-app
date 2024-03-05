@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "preview:android": "eas build --profile preview --platform android"
+    "preview:android": "eas build --profile preview --platform android",
+    "build:android": "eas build --profile development --platform android"
   },
   "dependencies": {
     "@expo/html-elements": "^0.9.1",
