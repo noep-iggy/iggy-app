@@ -117,11 +117,13 @@ const AnimalCreate = () => {
             ) : (
               <Image
                 style={{
-                  width: 50,
-                  height: 50,
+                  width: 300,
+                  height: 300,
                 }}
-                resizeMode='contain'
-                source={animalResolver(animalSelected?.type ?? AnimalTypeEnum.DOG)}
+                resizeMode="contain"
+                source={animalResolver(
+                  animalSelected?.type ?? AnimalTypeEnum.DOG
+                )}
               />
             )}
 
