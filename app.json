@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Iggy",
-    "slug": "iggy-app",
+    "slug": "iggy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/app/icon.png",
@@ -49,7 +49,11 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "86c50c50-136b-4a7a-968f-7ece40ef5a21"
       }
-    }
+    },
+    "owner": "iggy-app"
   }
 }
