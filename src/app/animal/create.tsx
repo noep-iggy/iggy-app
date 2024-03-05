@@ -16,7 +16,7 @@ import SecondaryButton from '@/components/Buttons/SecondaryButton';
 import { Select, SelectDate } from '@/components/Selects';
 import { ApiService } from '@/api';
 import LottieView from 'lottie-react-native';
-import { animalAnimationResolver } from '@/utils/animal';
+import { animalAnimationResolver, animalResolver } from '@/utils/animal';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useAppTheme } from '../_layout';
 
@@ -106,13 +106,25 @@ const AnimalCreate = () => {
           <View
             style={[genericStyles.colCenter, { marginTop: 30, width: '100%' }]}
           >
-            <LottieView
-              autoPlay={true}
-              source={animalAnimationResolver(
-                animalSelected?.type ?? AnimalTypeEnum.DOG
-              )}
-              style={{ width: 300, height: 300 }}
-            />
+            {Platform.OS === 'ios' ? (
+              <LottieView
+                autoPlay={true}
+                source={animalAnimationResolver(
+                  animalSelected?.type ?? AnimalTypeEnum.DOG
+                )}
+                style={{ width: 300, height: 300 }}
+              />
+            ) : (
+              <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                }}
+                resizeMode='contain'
+                source={animalResolver(animalSelected?.type ?? AnimalTypeEnum.DOG)}
+              />
+            )}
+
             <View
               style={[
                 genericStyles.flexRow,

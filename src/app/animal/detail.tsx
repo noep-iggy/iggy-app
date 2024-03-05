@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import { useState, useCallback } from 'react';
 import {
   Stack,
@@ -6,11 +6,11 @@ import {
   useLocalSearchParams,
   useRouter,
 } from 'expo-router';
-import { AnimalDto, TaskDto, TaskPeriodEnum } from '@/types';
+import { AnimalDto, AnimalTypeEnum, TaskDto, TaskPeriodEnum } from '@/types';
 import { ApiService } from '@/api';
 import { genericStyles } from '@/constants';
 import UniversalSafeArea from '@/components/Commons/UniversalSafeArea';
-import { animalAnimationResolver } from '@/utils/animal';
+import { animalAnimationResolver, animalResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import TaskAnimalCard from '@/components/Card/TaskAnimalCard';
 import { Text, ActivityIndicator } from 'react-native-paper';
@@ -117,11 +117,24 @@ const AnimalDetail = () => {
               },
             ]}
           >
-            <LottieView
-              autoPlay={true}
-              source={animalAnimationResolver(animal.type)}
-              style={{ width: 300, height: 300 }}
-            />
+            {Platform.OS === 'ios' ? (
+              <LottieView
+                autoPlay={true}
+                source={animalAnimationResolver(
+                  animal?.type ?? AnimalTypeEnum.DOG
+                )}
+                style={{ width: 300, height: 300 }}
+              />
+            ) : (
+              <Image
+                style={{
+                  width: 300,
+                  height: 300,
+                }}
+                resizeMode='contain'
+                source={animalResolver(animal?.type ?? AnimalTypeEnum.DOG)}
+              />
+            )}
             <Text
               variant="headlineMedium"
               style={{ textAlign: 'left', width: '100%', marginBottom: 15 }}

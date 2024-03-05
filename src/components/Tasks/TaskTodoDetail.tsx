@@ -1,6 +1,6 @@
 import i18n from '@/locales/localization';
 import { TaskDto, TaskStatusEnum } from '@/types';
-import { View } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { ApiService } from '@/api';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import { TaskHeaderDetail } from './TaskHeaderDetail';
 import { useRouter } from 'expo-router';
 import { useAuthContext } from '@/contexts';
 import Toast from 'react-native-toast-message';
-import { animalAnimationResolver } from '@/utils/animal';
+import { animalAnimationResolver, animalResolver } from '@/utils/animal';
 import LottieView from 'lottie-react-native';
 import AddPictureCard from '../Card/AddPictureCard';
 import { genericStyles } from '@/constants';
@@ -69,7 +69,7 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
             pictureUri={newPictureUri}
             setPictureUri={setNewPictureUri}
           />
-        ) : (
+        ) : Platform.OS === 'ios' ? (
           <LottieView
             autoPlay={true}
             source={animalAnimationResolver(task.animals[0].type)}
@@ -77,8 +77,15 @@ export function TaskTodoDetail(props: TaskTodoDetailProps): JSX.Element {
               height: 300,
             }}
           />
+        ) : (
+          <Image
+            style={{
+              height: 300,
+            }}
+            resizeMode="contain"
+            source={animalResolver(task.animals[0].type)}
+          />
         )}
-
         <TaskHeaderDetail task={task} />
       </View>
       <View style={[genericStyles.flexRow, {}]}>

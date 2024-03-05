@@ -1,9 +1,9 @@
-import { View } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import React from 'react';
-import { AnimalDto } from '@/types';
+import { AnimalDto, AnimalTypeEnum } from '@/types';
 import LottieView from 'lottie-react-native';
-import { animalAnimationResolver } from '@/utils/animal';
+import { animalAnimationResolver, animalResolver } from '@/utils/animal';
 import HappinessIndicator from '../Status/HappinessIndicator';
 
 interface ChildPetSlideProps {
@@ -32,14 +32,22 @@ const ChildPetSlide = (props: ChildPetSlideProps) => {
           flexShrink: 1,
         }}
       >
-        <LottieView
-          autoPlay={true}
-          source={animalAnimationResolver(animal.type)}
-          style={{
-            alignSelf: 'center',
-            height: 'auto',
-          }}
-        />
+        {Platform.OS === 'ios' ? (
+          <LottieView
+            autoPlay={true}
+            source={animalAnimationResolver(animal.type)}
+            style={{
+              alignSelf: 'center',
+              height: 'auto',
+            }}
+          />
+        ) : (
+          <Image
+            resizeMode="contain"
+            style={{ width: 200 }}
+            source={animalResolver(animal.type)}
+          />
+        )}
         <HappinessIndicator status={animal.status} />
       </View>
     </View>
