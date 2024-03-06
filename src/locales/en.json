@@ -1,14 +1,498 @@
 {
-  "Welcome": "Welcome",
+  "welcome": "Hello",
   "Router": {
-    "home.join": "Join house",
-    "home.login": "Log in",
-    "home.register": "Create house"
+    "auth_join": "Join a house",
+    "auth_login": "Log in",
+    "auth_register": "Create a house",
+    "animal_create": "Add an animal",
+    "animal_detail": "Loading animal",
+    "animal_update": "Update animal",
+    "dashboard": "Dashboard",
+    "tasks_create": "Create a task",
+    "tasks_update": "Update a task",
+    "tasks_detail": "Loading task",
+    "tasks_child-detail": "Task",
+    "tasks_parent-detail": "Task Detail",
+    "tasks_all-tasks-child": "All tasks",
+    "modals_refuse-task-modal": "Refuse task",
+    "modals_filters-shop-modal": "Shop filters",
+    "settings_profile": "My profile",
+    "settings_house": "My house",
+    "settings_family": "My family",
+    "settings_child-settings": "Settings",
+    "settings_cgu": "Legal notices",
+    "user_update": "Update user",
+    "user_detail": "Loading",
+    "house_update": "Update house"
+  },
+  "generics": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "empty": "No items",
+    "add": "Add",
+    "update": "Update",
+    "delete": "Delete",
+    "logout": "Logout",
+    "yes": "Yes",
+    "no": "No",
+    "copy": "Copy",
+    "or": "or",
+    "filter": "Filter",
+    "filterBy": "Filter by",
+    "orderBy": "Sort by",
+    "yay": "Yay!",
+    "takePicture": "Take a picture",
+    "month": "month",
+    "try": "Try",
+    "adopt": "Adopt",
+    "late": "Late",
+    "seeAll": "See all",
+    "animals": "Animals"
+  },
+  "camera": {
+    "noAccess": "You haven't allowed access to the camera"
+  },
+  "enums": {
+    "recurrence": {
+      "type": {
+        "DAILY": "Daily",
+        "MONTHLY": "Monthly",
+        "WEEKLY": "Weekly",
+        "NULL": "No recurrence"
+      }
+    },
+    "period": {
+      "YESTERDAY": "Yesterday",
+      "TODAY": "Today",
+      "TOMORROW": "Tomorrow",
+      "WEEK": "This week",
+      "MONTH": "This month"
+    },
+    "status": {
+      "TODO": "To do",
+      "DONE": "Done",
+      "TO_VALIDATE": "To validate",
+      "ARCHIVED": "Archived",
+      "SLEEPING": "Sleeping",
+      "HAPPY": "Happy",
+      "NORMAL": "Normal",
+      "SAD": "Sad"
+    },
+    "role": {
+      "PARENT": "Parent",
+      "CHILD": "Child"
+    },
+    "type": {
+      "DOG": "Dog",
+      "CAT": "Cat"
+    },
+    "gender": {
+      "MASCULINE": "Male",
+      "FEMININE": "Female"
+    },
+    "billingPlan": {
+      "MONTHLY": "Monthly",
+      "FOR_LIFE": "Lifetime"
+    }
+  },
+  "users": {
+    "empty": "No users",
+    "me": {
+      "confirmDelete": {
+        "title": "Delete my account",
+        "subtitle": "Are you sure you want to delete your account?"
+      }
+    }
+  },
+  "shop": {
+    "noProduct": "No products",
+    "totalProduct": "products",
+    "subTitle": "Buy your daily products at reduced prices"
   },
   "LoginPage": {
-    "Login":"Log in to an existing account",
-    "Register":"Create a house",
-    "Join":"Join a house"
+    "Login": "Log in to an existing account",
+    "Register": "Create a house",
+    "Join": "Join a house",
+    "Submit": "Login",
+    "Subtitle": "Enter your login information here"
+  },
+  "registerPage": {
+    "subTitle": "Indicate here who will be the owner and administrator of the account",
+    "submit": "Create my account",
+    "animal": {
+      "title": "What animal do you have?",
+      "subtitle": "You can add more later",
+      "submit": "Add an animal"
+    },
+    "createHouse": "Create my home",
+    "payment": {
+      "title": "Your subscription plan:",
+      "accept": {
+        "part1": "I have read and accept the ",
+        "part2": "terms of use",
+        "part3": " and have read the ",
+        "part4": "privacy policy ",
+        "part5": "of Iggy in connection with GDPR."
+      },
+      "submit": "Subscribe"
+    }
+  },
+  "animals": {
+    "detail": {
+      "tasks": "Daily tasks"
+    },
+    "confirmDelete": {
+      "title": "Delete the animal",
+      "subtitle": "Are you sure you want to delete this animal?"
+    }
+  },
+  "tasks": {
+    "noTasks": "No tasks scheduled",
+    "check": "Have the task checked",
+    "todo": "Tasks to do",
+    "validate": "Validate",
+    "refuse": "Refuse",
+    "wentToValidation": "The task has been sent to your parents for validation",
+    "confirmRefuse": {
+      "title": "Refuse the task",
+      "subtitle": "Are you sure you want to refuse this task?",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "confirmDelete": {
+      "title": "Delete the task",
+      "subtitle": "Are you sure you want to delete this task?"
+    },
+    "create": {
+      "title": "Create a task",
+      "subtitle": "Enter the task information here",
+      "submit": "Create the task"
+    }
+  },
+  "joinPage": {
+    "add": {
+      "title": "Enter the house code to join",
+      "code": "House code",
+      "submit": "Join the house"
+    },
+    "create": {
+      "title": "Join the house:",
+      "parent": "Indicate here who will be the owner and administrator of the account",
+      "child": "Enter your first name",
+      "submit": "Create my account",
+      "expiration": "The code expires in "
+    }
+  },
+  "housePage": {
+    "create": {
+      "subtitle": "Give a name to your house before adding your animal",
+      "submit": "Create my house"
+    },
+    "confirmDelete": {
+      "title": "Delete the house",
+      "subtitle": "Are you sure you want to delete this house?"
+    }
+  },
+  "joinCode": {
+    "past": "Paste the code",
+    "create": {
+      "title": "Create a house code",
+      "subtitle": "The house code will allow others to join your house",
+      "parent": "Parent code",
+      "child": "Child code",
+      "copyText": "Copy the code",
+      "time": "The code expires in 15min"
+    }
+  },
+  "fields": {
+    "generics": {
+      "addData": "Add a value",
+      "createdAt": "Creation date",
+      "updatedAt": "Update date",
+      "admin": "Administrator"
+    },
+    "firstName": {
+      "label": "First Name",
+      "placeholder": "Enter your first name",
+      "errors": {
+        "required": "First name is required",
+        "notString": "First name must be a string"
+      }
+    },
+    "lastName": {
+      "label": "Last Name",
+      "placeholder": "Enter your last name",
+      "errors": {
+        "required": "Last name is required",
+        "notString": "Last name must be a string"
+      }
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "errors": {
+        "required": "Email is required",
+        "notString": "Email must be a string",
+        "notValid": "Email is not valid"
+      }
+    },
+    "date": {
+      "label": "Date",
+      "placeholder": "Choose a date",
+      "errors": {
+        "required": "Date is required",
+        "notString": "Date must be a string",
+        "notValid": "Date is not valid"
+      }
+    },
+    "role": {
+      "label": "Role",
+      "placeholder": "Choose a role",
+      "errors": {
+        "required": "Role is required",
+        "notString": "Role must be a string"
+      }
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter a name",
+      "errors": {
+        "required": "Name is required",
+        "notString": "Name must be a string"
+      }
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Enter a message",
+      "errors": {
+        "required": "Message is required",
+        "notString": "Message must be a string"
+      }
+    },
+    "animals": {
+      "label": "Which animal?",
+      "placeholder": "Choose an animal or multiple animals",
+      "errors": {
+        "required": "Animal is required",
+        "notString": "Animal must be a string"
+      }
+    },
+    "users": {
+      "label": "Who should do the task?",
+      "placeholder": "Choose a user or multiple users",
+      "errors": {
+        "required": "User is required",
+        "notString": "User must be a string"
+      }
+    },
+    "basePrice": {
+      "label": "Base Price",
+      "placeholder": "Enter a base price",
+      "errors": {
+        "required": "Base price is required",
+        "notString": "Base price must be a string",
+        "notNumber": "Base price must be a number"
+      }
+    },
+    "discountPrice": {
+      "label": "Discount Price",
+      "placeholder": "Enter a discount price",
+      "errors": {
+        "required": "Discount price is required",
+        "notString": "Discount price must be a string",
+        "notNumber": "Discount price must be a number"
+      }
+    },
+    "url": {
+      "label": "URL",
+      "placeholder": "Enter a URL",
+      "errors": {
+        "required": "URL is required",
+        "notString": "URL must be a string",
+        "notValid": "URL is not valid"
+      }
+    },
+    "title": {
+      "label": "Title",
+      "placeholder": "Enter a title",
+      "errors": {
+        "required": "Title is required",
+        "notString": "Title must be a string"
+      }
+    },
+    "image": {
+      "label": "Image",
+      "placeholder": "Choose an image",
+      "errors": {
+        "required": "Image is required",
+        "notString": "Image must be a string"
+      }
+    },
+    "description": {
+      "label": "Description (optional)",
+      "placeholder": "Enter a description",
+      "errors": {
+        "required": "Description is required",
+        "notString": "Description must be a string"
+      }
+    },
+    "brand": {
+      "label": "Brand",
+      "placeholder": "Enter a brand",
+      "errors": {
+        "required": "Brand is required",
+        "notString": "Brand must be a string"
+      }
+    },
+    "recurrence": {
+      "label": "Recurrence (optional)",
+      "placeholder": "Choose a recurrence",
+      "errors": {
+        "required": "Recurrence is required",
+        "notString": "Recurrence must be a string"
+      }
+    },
+    "billingPlan": {
+      "label": "Subscription",
+      "placeholder": "Choose a subscription",
+      "errors": {
+        "required": "Subscription is required",
+        "notString": "Subscription must be a string"
+      }
+    },
+    "gender": {
+      "label": "Gender",
+      "placeholder": "Choose a gender",
+      "errors": {
+        "required": "Gender is required",
+        "notString": "Gender must be a string"
+      }
+    },
+    "type": {
+      "label": "Type",
+      "placeholder": "Choose a type",
+      "errors": {
+        "required": "Type is required",
+        "notString": "Type must be a string"
+      }
+    },
+    "status": {
+      "label": "Status",
+      "placeholder": "Choose a status",
+      "errors": {
+        "required": "Status is required",
+        "notString": "Status must be a string"
+      }
+    },
+    "confirmDelete": {
+      "label": "To confirm deletion, please enter '<b>{{name}}</b>' in the field below",
+      "placeholder": "Enter '{{name}}' to confirm deletion"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "errors": {
+        "required": "Password is required",
+        "notString": "Password must be a string",
+        "tooShort": "Password must be at least 8 characters",
+        "noLetter": "Password must contain at least one letter",
+        "noDigit": "Password must contain at least one digit",
+        "noSpecialCharacter": "Password must contain at least one special character",
+        "hasSpaces": "Password must not contain spaces",
+        "noUppercase": "Password must contain at least one uppercase letter"
+      }
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Confirm password",
+      "errors": {
+        "notSame": "Passwords do not match"
+      }
+    },
+    "profilePicture": {
+      "label": "Profile Picture",
+      "placeholder": "Choose a photo"
+    },
+    "code": {
+      "label": "Code",
+      "placeholder": "Enter a code",
+      "errors": {
+        "required": "Code is required",
+        "tooLong": "Code must be 6 characters long",
+        "tooShort": "Code must be 6 characters long",
+        "notNumber": "Code must be a number",
+        "notValid": "Code is not valid"
+      }
+    }
+  },
+  "success": {
+    "joinCode": {
+      "copy": "The code has been copied to the clipboard"
+    },
+    "api": {
+      "login": "You are logged in",
+      "logout": "You are logged out",
+
+      "register": "Your account has been successfully created",
+      "house": {
+        "create": "The house has been successfully created",
+        "update": "The house has been successfully updated",
+        "delete": "The house has been successfully deleted",
+        "find": "The house has been successfully found",
+        "join": "Welcome to your new house"
+      },
+      "animal": {
+        "create": "The animal has been successfully created",
+        "update": "The animal has been successfully updated",
+        "delete": "The animal has been successfully deleted"
+      },
+      "task": {
+        "create": "The task has been successfully created",
+        "update": "The task has been successfully updated",
+        "delete": "The task has been successfully deleted"
+      },
+      "user": {
+        "update": "The user has been successfully updated",
+        "delete": "The user has been successfully deleted"
+      }
+    },
+    "register": {
+      "title": "Welcome",
+      "subTitle": "Your house has been successfully created"
+    }
+  },
+  "errors": {
+    "generics": {
+      "internalServerError": "Internal server error"
+    },
+    "api": {
+      "title": "API Error",
+      "validation": {
+        "single": "Error on field: {{field}}",
+        "multiple": "Errors on the following fields: {{fields}}"
+      },
+      "user": {
+        "notFound": "User not found",
+        "exist": "User already exists",
+        "notFoundOrWrongPassword": "User not found or wrong password",
+        "notUpdated": "User not updated"
+      },
+      "admin": {
+        "notAdmin": "You are not an administrator",
+        "cannotChangeOwnStatus": "You cannot change your own status",
+        "userNotAdmin": "User is not an administrator"
+      },
+      "file": {
+        "undefined": "File not found",
+        "invalidFormat": "File is not in the correct format"
+      },
+      "house": {
+        "notFound": "House not found",
+        "notUpdated": "House not updated",
+        "notDeleted": "House not deleted",
+        "notCreated": "House not created"
+      }
+    }
   }
 }
-
