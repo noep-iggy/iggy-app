@@ -5,8 +5,19 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env" : {
+        "EXPO_PUBLIC_API_KEY":"TODO:replace",
+        "EXPO_PUBLIC_API_URL":"http://noephilippe.freeboxos.fr:8000",
+        "EXPO_PUBLIC_API_TIMEOUT": "10000"
+      }
     },
-    "production": {}
+    "production": {
+      "env" : {
+        "EXPO_PUBLIC_API_KEY":"TODO:replace",
+        "EXPO_PUBLIC_API_URL":"http://noephilippe.freeboxos.fr:8000",
+        "EXPO_PUBLIC_API_TIMEOUT": "10000"
+      }
+    }
   }
 }

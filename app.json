@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.noep.iggyapp"
+      "bundleIdentifier": "com.iggyapp"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +27,7 @@
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.noep.iggyapp"
+      "package": "com.iggy_app"
     },
     "web": {
       "favicon": "./src/assets/images/app/favicon.png",
@@ -40,6 +40,14 @@
         "expo-image-picker",
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
         }
       ]
     ],

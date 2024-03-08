@@ -118,7 +118,7 @@
     "Subtitle": "Rentrez ici vos informations de connexion"
   },
   "registerPage": {
-    "subTitle": "Indiquez ici qui sera le propirétaire et administrateur du compte",
+    "subTitle": "Indiquez ici qui sera le propriétaire et administrateur du compte",
     "submit": "Créer mon compte",
     "animal": {
       "title": "Quel animal possédez-vous ?",
@@ -178,7 +178,7 @@
     },
     "create": {
       "title": "Rejoindre la maison : ",
-      "parent": "Indiquez ici qui sera le propirétaire et administrateur du compte",
+      "parent": "Indiquez ici qui sera le propriétaire et administrateur du compte",
       "child": "Entre ton prénom",
       "submit": "Créer mon compte",
       "expiration": "Le code expire à "
