@@ -17,6 +17,10 @@ export function InputPassword(props: InputPasswordProps): JSX.Element {
       mode="outlined"
       secureTextEntry={!isVisible}
       style={{ ...inputStyled }}
+      autoCorrect={false}
+      autoCapitalize="none"
+      textContentType="oneTimeCode"
+      autoComplete="off"
       {...props}
       right={
         <TextInput.Icon
