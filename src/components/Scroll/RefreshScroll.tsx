@@ -27,7 +27,7 @@ export function RefreshScroll(props: RefreshScrollProps): JSX.Element {
     onNextPage,
     onRefresh,
     isEmpty,
-    emptyText = 'Generics Empty',
+    emptyText = 'Pas de données à afficher',
     showsVerticalScrollIndicator = false,
     ...restProps
   } = props;

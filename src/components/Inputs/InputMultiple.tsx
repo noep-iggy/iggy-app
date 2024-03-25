@@ -16,6 +16,9 @@ export function InputMultiple(props: InputMultipleProps): JSX.Element {
       returnKeyLabel="Terminé"
       onSubmitEditing={(e) => e.nativeEvent.text}
       blurOnSubmit
+      autoCorrect={false}
+      autoCapitalize="none"
+      autoComplete="off"
       style={{
         ...inputStyled,
         height: 100,

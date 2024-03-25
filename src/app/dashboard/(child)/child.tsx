@@ -5,13 +5,7 @@ import { router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import {
-  ActivityIndicator,
-  Icon,
-  Surface,
-  Text,
-  TouchableRipple,
-} from 'react-native-paper';
+import { Icon, Surface, Text, TouchableRipple } from 'react-native-paper';
 import { AnimalDto, TaskDto, TaskPeriodEnum, TaskStatusEnum } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
 import { ApiService } from '@/api';
@@ -53,6 +47,19 @@ const ChildDashboard = () => {
 
   useEffect(() => {
     fetchAnimals();
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchTasks();
+      fetchAnimals();
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useFocusEffect(
@@ -171,7 +178,7 @@ const ChildDashboard = () => {
                 </View>
               </View>
               <View style={{ flexGrow: 1, justifyContent: 'center' }}>
-                {!tasks.length && !isLoading ? (
+                {!tasks.length ? (
                   <Text
                     variant="bodyLarge"
                     style={{
@@ -192,10 +199,8 @@ const ChildDashboard = () => {
                       />
                     ))
                 )}
-                {isLoading && <ActivityIndicator size="small" />}
               </View>
               <PrimaryButton
-                disabled={tasks.length === 0 || isLoading}
                 title={i18n.t('generics.seeAll')}
                 onPress={() => {
                   router.push(ROUTES.task.allTasksChildren);

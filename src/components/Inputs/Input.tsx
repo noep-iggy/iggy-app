@@ -10,5 +10,14 @@ export function Input(props: InputProps): JSX.Element {
     width: '100%',
   };
 
-  return <TextInput mode="outlined" style={{ ...inputStyled }} {...props} />;
+  return (
+    <TextInput
+      mode="outlined"
+      autoCorrect={false}
+      autoCapitalize="none"
+      autoComplete="off"
+      style={{ ...inputStyled }}
+      {...props}
+    />
+  );
 }
